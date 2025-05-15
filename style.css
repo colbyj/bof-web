@@ -1,0 +1,65 @@
+
+:root {
+  --bof-green: #8CB737;
+}
+body {
+  font-family: system-ui, sans-serif;
+}
+.hero {
+  background-color: #f8f9fa;
+  padding: 5rem 1rem;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+.hero .btn-primary {
+  background-color: var(--bof-green);
+  border-color: var(--bof-green);
+}
+.section-title {
+  color: var(--bof-green);
+}
+.feature-highlight {
+  background-color: #f5fdf2;
+  border-left: 4px solid var(--bof-green);
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0.4rem;
+}
+.demo-card {
+  border: 1px solid #ddd;
+  border-left: 5px solid var(--bof-green);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: #fdfdfd;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.footer {
+  background-color: #f1f1f1;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+.hero {
+  background: linear-gradient(90deg, #f8f9fa 0%, #f2f8ec 100%);
+  border-bottom: 1px solid #e2e2e2;
+}
+.pub-card {
+  border-left: 4px solid var(--bof-green);
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 0.4rem;
+}
+.footer {
+  background-color: #f1f1f1;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
