@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Publications | Bride of Frankensystem</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<section class="hero text-start text-md-start">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-md-8">
+                <h1>Publications Using BOF</h1>
+                <p class="lead mt-3">Academic works that have utilized or <a href="https://zenodo.org/records/11176739">cited</a>
+                    Bride of Frankensystem</p>
+                <a href="index.html" class="btn btn-outline-secondary mt-3">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container my-5">
+    <h2 class="section-title mb-4">Featured Publications</h2>
+
+    <section class="container my-5">
+        <div class="p-4 border-start border-4 rounded shadow-sm"
+             style="border-color: #8CB737; background-color: #f8faf4;">
+            <h5 class="fw-bold mb-2">Want to see your research listed here?</h5>
+            <p class="mb-3">
+                If you've used BOF in your published work, we'd love to share it! Fill out the form below to have your
+                research added to this page.
+            </p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSecIYKiMCXCvpjjZ_7aSIo1A3gXuEOYXXLYC7pFVdLsffxxPw/viewform?usp=dialog"
+               class="btn btn-success">Submit a Publication</a>
+        </div>
+    </section>
+
+
+    {% for pub in publications %}
+    <div class="d-flex flex-column flex-md-row border rounded shadow-sm p-3 mb-4">
+        <div class="me-md-4 mb-2 mb-md-0 text-md-end" style="min-width: 80px;">
+            <span class="fw-bold text-success" style="color: #8CB737; font-size: 1.25rem;">{{pub.year}}</span>
+        </div>
+        <div class="flex-grow-1">
+            <h6 class="mb-1 fw-normal">{{pub.authors}}</h6>
+            <p class="mb-1 fw-semibold fst-italic">{{pub.title}}</p>
+            <p class="mb-1 text-muted">{{pub.published_in}}</p>
+            <p class="mb-2">{{pub.bof_usage}}</p>
+            <a href="{{pub.url}}"
+               class="btn btn-sm btn-outline-success">View Publication</a>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+<footer class="footer">
+    <p>
+        &copy; 2015-2025 Colby Johanson |
+        LGPL-3.0 Licensed |
+        <a href="https://github.com/colbyj/bride-of-frankensystem" title="GitHub"><i class="bi bi-github"></i></a>
+        <a href="https://docs.frankensystem.net/en/latest/" title="Documentation"><i
+                class="bi bi-question-circle-fill"></i></a>
+        <a href="https://discord.gg/XzXtUKFCJA" target="_new" title="Discord"><i class="bi bi-discord"></i></a>
+        <a href="#" target="_new" title="Mailing List"><i class="bi bi-envelope-fill"></i></a>
+    </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
