@@ -34,13 +34,15 @@
                         <i class="bi bi-file-earmark-richtext-fill"></i>
                         Publications
                     </a>
+                </div>
+                <div class="d-flex flex-wrap mt-3 gap-2">
                     <a href="https://discord.gg/XzXtUKFCJA" target="_new"
                        class="btn btn-outline-success d-flex align-items-center gap-2">
                         <i class="bi bi-discord"></i> Join the Discord
                     </a>
-                    <a href="#" target="_new" class="btn btn-outline-success d-flex align-items-center gap-2">
+                    <button type="button" class="btn btn-outline-success d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#subscribeModal">
                         <i class="bi bi-envelope-fill"></i> Join Mailing List
-                    </a>
+                    </button>
                 </div>
             </div>
             <div class="col-md-4 text-center">
@@ -195,9 +197,9 @@
             <a href="https://discord.gg/XzXtUKFCJA" class="btn btn-outline-success">
                 <i class="bi bi-discord"></i> Join the Discord
             </a>
-            <a href="#" class="btn btn-outline-success me-2">
+            <button type="button" class="btn btn-outline-success me-2" data-bs-toggle="modal" data-bs-target="#subscribeModal">
                 <i class="bi bi-envelope-fill"></i> Join Mailing List
-            </a>
+            </button>
         </p>
     </div>
 </section>
@@ -252,6 +254,57 @@
     </div>
 </section>
 -->
+
+<div class="modal" tabindex="-1" id="subscribeModal" aria-labelledby="subscribeModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Subscribe to Mailing List</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="mc_embed_shell">
+                    <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet"
+                          type="text/css">
+
+                        <form action="https://frankensystem.us3.list-manage.com/subscribe/post?u=bf604c84efd16a39e9da4a43a&amp;id=547b6c51e8&amp;f_id=00e598e2f0"
+                              method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+                              class="validate" target="_blank">
+                            <div class="mb-3">
+                                <label for="mce-EMAIL" class="form-label">Email Address</label>
+                                <input type="email" name="EMAIL" class="form-control required email" id="mce-EMAIL" required="" value="">
+                            </div>
+
+                            <div id="mce-responses" class="mb-3 clear foot">
+                                <div class="response" id="mce-error-response" style="display: none;"></div>
+                                <div class="response" id="mce-success-response" style="display: none;"></div>
+                            </div>
+                            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                                /* real people should not fill this in and expect good things - do not remove this
+                                or risk form bot signups */
+                                <input type="text" name="b_bf604c84efd16a39e9da4a43a_547b6c51e8" tabindex="-1"
+                                       value="">
+                            </div>
+                            <div class="clear foot">
+                                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary"
+                                       value="Subscribe">
+
+                            </div>
+
+                        </form>
+
+                    <script type="text/javascript"
+                            src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <footer class="footer">
     <p>
