@@ -79,6 +79,39 @@
 
 
 <section class="container my-5">
+    <h2 class="section-title">Why Bride of Frankensystem?</h2>
+    <div class="row">
+        <div class="col-lg-8">
+            <p class="lead">Most researchers face an uncomfortable choice: use inflexible survey tools that can't handle complex experiments, or spend months learning JavaScript frameworks like jsPsych. BOF bridges this gap.</p>
+            
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <h6>vs. Survey Tools (Qualtrics, SurveyMonkey)</h6>
+                    <p>✓ Handle complex multi-session studies<br>
+                    ✓ Embed custom tasks and games<br>
+                    ✓ Integrate data processing</p>
+                </div>
+                
+                <div class="comparison-item">
+                    <h6>vs. JavaScript Frameworks (jsPsych)</h6>
+                    <p>✓ Python-based (familiar to many researchers)<br>
+                    ✓ Built-in participant management<br>
+                    ✓ No client-side programming required</p>
+                </div>
+                
+                <div class="comparison-item">
+                    <h6>vs. Building from Scratch</h6>
+                    <p>✓ Handles authentication, data storage, routing<br>
+                    ✓ Pre-built questionnaire system<br>
+                    ✓ Focus on your research, not infrastructure</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="container my-5">
     <h2 class="section-title">Built for Experimenters</h2>
     <div class="row row-cols-1 row-cols-md-2 g-4">
         <div class="col d-flex">
@@ -155,7 +188,7 @@
                 <div class="d-flex align-items-start p-3 border rounded shadow-sm h-100">
                     <i class="bi bi-upload me-3 fs-2 text-success"></i>
                     <div>
-                        <h6 class="fw-bold mb-1">Collect Rich Data Automaticall</h6>
+                        <h6 class="fw-bold mb-1">Send Task Data via POST</h6>
                         <p class="mb-0">Send structured data to BOF using simple HTTP requests. Just POST your results.</p>
                     </div>
                 </div>
@@ -188,6 +221,57 @@
 
     </div>
 </section>
+
+
+<section class="container my-5">
+    <h2 class="section-title">Explore Example Projects</h2>
+    <p class="mb-4">These demos showcase how flexible BOF can be across different types of studies.</p>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="demo-card">
+                <div>
+                    <h5>Simple Survey</h5>
+                    <p>A demo showing all available question types and a questionnaire with score calculations, all
+                        defined within JSON files.</p>
+                </div>
+                <div>
+                    <a href="#" target="_new" class="btn btn-sm btn-outline-success me-2">View Demo</a>
+                    <a href="#" target="_new" class="btn btn-sm btn-outline-success me-2">Admin Panel</a>
+                    <a href="#" target="_new" class="btn btn-sm btn-outline-secondary">Source</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="demo-card">
+                <div>
+                    <h5>Video Game Tasks</h5>
+                    <p>Shows how to embed a Unity WebGL game with pre/post questionnaires, integrated data collection, and automatic processing of experimental and survey data into format that can be analyzed immediately.</p>
+                </div>
+                <div>
+                    <a href="#" target="_new" class="btn btn-sm btn-outline-success me-2">View Demo</a>
+                    <a href="#" target="_new" class="btn btn-sm btn-outline-success me-2">Admin Panel</a>
+                    <a href="#" target="_new" class="btn btn-sm btn-outline-secondary">Source</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="demo-card">
+                <div>
+                    <h5>Longitudinal Study</h5>
+                    <p>Demonstrates how participants can complete an experiment over multiple sessions, being assigned
+                        to the same treatment group each time.</p>
+                </div>
+                <div>
+                    <a href="#" target="_new" class="btn btn-sm btn-outline-success me-2">Initial Session</a>
+                    <a href="#" target="_new" class="btn btn-sm btn-outline-success me-2">Follow-up</a>
+                    <a href="#" target="_new" class="btn btn-sm btn-outline-secondary">Source</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
 <section class="container my-5">
     <h2 class="section-title">Coming Soon</h2>
@@ -223,55 +307,6 @@
                 <i class="bi bi-envelope-fill"></i> Join Mailing List
             </button>
         </p>
-    </div>
-</section>
-
-
-<section class="container my-5">
-    <h2 class="section-title">Explore Example Projects</h2>
-    <p class="mb-4">These demos showcase how flexible BOF can be across different types of studies.</p>
-    <div class="row g-4">
-        <div class="col-md-4">
-            <div class="demo-card">
-                <div>
-                    <h5>Simple Survey</h5>
-                    <p>A demo showing all available question types and a questionnaire with score calculations, all
-                        defined within JSON files.</p>
-                </div>
-                <div>
-                    <a href="#" target="_new" class="btn btn-sm btn-outline-success me-2">View Demo</a>
-                    <a href="#" target="_new" class="btn btn-sm btn-outline-success me-2">Admin Panel</a>
-                    <a href="#" target="_new" class="btn btn-sm btn-outline-secondary">Source</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="demo-card">
-                <div>
-                    <h5>Video Game Tasks</h5>
-                    <p>Shows how to embed a Unity WebGL game with pre/post questionnaires, integrated data collection, and automatic processing of experiemental and survey data into format that can be analyzed immediately.</p>
-                </div>
-                <div>
-                    <a href="#" target="_new" class="btn btn-sm btn-outline-success me-2">View Demo</a>
-                    <a href="#" target="_new" class="btn btn-sm btn-outline-success me-2">Admin Panel</a>
-                    <a href="#" target="_new" class="btn btn-sm btn-outline-secondary">Source</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="demo-card">
-                <div>
-                    <h5>Longitudinal Study</h5>
-                    <p>Demonstrates how participants can complete an experiment over multiple sessions, being assigned
-                        to the same treatment group each time.</p>
-                </div>
-                <div>
-                    <a href="#" target="_new" class="btn btn-sm btn-outline-success me-2">Initial Session</a>
-                    <a href="#" target="_new" class="btn btn-sm btn-outline-success me-2">Follow-up</a>
-                    <a href="#" target="_new" class="btn btn-sm btn-outline-secondary">Source</a>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 
