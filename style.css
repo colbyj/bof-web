@@ -391,3 +391,11 @@ a:focus {
     --bof-green-dark: #1a2e0c;
   }
 }
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
