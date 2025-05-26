@@ -18,8 +18,8 @@
             <div class="col-md-8">
                 <h1 class="display-4 fw-bold">Bride of Frankensystem</h1>
                 <p class="lead mt-3">
-                    A flexible framework for building online experiments with reusable components, JSON-defined
-                    questionnaires, and real-time monitoring. Easily integrate tasks like Unity games into your study.
+                    A Python-based framework for researchers who need to build online experiments that are more than just basic surveys.
+                    Create sophisticated online experiments with JSON-defined questionnaires, custom task integration, and real-time participant monitoring. 
                 </p>
                 <div class="d-flex flex-wrap gap-2">
                     <a href="https://github.com/colbyj/bride-of-frankensystem" class="btn btn-primary">
@@ -34,11 +34,10 @@
                         <i class="bi bi-file-earmark-richtext-fill"></i>
                         Publications
                     </a>
-                </div>
-                <div class="d-flex flex-wrap mt-3 gap-2">
+                
                     <a href="https://discord.gg/XzXtUKFCJA" target="_new"
                        class="btn btn-outline-success d-flex align-items-center gap-2">
-                        <i class="bi bi-discord"></i> Join the Discord
+                        <i class="bi bi-discord"></i> Join Discord
                     </a>
                     <button type="button" class="btn btn-outline-success d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#subscribeModal">
                         <i class="bi bi-envelope-fill"></i> Join Mailing List
@@ -46,7 +45,33 @@
                 </div>
             </div>
             <div class="col-md-4 text-center">
-
+                <div class="getting-started-box">
+                    <h5><i class="bi bi-rocket-takeoff"></i> Quick Start</h5>
+                    <div class="quick-steps">
+                        <div class="quick-step">
+                            <span class="step-num">1</span>
+                            <code>pip install bride-of-frankensystem</code>
+                        </div>
+                        <div class="quick-step">
+                            <span class="step-num">2</span>
+                            <span>Download <a href="https://github.com/colbyj/bride-of-frankensystem-examples" target="_blank">the examples projects</a></span>
+                        </div>
+                        <div class="quick-step">
+                            <span class="step-num">3</span>
+                            <code>bofs minimal.toml -d</code>
+                        </div>
+                        <div class="quick-step">
+                            <span class="step-num">4</span>
+                            <span>Visit <strong>http://localhost:5000</strong></span>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <a href="https://docs.frankensystem.net/en/latest/quickstart.html" class="btn btn-outline-secondary">
+                            <i class="bi bi-book"></i>
+                            Full Tutorial
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -54,41 +79,38 @@
 
 
 <section class="container my-5">
-    <h2 class="text-center section-title">Built for Experimenters</h2>
+    <h2 class="section-title">Built for Experimenters</h2>
     <div class="row row-cols-1 row-cols-md-2 g-4">
         <div class="col d-flex">
             <div class="feature-highlight d-flex flex-column h-100 w-100">
-                <h5>Framework First</h5>
-                <p class="mb-0">BOF isn't just a toolkit—it's a foundation. Designed for extensibility from day one, it lets you
-                    customize components or add your own with ease.</p>
+                <h5>Python-Powered Flexibility</h5>
+                <p class="mb-0">Built on Flask, BOF gives you the familiarity of Python with the power of web deployment. Extend with custom routes, integrate any Python library, or embed Unity games without needing to be a web developer.</p>
             </div>
         </div>
         <div class="col d-flex">
             <div class="feature-highlight d-flex flex-column h-100 w-100">
                 <h5>JSON-Defined Questionnaires</h5>
-                <p class="mb-0">Write portable, logic-aware surveys in JSON. BOF interprets both the questions and the calculations
-                    you define for them.</p>
+                <p class="mb-0">Write surveys once, use everywhere. BOF's JSON format for defining questionnaires allows you define questionnaires that are automatically scored remaining human-readable and version-controllable.</p>
             </div>
         </div>
         <div class="col d-flex">
             <div class="feature-highlight d-flex flex-column h-100 w-100">
-                <h5>Multi-Condition Studies</h5>
-                <p class="mb-0">Effortlessly define and deploy multi-condition experiments, complete with conditional routing and
-                    logic-driven task flows you can define via Python scripting.</p>
+                <h5>Complex Study Designs Made Simple</h5>
+                <p class="mb-0">Run between-subjects experiments, longitudinal studies, or multi-session designs with automatic participant assignment and session management.</p>
             </div>
         </div>
         <div class="col d-flex">
             <div class="feature-highlight d-flex flex-column h-100 w-100">
                 <h5>Reusable Modules</h5>
-                <p class="mb-0">Design once, use forever. BOF encourages modular development so you can reuse tasks, pages, or
-                    questionnaires across projects.</p>
+                <p class="mb-0">Build a library of questionnaires, instruction pages, and custom tasks. Share components across studies or with colleagues—everything is modular and portable.</p>
             </div>
         </div>
     </div>
 </section>
+
 <section class="container my-5">
-    <h2 class="text-center section-title">How It Works</h2>
-    <div class="row row-cols-1 row-cols-md-2 g-4 mt-4">
+    <h2 class="section-title">How It Works</h2>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
 
         <div class="col">
             <a href="https://docs.frankensystem.net/en/latest/questionnaires/main.html"
@@ -133,8 +155,8 @@
                 <div class="d-flex align-items-start p-3 border rounded shadow-sm h-100">
                     <i class="bi bi-upload me-3 fs-2 text-success"></i>
                     <div>
-                        <h6 class="fw-bold mb-1">Send Data via POST</h6>
-                        <p class="mb-0">Send structured task results back to BOF using simple POST requests.</p>
+                        <h6 class="fw-bold mb-1">Collect Rich Data Automaticall</h6>
+                        <p class="mb-0">Send structured data to BOF using simple HTTP requests. Just POST your results.</p>
                     </div>
                 </div>
             </a>
@@ -168,7 +190,7 @@
 </section>
 
 <section class="container my-5">
-    <h2 class="text-center section-title mb-4">Coming Soon</h2>
+    <h2 class="section-title">Coming Soon</h2>
 
     <div class="p-4 border-start border-4 rounded shadow-sm" style="border-color: #8CB737; background-color: #f8faf4;">
         <h4 class="fw-bold mb-2">Hosting For Your BOF Experiments</h4>
@@ -195,7 +217,7 @@
             Discord or our mailing list for updates.</p>
         <p class="mb-0">
             <a href="https://discord.gg/XzXtUKFCJA" class="btn btn-outline-success">
-                <i class="bi bi-discord"></i> Join the Discord
+                <i class="bi bi-discord"></i> Join Discord
             </a>
             <button type="button" class="btn btn-outline-success me-2" data-bs-toggle="modal" data-bs-target="#subscribeModal">
                 <i class="bi bi-envelope-fill"></i> Join Mailing List
@@ -204,10 +226,10 @@
     </div>
 </section>
 
-<!--
+
 <section class="container my-5">
-    <h2 class="text-center section-title">Explore Example Projects</h2>
-    <p class="text-center mb-4">These demos showcase how flexible BOF can be across different types of studies.</p>
+    <h2 class="section-title">Explore Example Projects</h2>
+    <p class="mb-4">These demos showcase how flexible BOF can be across different types of studies.</p>
     <div class="row g-4">
         <div class="col-md-4">
             <div class="demo-card">
@@ -227,8 +249,7 @@
             <div class="demo-card">
                 <div>
                     <h5>Video Game Tasks</h5>
-                    <p>A demo of a Unity-based task embedded in BOF with integrated pre/post questionnaires and data
-                        export with calculated fields.</p>
+                    <p>Shows how to embed a Unity WebGL game with pre/post questionnaires, integrated data collection, and automatic processing of experiemental and survey data into format that can be analyzed immediately.</p>
                 </div>
                 <div>
                     <a href="#" target="_new" class="btn btn-sm btn-outline-success me-2">View Demo</a>
@@ -253,7 +274,7 @@
         </div>
     </div>
 </section>
--->
+
 
 <div class="modal" tabindex="-1" id="subscribeModal" aria-labelledby="subscribeModal" aria-hidden="true">
     <div class="modal-dialog">
