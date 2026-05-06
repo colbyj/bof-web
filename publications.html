@@ -9,442 +9,285 @@
 </head>
 <body>
 
-<section class="hero">
+<nav class="top-nav" aria-label="Primary">
     <div class="container">
-        <div class="hero-content">
-            <div>
-                <h1 class="heading-primary">Publications Using BOF</h1>
-                <p class="lead">Academic works that have utilized or <a href="https://zenodo.org/records/11176739">cited</a> Bride of Frankensystem</p>
-                <div class="flex nav-pills">
-                    <a href="index.html" class="btn btn-secondary">← Back to Home</a>
+        <div class="top-nav-inner">
+            <a href="index.html" class="top-nav-brand">Bride of Frankensystem</a>
+            <div class="top-nav-anchors" id="top-nav-anchors">
+                <a href="index.html#where-bofs-fits">Where BOFS fits</a>
+                <a href="index.html#how-it-works">How It Works</a>
+                <a href="demos.html">Demos</a>
+                <a href="news.html">News</a>
+                <a href="publications.html">Publications</a>
+            </div>
+            <div class="top-nav-actions">
+                <a href="https://github.com/colbyj/bride-of-frankensystem" target="_blank" rel="noopener" aria-label="GitHub repository" title="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+                <a href="https://docs.frankensystem.net/en/latest/" target="_blank" rel="noopener" aria-label="Documentation" title="Documentation"><i class="bi bi-question-circle-fill" aria-hidden="true"></i></a>
+                <a href="https://discord.gg/XzXtUKFCJA" target="_blank" rel="noopener" aria-label="Join Discord" title="Discord"><i class="bi bi-discord" aria-hidden="true"></i></a>
+                <a href="#" onclick="openModal(); return false;" aria-label="Mailing list signup" title="Mailing list"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+            </div>
+            <button type="button" class="top-nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="top-nav-anchors">
+                <i class="bi bi-list" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<section class="section section-tinted page-header">
+    <div class="container">
+        <h1 class="heading-primary">Publications</h1>
+        <p class="lead">Academic works that have used or <a href="https://zenodo.org/records/11176739">cited</a> Bride of Frankensystem.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="callout callout-row">
+            <div class="callout-row-text">
+                <h3>Used BOFS in your published work?</h3>
+                <p>If you've used BOFS in a study, fill out the form below and we'll add it to this page.</p>
+            </div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSecIYKiMCXCvpjjZ_7aSIo1A3gXuEOYXXLYC7pFVdLsffxxPw/viewform?usp=dialog" class="btn btn-primary">
+                <i class="bi bi-plus-circle" aria-hidden="true"></i> Submit a Publication
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div id="publications-list" aria-live="polite">
+            <p class="text-muted">Loading publications…</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- Mailing list signup modal (rendered on every page; opened via the envelope icon) -->
+<div class="modal" id="subscribeModal" role="dialog" aria-modal="true" aria-labelledby="subscribeModalTitle" aria-hidden="true">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="subscribeModalTitle">Subscribe to Mailing List</h3>
+            <button type="button" class="btn-close" onclick="closeModal()" aria-label="Close mailing list dialog">×</button>
+        </div>
+        <div class="modal-body">
+            <form action="https://frankensystem.us3.list-manage.com/subscribe/post?u=bf604c84efd16a39e9da4a43a&amp;id=547b6c51e8&amp;f_id=00e598e2f0" method="post" target="_blank">
+                <div class="form-group">
+                    <label for="mce-EMAIL" class="form-label">Email Address</label>
+                    <input type="email" name="EMAIL" class="form-control" id="mce-EMAIL" required>
                 </div>
-            </div>
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="b_bf604c84efd16a39e9da4a43a_547b6c51e8" tabindex="-1" value="">
+                </div>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
         </div>
     </div>
-</section>
-
-<section class="section">
-    <div class="container">
-        <h2 class="heading-section">Featured Publications</h2>
-
-        <div class="callout">
-            <h3>Want to see your research listed here?</h3>
-            <p>If you've used BOF in your published work, we'd love to share it! Fill out the form below to have your research added to this page.<br></p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSecIYKiMCXCvpjjZ_7aSIo1A3gXuEOYXXLYC7pFVdLsffxxPw/viewform?usp=dialog" class="btn btn-success">Submit a Publication</a>
-        </div>
-	</div>
-</section>
-
-<section class="section">
-    <div class="container">
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2024</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Rafael Alves Heinze, Regan L. Mandryk, Madison Klarkowski</div>
-                <div class="pub-title">Exploring the Role of Action Mechanics in Game-Based Stress Recovery</div>
-                <div class="pub-venue">Proceedings of the ACM on Human-Computer Interaction</div>
-                <div class="pub-description"></div>
-                <a href="https://doi.org/10.1145/3677070" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2024</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Colby Johanson, Susanne Poeller, Madison Klarkowski, Regan L. Mandryk</div>
-                <div class="pub-title">Hexed by Pressure: How Action-State Orientation Explains Propensity to Choke in Super Hexagon</div>
-                <div class="pub-venue">Proceedings of the ACM on Human-Computer Interaction</div>
-                <div class="pub-description">Used BOF to integrate a game built in Unity into an online study. Participants were assigned to groups for the main study via a pre-screening task also deployed in BOF.</div>
-                <a href="https://doi.org/10.1145/3677077" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2024</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Jonas Carl Christian Kamps, Max V. Birk, Chantal Vriens, Günter Wallner, Regina Bernhaupt</div>
-                <div class="pub-title">Do You Dare to Ask? Influence of Question Recipient and Information Medium on Prompting Preparatory Questions for MR Imaging</div>
-                <div class="pub-venue">Proceedings of Mensch und Computer 2024</div>
-                <div class="pub-description"></div>
-                <a href="https://doi.org/10.1145/3670653.3670675" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2024</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Katelyn Wiley, Phaedra Berger, Maximilian Achim Friehs, Regan Lee Mandryk</div>
-                <div class="pub-title">Measuring the Reliability of a Gamified Stroop Task: Quantitative Experiment</div>
-                <div class="pub-venue">JMIR Serious Games</div>
-                <div class="pub-description">Used BOF to conduct a between-subjects study comparing gamified and typical stoop tasks, both implemented in P5.js.</div>
-                <a href="https://doi.org/10.2196/50315" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2023</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Colby Johanson, Carl Gutwin, Regan Mandryk</div>
-                <div class="pub-title">Trails, rails, and over-reliance: How navigation assistance affects route-finding and spatial learning in virtual environments</div>
-                <div class="pub-venue">International Journal of Human-Computer Studies</div>
-                <div class="pub-description">Used BOF to integrate a game built in Unity into an online study. Participants were required to return to the study daily to complete training under the same circumstances as on the first day.</div>
-                <a href="https://doi.org/10.1016/j.ijhcs.2023.103097" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2023</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Colby Johanson, Brandon Piller, Carl Gutwin, Regan L. Mandryk</div>
-                <div class="pub-title">If at First You Don’t Succeed: Helping Players Make Progress in Games with Breaks and Checkpoints</div>
-                <div class="pub-venue">Proceedings of the ACM on Human-Computer Interaction</div>
-                <div class="pub-description"></div>
-                <a href="https://doi.org/10.1145/3611033" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2022</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Raquel Breejon Robinson, Ricardo Rheeder, Madison Klarkowski, Regan L Mandryk</div>
-                <div class="pub-title">”Chat Has No Chill”: A Novel Physiological Interaction For Engaging Live Streaming Audiences</div>
-                <div class="pub-venue">CHI Conference on Human Factors in Computing Systems</div>
-                <div class="pub-description"></div>
-                <a href="https://doi.org/10.1145/3491102.3501934" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2022</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Raquel Breejon Robinson, Ricardo Rheeder, Madison Klarkowski, Regan L Mandryk</div>
-                <div class="pub-title">Demonstrating Commons Sense: A Novel Physiological Interaction For Engaging Live Streaming Audiences</div>
-                <div class="pub-venue">CHI Conference on Human Factors in Computing Systems Extended Abstracts</div>
-                <div class="pub-description"></div>
-                <a href="https://doi.org/10.1145/3491101.3519895" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2021</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Julian Frommel, Madison Klarkowski, Regan L. Mandryk</div>
-                <div class="pub-title">The Struggle is Spiel: On Failure and Success in Games</div>
-                <div class="pub-venue">The 16th International Conference on the Foundations of Digital Games (FDG) 2021</div>
-                <div class="pub-description"></div>
-                <a href="https://doi.org/10.1145/3472538.3472565" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2021</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Martin Johannes Dechant, Max V. Birk, Youssef Shiban, Knut Schnell, Regan L. Mandryk</div>
-                <div class="pub-title">How Avatar Customization Affects Fear in a Game-based Digital Exposure Task for Social Anxiety</div>
-                <div class="pub-venue">Proceedings of the ACM on Human-Computer Interaction</div>
-                <div class="pub-description">Used BOF to integrate a game built in Unity into an online study.</div>
-                <a href="https://doi.org/10.1145/3474675" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2021</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Reyhan Pradantyo, Max V. Birk, Scott Bateman</div>
-                <div class="pub-title">How the Visual Design of Video Game Antagonists Affects Perception of Morality</div>
-                <div class="pub-venue">Frontiers in Computer Science</div>
-                <div class="pub-description"></div>
-                <a href="https://doi.org/10.3389/fcomp.2021.531713" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2021</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Regan L. Mandryk, Max V. Birk, Sarah Vedress, Katelyn Wiley, Elizabeth Reid, Phaedra Berger, Julian Frommel</div>
-                <div class="pub-title">Remote Assessment of Depression Using Digital Biomarkers From Cognitive Tasks</div>
-                <div class="pub-venue">Frontiers in Psychology</div>
-                <div class="pub-description"></div>
-                <a href="https://doi.org/10.3389/fpsyg.2021.767507" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2020</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Katelyn Wiley, Sarah Vedress, Regan L. Mandryk</div>
-                <div class="pub-title">How Points and Theme Affect Performance and Experience in a Gamified Cognitive Task</div>
-                <div class="pub-venue">Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems</div>
-                <div class="pub-description"></div>
-                <a href="https://doi.org/10.1145/3313831.3376697" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2020</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Maximilian Achim Friehs, Martin Dechant, Sarah Vedress, Christian Frings, Regan Lee Mandryk</div>
-                <div class="pub-title">Effective Gamification of the Stop-Signal Task: Two Controlled Laboratory Experiments</div>
-                <div class="pub-venue">JMIR Serious Games</div>
-                <div class="pub-description"></div>
-                <a href="https://doi.org/10.2196/17810" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2020</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Brandon Piller, Colby Johanson, Cody Phillips, Carl Gutwin, Regan L. Mandryk</div>
-                <div class="pub-title">Is a Change as Good as a Rest? Comparing BreakTypes for Spaced Practice in a Platformer Game</div>
-                <div class="pub-venue">Proceedings of the Annual Symposium on Computer-Human Interaction in Play</div>
-                <div class="pub-description"></div>
-                <a href="https://doi.org/10.1145/3410404.3414225" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2019</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Raquel Breejon Robinson, Elizabeth Reid, Ansgar E. Depping, Regan Mandryk, James Collin Fey, Katherine Isbister</div>
-                <div class="pub-title">'In the Same Boat',: A Game of Mirroring Emotions for Enhancing Social Play</div>
-                <div class="pub-venue">Extended Abstracts of the 2019 CHI Conference on Human Factors in Computing Systems</div>
-                <div class="pub-description"></div>
-                <a href="https://doi.org/10.1145/3290607.3313268" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2019</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Jason T Bowey, Maximilian A Friehs, Regan L Mandryk</div>
-                <div class="pub-title">Red or blue pill: fostering identification and transportation through dialogue choices in RPGs</div>
-                <div class="pub-venue">Proceedings of the 14th International Conference on the Foundations of Digital Games</div>
-                <div class="pub-description">Used BOF to integrate a game built in Unity into an online study.</div>
-                <a href="https://doi.org/10.1145/3337722.3337734" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2019</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Colby Johanson, Carl Gutwin, Jason T. Bowey, Regan L. Mandryk</div>
-                <div class="pub-title">Press Pause when you Play: Comparing Spaced Practice Intervals for Skill Development in Games</div>
-                <div class="pub-venue">Proceedings of the Annual Symposium on Computer-Human Interaction in Play</div>
-                <div class="pub-description">Used BOF to integrate a game built in Unity into an online study.</div>
-                <a href="https://doi.org/10.1145/3311350.3347195" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2019</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Dmitry Alexandrovsky, Maximilian Achim Friehs, Max V. Birk, Rowan K. Yates, Regan L. Mandryk</div>
-                <div class="pub-title">Game Dynamics that Support Snacking, not Feasting</div>
-                <div class="pub-venue">Proceedings of the Annual Symposium on Computer-Human Interaction in Play</div>
-                <div class="pub-description"></div>
-                <a href="https://doi.org/10.1145/3311350.3347151" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2018</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Max V. Birk, Regan L. Mandryk</div>
-                <div class="pub-title">Combating Attrition in Digital Self-Improvement Programs using Avatar Customization</div>
-                <div class="pub-venue">Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems</div>
-                <div class="pub-description">Used BOF to integrate a game built in Unity into an online study. This involved participants coming back to the study over a period of 3 weeks.</div>
-                <a href="https://doi.org/10.1145/3173574.3174234" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2018</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Ansgar E. Depping, Colby Johanson, Regan L. Mandryk</div>
-                <div class="pub-title">Designing for Friendship: Modeling Properties of Play, In-Game Social Capital, and Psychological Well-being</div>
-                <div class="pub-venue">Proceedings of the 2018 Annual Symposium on Computer-Human Interaction in Play</div>
-                <div class="pub-description"></div>
-                <a href="https://doi.org/10.1145/3242671.3242702" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2017</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Matthew K. Miller, Regan L. Mandryk, Max V. Birk, Ansgar E. Depping, Tushita Patel</div>
-                <div class="pub-title">Through the Looking Glass: The Effects of Feedback on Self-Awareness and Conversational Behaviour during Video Chat</div>
-                <div class="pub-venue">Proceedings of the 2017 CHI Conference on Human Factors in Computing Systems</div>
-                <div class="pub-description"></div>
-                <a href="https://doi.org/10.1145/3025453.3025548" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2017</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Ansgar E. Depping, Regan L. Mandryk</div>
-                <div class="pub-title">Why is This Happening to Me?: How Player Attribution can Broaden our Understanding of Player Experience</div>
-                <div class="pub-venue">Proceedings of the 2017 CHI Conference on Human Factors in Computing Systems</div>
-                <div class="pub-description">Used BOF to integrate a game built in Unity into an online study.</div>
-                <a href="https://doi.org/10.1145/3025453.3025648" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2017</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Jason T. Bowey, Ansgar E. Depping, Regan L. Mandryk</div>
-                <div class="pub-title">Don't Talk Dirty to Me: How Sexist Beliefs Affect Experience in Sexist Games</div>
-                <div class="pub-venue">Proceedings of the 2017 CHI Conference on Human Factors in Computing Systems</div>
-                <div class="pub-description">Used BOF to integrate a game built in Unity into an online study.</div>
-                <a href="https://doi.org/10.1145/3025453.3025563" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2017</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Jason T. Bowey, Regan L. Mandryk</div>
-                <div class="pub-title">Those are not the Stories you are Looking For: Using Text Prototypes to Evaluate Game Narratives Early</div>
-                <div class="pub-venue">Proceedings of the Annual Symposium on Computer-Human Interaction in Play</div>
-                <div class="pub-description">Used BOF to integrate a game built in Unity into an online study.</div>
-                <a href="https://doi.org/10.1145/3116595.3116636" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2017</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Colby Johanson, Carl Gutwin, Regan L. Mandryk</div>
-                <div class="pub-title">The Effects of Navigation Assistance on Spatial Learning and Performance in a 3D Game</div>
-                <div class="pub-venue">Proceedings of the Annual Symposium on Computer-Human Interaction in Play</div>
-                <div class="pub-description">Used BOF to integrate a game built in Unity into an online study. This study involved participants coming back to the task over multiple days.</div>
-                <a href="https://doi.org/10.1145/3116595.3116602" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2017</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Ansgar E. Depping, Regan L. Mandryk</div>
-                <div class="pub-title">Cooperation and Interdependence: How Multiplayer Games Increase Social Closeness</div>
-                <div class="pub-venue">Proceedings of the Annual Symposium on Computer-Human Interaction in Play</div>
-                <div class="pub-description">Used BOF to integrate a game built in Unity into an online study.</div>
-                <a href="https://doi.org/10.1145/3116595.3116639" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2016</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Max V. Birk, Cheralyn Atkins, Jason T. Bowey, Regan L. Mandryk</div>
-                <div class="pub-title">Fostering Intrinsic Motivation through Avatar Identification in Digital Games</div>
-                <div class="pub-venue">Proceedings of the 2016 CHI Conference on Human Factors in Computing Systems</div>
-                <div class="pub-description">Used BOF to integrate an avatar creator built in Unity into an online study.</div>
-                <a href="https://doi.org/10.1145/2858036.2858062" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2016</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Colby Johanson, Regan L. Mandryk</div>
-                <div class="pub-title">Scaffolding Player Location Awareness through Audio Cues in First-Person Shooters</div>
-                <div class="pub-venue">Proceedings of the 2016 CHI Conference on Human Factors in Computing Systems</div>
-                <div class="pub-description">Use BOF to show videos of gameplay scenarios to participants that they responded to by clicking on a map and creating checklists of things they observed.</div>
-                <a href="https://doi.org/10.1145/2858036.2858172" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-        <div class="publication">
-            <div class="pub-year">
-                <span class="pub-year-badge">2016</span>
-            </div>
-            <div class="pub-content">
-                <div class="pub-authors">Ansgar E. Depping, Regan L. Mandryk, Colby Johanson, Jason T. Bowey, Shelby C. Thomson</div>
-                <div class="pub-title">Trust Me: Social Games are Better than Social Icebreakers at Building Trust</div>
-                <div class="pub-venue">Proceedings of the 2016 Annual Symposium on Computer-Human Interaction in Play</div>
-                <div class="pub-description">Use BOF to connect participants together via a matchmaking system which was then used to set up and display a game built in Unity within the web browser.</div>
-                <a href="https://doi.org/10.1145/2967934.2968097" class="btn btn-outline btn-small">View Publication</a>
-            </div>
-        </div>
-        
-
-        
-    </div>
-</section>
-
+</div>
 <footer class="footer">
     <div class="container">
         <p>
-            &copy; 2015-2025 Colby Johanson |
+            &copy; 2015-2026 Colby Johanson |
             LGPL-3.0 Licensed |
-            <a href="https://github.com/colbyj/bride-of-frankensystem" title="GitHub"><i class="bi bi-github"></i></a>
-            <a href="https://docs.frankensystem.net/en/latest/" title="Documentation"><i class="bi bi-question-circle-fill"></i></a>
-            <a href="https://discord.gg/XzXtUKFCJA" rel="noopener" target="_blank" title="Discord"><i class="bi bi-discord"></i></a>
-            <a href="#" title="Mailing List"><i class="bi bi-envelope-fill"></i></a>
+            <a href="https://github.com/colbyj/bride-of-frankensystem" title="GitHub" aria-label="GitHub repository"><i class="bi bi-github" aria-hidden="true"></i></a>
+            <a href="https://docs.frankensystem.net/en/latest/" title="Documentation" aria-label="Documentation"><i class="bi bi-question-circle-fill" aria-hidden="true"></i></a>
+            <a href="https://discord.gg/XzXtUKFCJA" rel="noopener" target="_blank" title="Discord" aria-label="Join Discord"><i class="bi bi-discord" aria-hidden="true"></i></a>
+            <a href="#" onclick="openModal(); return false;" title="Mailing List" aria-label="Mailing list signup"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
         </p>
     </div>
 </footer>
+<script>
+function openModal() {
+    const modal = document.getElementById('subscribeModal');
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden', 'false');
+}
+
+function closeModal() {
+    const modal = document.getElementById('subscribeModal');
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+}
+
+document.getElementById('subscribeModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeModal();
+        closeNav();
+    }
+});
+
+// Mobile nav: toggle the hamburger dropdown.
+function closeNav() {
+    const nav = document.querySelector('.top-nav');
+    if (!nav) return;
+    nav.classList.remove('open');
+    const btn = nav.querySelector('.top-nav-toggle');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+}
+
+(function () {
+    const nav = document.querySelector('.top-nav');
+    if (!nav) return;
+    const toggle = nav.querySelector('.top-nav-toggle');
+    if (toggle) {
+        toggle.addEventListener('click', function () {
+            const isOpen = nav.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', isOpen);
+        });
+    }
+    // Tapping any nav link closes the dropdown so same-page anchors don't leave it open.
+    nav.querySelectorAll('.top-nav-anchors a').forEach(function (a) {
+        a.addEventListener('click', closeNav);
+    });
+    // Tap outside the nav closes it.
+    document.addEventListener('click', function (e) {
+        if (nav.classList.contains('open') && !nav.contains(e.target)) {
+            closeNav();
+        }
+    });
+})();
+</script>
+
+<script>
+(function () {
+    // Live source. Falls back to the local snapshot if unreachable (no CORS).
+    const PUBLICATIONS_API_URL = "https://manage.frankensystem.net/api/publications.json";
+    const PUBLICATIONS_FALLBACK_URL = "./publications.json";
+
+    const listEl = document.getElementById("publications-list");
+
+    async function fetchJson(url) {
+        const response = await fetch(url, { cache: "no-cache" });
+        if (!response.ok) {
+            throw new Error("HTTP " + response.status);
+        }
+        return await response.json();
+    }
+
+    async function loadPublications() {
+        let publications;
+        let usingFallback = false;
+
+        try {
+            publications = await fetchJson(PUBLICATIONS_API_URL);
+        } catch (liveError) {
+            console.warn("Live publications fetch failed:", liveError);
+            try {
+                publications = await fetchJson(PUBLICATIONS_FALLBACK_URL);
+                usingFallback = true;
+            } catch (fallbackError) {
+                console.error("Fallback publications fetch failed:", fallbackError);
+                listEl.innerHTML = "";
+                const msg = document.createElement("p");
+                msg.className = "text-warning";
+                msg.textContent = "Could not load the publications list right now. Please try refreshing, or check back later.";
+                listEl.appendChild(msg);
+                return;
+            }
+        }
+
+        render(publications, usingFallback);
+    }
+
+    function render(publications, usingFallback) {
+        listEl.innerHTML = "";
+
+        if (!Array.isArray(publications) || publications.length === 0) {
+            const msg = document.createElement("p");
+            msg.className = "text-muted";
+            msg.textContent = "No publications listed yet.";
+            listEl.appendChild(msg);
+            return;
+        }
+
+        if (usingFallback) {
+            const banner = document.createElement("p");
+            banner.className = "text-muted";
+            banner.style.fontStyle = "italic";
+            banner.textContent = "Showing a cached snapshot — the live list couldn't be reached.";
+            listEl.appendChild(banner);
+        }
+
+        // Year DESC, then citation_count DESC. Missing values treated as 0 so older highly-cited
+        // papers don't sink below brand-new uncited ones in earlier years.
+        publications.sort(function (a, b) {
+            const yearDiff = (b.year || 0) - (a.year || 0);
+            if (yearDiff !== 0) return yearDiff;
+            return (b.citation_count || 0) - (a.citation_count || 0);
+        });
+
+        for (const pub of publications) {
+            listEl.appendChild(renderPublication(pub));
+        }
+    }
+
+    function renderPublication(pub) {
+        const wrapper = document.createElement("div");
+        wrapper.className = "publication";
+
+        const yearWrap = document.createElement("div");
+        yearWrap.className = "pub-year";
+        const yearBadge = document.createElement("span");
+        yearBadge.className = "pub-year-badge";
+        yearBadge.textContent = pub.year != null ? String(pub.year) : "";
+        yearWrap.appendChild(yearBadge);
+        wrapper.appendChild(yearWrap);
+
+        const content = document.createElement("div");
+        content.className = "pub-content";
+
+        const authors = document.createElement("div");
+        authors.className = "pub-authors";
+        authors.textContent = Array.isArray(pub.authors) ? pub.authors.join(", ") : "";
+        content.appendChild(authors);
+
+        const title = document.createElement("div");
+        title.className = "pub-title";
+        title.textContent = pub.title || "";
+        content.appendChild(title);
+
+        const venue = document.createElement("div");
+        venue.className = "pub-venue";
+        venue.textContent = pub.published_in || "";
+        content.appendChild(venue);
+
+        const description = document.createElement("div");
+        description.className = "pub-description";
+        description.textContent = pub.bof_usage || "";
+        content.appendChild(description);
+
+        // Prefer DOI when present (canonical paper URL); fall back to a hand-set alternative URL
+        // for theses, preprints, project pages — anything without a DOI.
+        let linkHref = null;
+        if (pub.doi) {
+            linkHref = pub.doi.indexOf("http") === 0 ? pub.doi : ("https://doi.org/" + pub.doi);
+        } else if (pub.url) {
+            linkHref = pub.url;
+        }
+        if (linkHref) {
+            const link = document.createElement("a");
+            link.href = linkHref;
+            link.className = "btn btn-outline btn-small";
+            link.textContent = "View Publication";
+            content.appendChild(link);
+        }
+
+        wrapper.appendChild(content);
+        return wrapper;
+    }
+
+    loadPublications();
+})();
+</script>
 
 </body>
 </html>

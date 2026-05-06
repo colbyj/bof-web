@@ -27,10 +27,11 @@ body {
 .container {
   max-width: var(--container-width);
   margin: 0 auto;
-  /*padding: 0 2rem;*/
+  padding: 0 2rem;
 }
 
-.section { padding: 2rem 0; }
+.section { padding: 3rem 0; }
+.section-tinted { background: var(--bg-gradient); }
 
 .grid {
   display: grid;
@@ -39,6 +40,17 @@ body {
 
 .grid-2 { grid-template-columns: auto auto; }
 .grid-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+
+/* Demo grid — 9 cards fit cleanly only at 3 or 1 columns, so we skip 2 to avoid an orphan. */
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .demo-grid { grid-template-columns: 1fr; }
+}
 
 .flex {
   display: flex;
@@ -341,6 +353,39 @@ body {
   color: var(--text-medium);
 }
 
+/* Feature List (compact 2-column with icons, no card chrome) */
+.feature-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 2.5rem;
+  margin-top: 2rem;
+}
+
+.feature-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.feature-item .feature-icon {
+  font-size: 1.5rem;
+  color: var(--green);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.feature-item h3 {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  margin-bottom: 0.25rem;
+}
+
+.feature-item p {
+  font-size: 0.95rem;
+  color: var(--text-medium);
+  margin: 0;
+}
+
 /* Comparison Grid */
 .comparison-grid {
   display: grid;
@@ -566,9 +611,10 @@ body {
   .hero-content { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
   .comparison-grid { grid-template-columns: 1fr; }
+  .feature-list { grid-template-columns: 1fr; gap: 1.25rem; }
   .flex { flex-direction: column; align-items: stretch; }
   .card, .callout { padding: 1.5rem; }
-  .how-card { flex-direction: column; text-align: center; }
+  .how-card { flex-direction: column; align-items: center; text-align: center; }
   .publication { flex-direction: column; }
   .pub-year { 
     min-width: auto; 
@@ -595,4 +641,437 @@ body {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+.text-muted { color: var(--text-light); }
+.text-warning { color: #b45309; }
+
+/* ───────────────────────────────────────────────────────────────────────────
+   Redesign-only styles (used by redesign.html, not index.html).
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Sticky top nav */
+.top-nav {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-light);
+  z-index: 100;
+}
+
+.top-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0.6rem 0;
+}
+
+.top-nav-brand {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--green-dark);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.top-nav-anchors {
+  display: flex;
+  gap: 1.5rem;
+  flex: 1;
+  margin-left: 1rem;
+}
+
+.top-nav-anchors a {
+  color: var(--text-medium);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  padding: 0.35rem 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.top-nav-anchors a:hover {
+  color: var(--green-dark);
+  border-bottom-color: var(--green);
+}
+
+.top-nav-actions {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.top-nav-actions a {
+  color: var(--text-light);
+  font-size: 1.15rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.top-nav-actions a:hover {
+  color: var(--green);
+  background: rgba(140, 183, 55, 0.08);
+}
+
+/* Hamburger toggle (only shown on mobile). */
+.top-nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--green-dark);
+  cursor: pointer;
+  padding: 0.3rem 0.55rem;
+  border-radius: 6px;
+  line-height: 1;
+}
+
+.top-nav-toggle:hover {
+  background: rgba(140, 183, 55, 0.08);
+}
+
+/* Anchor offset so sticky nav doesn't cover scrolled-to headings */
+section[id] { scroll-margin-top: 64px; }
+
+/* Mobile nav: anchors collapse into a dropdown opened by the hamburger */
+@media (max-width: 768px) {
+  .top-nav { position: relative; }
+
+  .top-nav-inner {
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+  }
+
+  .top-nav-brand {
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  .top-nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.4rem;
+    padding: 0.25rem 0.4rem;
+  }
+
+  .top-nav-actions {
+    gap: 0.1rem;
+  }
+
+  .top-nav-actions a {
+    font-size: 1rem;
+    padding: 0.3rem 0.4rem;
+  }
+
+  .top-nav-anchors {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: white;
+    margin-left: 0;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--border-light);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    gap: 0;
+    z-index: 99;
+  }
+
+  .top-nav.open .top-nav-anchors {
+    display: flex;
+  }
+
+  .top-nav-anchors a {
+    padding: 0.7rem 0;
+    border-bottom: none;
+  }
+
+  .top-nav-anchors a + a {
+    border-top: 1px solid var(--border-light);
+  }
+}
+
+/* Dense grouped demo list */
+.demo-group {
+  margin-bottom: 2rem;
+}
+
+.demo-group:last-child {
+  margin-bottom: 0;
+}
+
+.demo-group-heading {
+  color: var(--green-dark);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(140, 183, 55, 0.35);
+}
+
+.demo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.demo-row {
+  display: grid;
+  grid-template-columns: 200px 1fr auto;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 0.6rem 0.25rem;
+  border-bottom: 1px solid rgba(140, 183, 55, 0.15);
+  transition: background 0.15s ease;
+}
+
+.demo-row:last-child {
+  border-bottom: none;
+}
+
+.demo-row:hover {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.demo-name {
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+}
+
+.demo-desc {
+  color: var(--text-medium);
+  font-size: 0.92rem;
+}
+
+.demo-actions {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.demo-link {
+  color: var(--green-dark);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background: white;
+  border: 1px solid rgba(140, 183, 55, 0.55);
+  font-size: 0.82rem;
+  transition: all 0.15s ease;
+}
+
+.demo-link:hover {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+
+@media (max-width: 768px) {
+  .demo-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+    padding: 0.75rem 0.25rem;
+  }
+
+  .demo-actions {
+    margin-top: 0.25rem;
+  }
+}
+
+/* Callout with side-aligned action: text on the left, button on the right */
+.callout-row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.callout-row > .callout-row-text {
+  flex: 1 1 300px;
+}
+
+.callout-row > .callout-row-text > :last-child {
+  margin-bottom: 0;
+}
+
+/* Inner-page header (used on demos / publications / news pages) */
+.page-header {
+  padding: 2.5rem 0;
+}
+
+.page-header .heading-primary {
+  margin-bottom: 0.75rem;
+}
+
+.page-header .lead {
+  margin-bottom: 0;
+  max-width: 720px;
+}
+
+/* News entries */
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.news-entry {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.news-entry:last-child {
+  border-bottom: none;
+}
+
+.news-entry:first-child {
+  padding-top: 0;
+}
+
+.news-entry-date {
+  color: var(--text-light);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.4rem;
+}
+
+.news-entry-upcoming .news-entry-date {
+  color: var(--green-dark);
+}
+
+.news-entry-title {
+  font-size: 1.35rem;
+  color: var(--green-dark);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.news-entry-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.news-entry-title a:hover {
+  color: var(--green);
+}
+
+.news-entry-body {
+  color: var(--text-medium);
+  line-height: 1.6;
+}
+
+.news-entry-body a {
+  color: var(--green-dark);
+}
+
+/* Markdown-rendered content inside a news-entry-body */
+.news-entry-body p {
+  margin-bottom: 0.75rem;
+}
+
+.news-entry-body p:last-child {
+  margin-bottom: 0;
+}
+
+.news-entry-body ul,
+.news-entry-body ol {
+  list-style: disc outside;
+  padding-left: 1.5rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.news-entry-body ol {
+  list-style-type: decimal;
+}
+
+.news-entry-body li {
+  margin-bottom: 0.25rem;
+}
+
+.news-entry-body code {
+  background: rgba(140, 183, 55, 0.1);
+  padding: 0.05em 0.35em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: var(--text-dark);
+}
+
+.news-entry-body strong {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: var(--text-dark);
+}
+
+.news-entry-body p > strong:only-child {
+  /* When a paragraph contains only a bold phrase (acts as a sub-heading
+     in the markdown), render with extra space and stronger weight. */
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+/* Call-to-action buttons attached to a news entry */
+.news-entry-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Latest News callout (on the home page) */
+.news-callout-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.news-callout-header h3 {
+  margin: 0;
+}
+
+.news-callout-more {
+  color: var(--green-dark);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.news-callout-more:hover {
+  text-decoration: underline;
+  color: var(--green);
+}
+
+.news-list-callout .news-entry {
+  padding: 0.85rem 0;
+}
+
+.news-list-callout .news-entry:first-child {
+  padding-top: 0;
+}
+
+.news-list-callout .news-entry-title {
+  font-size: 1.1rem;
+}
+
+/* Truncate long bodies on the home-page callout. Short content renders fully;
+   anything past ~5em is cut. The full text lives on news.html — clicking the
+   title takes the reader there. */
+.news-list-callout .news-entry-body {
+  max-height: 5em;
+  overflow: hidden;
 }

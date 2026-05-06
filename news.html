@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bride of Frankensystem</title>
+    <title>News | Bride of Frankensystem</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 </head>
@@ -33,152 +33,23 @@
     </div>
 </nav>
 
-<section class="hero" id="top">
+<section class="section section-tinted page-header">
     <div class="container">
-        <div class="hero-content">
-            <div>
-                <h1 class="heading-primary">Bride of Frankensystem</h1>
-                <p class="lead">
-                    An open-source framework for building online behavioral experiments and surveys. You describe your
-                    study in plain-text files: a TOML config for settings and page flow, JSON files for
-                    questionnaires, and HTML files for custom pages. BOFS handles participant routing, condition
-                    assignment, consent, and data storage, and provides an admin panel for monitoring and export.
-                </p>
-                <div class="flex">
-                    <a href="https://docs.frankensystem.net/en/latest/getting_started/installation.html" class="btn btn-primary">
-                        <i class="bi bi-download" aria-hidden="true"></i> Get Started
-                    </a>
-                    <a href="demos.html" class="btn btn-outline">
-                        <i class="bi bi-play-circle-fill" aria-hidden="true"></i> View Demos
-                    </a>
-                </div>
-            </div>
-            <div class="quick-start">
-                <h3>Quick Start</h3>
-                <div class="quick-steps">
-                    <div class="quick-step">
-                        <span class="step-number">1</span>
-                        <code>pip install bride-of-frankensystem</code>
-                    </div>
-                    <div class="quick-step">
-                        <span class="step-number">2</span>
-                        <code>BOFS init</code>
-                    </div>
-                    <div class="quick-step">
-                        <span class="step-number">3</span>
-                        <span>Follow the prompts</span>
-                    </div>
-                </div>
-                <a href="https://docs.frankensystem.net/en/latest/getting_started/installation.html" class="btn btn-outline">
-                    <i class="bi bi-book" aria-hidden="true"></i> Installation Instructions
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section" id="where-bofs-fits">
-    <div class="container">
-        <h2 class="heading-section">Where BOFS fits</h2>
-        <p class="lead">If you've used other tools for online studies, here's how BOFS compares to them.</p>
-
-        <div class="comparison-grid">
-            <div class="comparison-item">
-                <h4>vs. Survey platforms (Qualtrics, SurveyMonkey, Google Forms)</h4>
-                <p>Survey platforms handle questionnaires through a point-and-click editor on hosted infrastructure.
-                They can't embed arbitrary JavaScript tasks or open their data layer for custom logic.</p>
-            </div>
-
-            <div class="comparison-item">
-                <h4>vs. JavaScript libraries (jsPsych, lab.js)</h4>
-                <p>jsPsych, and lab.js handle in-browser trial logic — precise timing, key capture,
-                randomization. They don't host the surrounding study (consent, condition assignment, sessions,
-                admin panel). A jsPsych, or lab.js task can run inside a BOFS custom page; the two
-                are complementary.</p>
-            </div>
-
-            <div class="comparison-item">
-                <h4>vs. Building from scratch (Flask, Express)</h4>
-                <p>A custom application means you design every detail of the study and everything around it. BOFS
-                supplies the surrounding scaffolding so the work that's specific to your research is what you actually
-                spend time on.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section section-tinted" id="how-it-works">
-    <div class="container">
-        <h2 class="heading-section">How It Works</h2>
-        <p class="lead">Each step lives in a plain text file — TOML, JSON, HTML, or Python. Carry questionnaires, custom pages, and blueprints between studies, share them with colleagues, version-control everything.</p>
-        <div class="grid grid-2">
-            <a href="https://docs.frankensystem.net/en/latest/building/page_flow.html" class="how-card">
-                <i class="bi bi-diagram-3 how-card-icon" aria-hidden="true"></i>
-                <div>
-                    <h4>Define your study flow</h4>
-                    <p>One TOML file: page list, conditions with random assignment and balancing, external IDs for MTurk or Prolific, and multi-session designs where participants resume their condition on a follow-up visit.</p>
-                </div>
-            </a>
-
-            <a href="https://docs.frankensystem.net/en/latest/building/adding_survey_questions.html" class="how-card">
-                <i class="bi bi-filetype-json how-card-icon" aria-hidden="true"></i>
-                <div>
-                    <h4>Write questionnaires</h4>
-                    <p>JSON files with item shuffling, conditional questions and pages, computed scores, and reusing earlier answers in later wording. Tag a questionnaire to repeat it in the same session for pre/post designs.</p>
-                </div>
-            </a>
-
-            <a href="https://docs.frankensystem.net/en/latest/getting_started/quickstart_custom_task.html" class="how-card">
-                <i class="bi bi-puzzle how-card-icon" aria-hidden="true"></i>
-                <div>
-                    <h4>Embed a custom task</h4>
-                    <p>Drop in HTML/JavaScript tasks: Unity WebGL, jsPsych, lab.js, PsychoJS, p5.js, or your own.</p>
-                </div>
-            </a>
-
-            <a href="https://docs.frankensystem.net/en/latest/building/storing_custom_data.html" class="how-card">
-                <i class="bi bi-database how-card-icon" aria-hidden="true"></i>
-                <div>
-                    <h4>Capture trial-by-trial data</h4>
-                    <p>Define custom data tables in JSON; POST rows from your task and BOFS stores them alongside questionnaire responses.</p>
-                </div>
-            </a>
-
-            <a href="https://docs.frankensystem.net/en/latest/building/monitoring_data.html" class="how-card">
-                <i class="bi bi-speedometer2 how-card-icon" aria-hidden="true"></i>
-                <div>
-                    <h4>Monitor and export</h4>
-                    <p>Live admin panel: per-participant progress, per-condition descriptive stats with box plots, CSV / per-table CSV / full SQLite export.</p>
-                </div>
-            </a>
-
-            <a href="https://docs.frankensystem.net/en/latest/framework/blueprints_routes.html" class="how-card">
-                <i class="bi bi-filetype-py how-card-icon" aria-hidden="true"></i>
-                <div>
-                    <h4>Extend with Python</h4>
-                    <p>When built-in patterns aren't enough, custom Flask routes drop into the same project — full access to the database, sessions, and templates.</p>
-                </div>
-            </a>
-        </div>
+        <h1 class="heading-primary">News</h1>
+        <p class="lead">Releases and announcements.</p>
     </div>
 </section>
 
 <section class="section">
     <div class="container">
-        <div class="grid grid-2">
-            <div class="callout" id="latest-news">
-                <div class="news-callout-header">
-                    <h3>Latest News</h3>
-                    <a href="news.html" class="news-callout-more">View all news →</a>
-                </div>
-                <ul class="news-list news-list-callout">
-                    <li class="news-entry news-entry-upcoming">
-                        <div class="news-entry-date">
-Upcoming                        </div>
-                        <h4 class="news-entry-title">
-                            <a href="news.html#bofs-21">BOFS 2.1</a>
-                        </h4>
-                        <div class="news-entry-body"><p>The next BOFS release, version 2.1, is available for testing now. Grab the development release from PyPI: 
+        <ul class="news-list">
+            <li class="news-entry news-entry-upcoming" id="bofs-21">
+                <div class="news-entry-date">
+Upcoming                </div>
+                <h2 class="news-entry-title">
+                    <a href="#bofs-21">BOFS 2.1</a>
+                </h2>
+                <div class="news-entry-body"><p>The next BOFS release, version 2.1, is available for testing now. Grab the development release from PyPI: 
 <code>pip install bride-of-frankensystem-dev</code>.</p>
 <h3>Changes</h3>
 <p><strong>Getting Started</strong></p>
@@ -270,14 +141,14 @@ Upcoming                        </div>
 <li>Fixed page-list composition issue in the admin progress route.</li>
 <li>Fallback source for standard deviation/variance now uses the population method.</li>
 </ul></div>
-                    </li>
-                    <li class="news-entry">
-                        <div class="news-entry-date">
-2024-05-09                        </div>
-                        <h4 class="news-entry-title">
-                            <a href="news.html#bofs-20">BOFS 2.0 released</a>
-                        </h4>
-                        <div class="news-entry-body"><p>BOFS 2.0 brings a new <code>BOFS</code> CLI command, an updated admin panel with summary
+            </li>
+            <li class="news-entry" id="bofs-20">
+                <div class="news-entry-date">
+2024-05-09                </div>
+                <h2 class="news-entry-title">
+                    <a href="#bofs-20">BOFS 2.0 released</a>
+                </h2>
+                <div class="news-entry-body"><p>BOFS 2.0 brings a new <code>BOFS</code> CLI command, an updated admin panel with summary
 statistics and per-condition box plots, JSON-defined custom data tables, and
 compatibility with the latest Flask and SQLAlchemy. Archived on Zenodo
 (<a href="https://doi.org/10.5281/zenodo.11176739">DOI 10.5281/zenodo.11176739</a>).</p>
@@ -328,61 +199,16 @@ compatibility with the latest Flask and SQLAlchemy. Archived on Zenodo
 <li>Custom question types can be defined for use within questionnaires.</li>
 <li>Questionnaires and tables can live inside a blueprint's folder.</li>
 </ul></div>
-                        <div class="news-entry-actions">
-                            <a href="https://github.com/colbyj/bride-of-frankensystem/releases/tag/2.0" class="btn btn-outline btn-small" target="_blank" rel="noopener">
+                <div class="news-entry-actions">
+                    <a href="https://github.com/colbyj/bride-of-frankensystem/releases/tag/2.0" class="btn btn-primary" target="_blank" rel="noopener">
 <i class="bi bi-github" aria-hidden="true"></i> View release on GitHub
-                            </a>
-                            <a href="https://github.com/colbyj/bride-of-frankensystem/wiki/Migrating-to-BOFS-2.0" class="btn btn-outline btn-small" target="_blank" rel="noopener">
-Migration guide
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="callout" id="hosted-bofs">
-                <h3>Hosted BOFS</h3>
-                <p>We are developing a web-based deployment manager that runs BOFS experiments without requiring the researcher to setup their own server. Choose your server's geographic region, upload your project, get a public link, share it with participants.</p>
-                <ul class="check-list">
-                    <li>
-                        <span class="check-icon" aria-hidden="true">✓</span>
-                        <span>Hosted experiment containers, managed for you</span>
-                    </li>
-                    <li>
-                        <span class="check-icon" aria-hidden="true">✓</span>
-                        <span>Built-in data export and admin access</span>
-                    </li>
-                    <li>
-                        <span class="check-icon" aria-hidden="true">✓</span>
-                        <span>Browser-based deployment, no command line</span>
-                    </li>
-                </ul>
-                <p>To try a beta version of the "Frankenmanager", join the Discord and ask to help with testing.</p>
-                <div class="flex coming-soon-actions">
-                    <a href="https://discord.gg/XzXtUKFCJA" rel="noopener" target="_blank" class="btn btn-outline" aria-label="Join Discord to request pilot access">
-                        <i class="bi bi-discord" aria-hidden="true"></i> Join Discord
                     </a>
-                    <button type="button" class="btn btn-outline" onclick="openModal()" aria-label="Open mailing list signup">
-                        <i class="bi bi-envelope-fill" aria-hidden="true"></i> Join Mailing List
-                    </button>
+                    <a href="https://github.com/colbyj/bride-of-frankensystem/wiki/Migrating-to-BOFS-2.0" class="btn btn-outline" target="_blank" rel="noopener">
+Migration guide
+                    </a>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section section-tinted" id="get-help">
-    <div class="container">
-        <h2 class="heading-section">Questions, requests, or bug reports?</h2>
-        <p class="lead">If BOFS doesn't fit a study you're trying to run, you're missing a question type, or you've found a bug, open a GitHub issue or ask in the Discord.</p>
-        <div class="flex">
-            <a href="https://github.com/colbyj/bride-of-frankensystem/issues" rel="noopener" target="_blank" class="btn btn-primary">
-                <i class="bi bi-github" aria-hidden="true"></i> Open a GitHub issue
-            </a>
-            <a href="https://discord.gg/XzXtUKFCJA" rel="noopener" target="_blank" class="btn btn-outline">
-                <i class="bi bi-discord" aria-hidden="true"></i> Ask on Discord
-            </a>
-        </div>
+            </li>
+        </ul>
     </div>
 </section>
 

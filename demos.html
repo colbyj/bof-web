@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demos | Bride of Frankensystem</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="top-nav" aria-label="Primary">
+    <div class="container">
+        <div class="top-nav-inner">
+            <a href="index.html" class="top-nav-brand">Bride of Frankensystem</a>
+            <div class="top-nav-anchors" id="top-nav-anchors">
+                <a href="index.html#where-bofs-fits">Where BOFS fits</a>
+                <a href="index.html#how-it-works">How It Works</a>
+                <a href="demos.html">Demos</a>
+                <a href="news.html">News</a>
+                <a href="publications.html">Publications</a>
+            </div>
+            <div class="top-nav-actions">
+                <a href="https://github.com/colbyj/bride-of-frankensystem" target="_blank" rel="noopener" aria-label="GitHub repository" title="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+                <a href="https://docs.frankensystem.net/en/latest/" target="_blank" rel="noopener" aria-label="Documentation" title="Documentation"><i class="bi bi-question-circle-fill" aria-hidden="true"></i></a>
+                <a href="https://discord.gg/XzXtUKFCJA" target="_blank" rel="noopener" aria-label="Join Discord" title="Discord"><i class="bi bi-discord" aria-hidden="true"></i></a>
+                <a href="#" onclick="openModal(); return false;" aria-label="Mailing list signup" title="Mailing list"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+            </div>
+            <button type="button" class="top-nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="top-nav-anchors">
+                <i class="bi bi-list" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<section class="section section-tinted page-header">
+    <div class="container">
+        <h1 class="heading-primary">Example Projects</h1>
+        <p class="lead">Nine live demos showing different shapes a BOFS study can take. Source for each one is linked.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <div class="demo-group">
+            <h2 class="demo-group-heading">Feature tours</h2>
+            <ul class="demo-list">
+                <li class="demo-row">
+                    <span class="demo-name">Simple Survey</span>
+                    <span class="demo-desc">Every question type with score calculations, all defined in JSON.</span>
+                    <span class="demo-actions">
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://5001.demos.frankensystem.net">Demo</a>
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://5001.demos.frankensystem.net/admin">Admin</a>
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://github.com/colbyj/bride-of-frankensystem-examples/tree/master/minimal_example">Source</a>
+                    </span>
+                </li>
+                <li class="demo-row">
+                    <span class="demo-name">Advanced Features</span>
+                    <span class="demo-desc">A kitchen-sink tour through custom pages, data tables, and admin export.</span>
+                    <span class="demo-actions">
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://5002.demos.frankensystem.net">Demo</a>
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://5002.demos.frankensystem.net/admin">Admin</a>
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://github.com/colbyj/bride-of-frankensystem-examples/tree/master/advanced_example">Source</a>
+                    </span>
+                </li>
+                <li class="demo-row">
+                    <span class="demo-name">Embedding Media</span>
+                    <span class="demo-desc">Images, audio, and video stimuli inside questionnaires and custom pages.</span>
+                    <span class="demo-actions">
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://5005.demos.frankensystem.net">Demo</a>
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://5005.demos.frankensystem.net/admin">Admin</a>
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://github.com/colbyj/bride-of-frankensystem-examples/tree/master/embedding_media_example">Source</a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="demo-group">
+            <h2 class="demo-group-heading">Experimental designs</h2>
+            <ul class="demo-list">
+                <li class="demo-row">
+                    <span class="demo-name">Branching</span>
+                    <span class="demo-desc">Conditional page routing and questionnaires that change based on earlier responses.</span>
+                    <span class="demo-actions">
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://5007.demos.frankensystem.net">Demo</a>
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://5007.demos.frankensystem.net/admin">Admin</a>
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://github.com/colbyj/bride-of-frankensystem-examples/tree/master/branching_example">Source</a>
+                    </span>
+                </li>
+                <li class="demo-row">
+                    <span class="demo-name">A/B Experiment</span>
+                    <span class="demo-desc">Two conditions with random assignment and balanced enrollment.</span>
+                    <span class="demo-actions">
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://5010.demos.frankensystem.net">Demo</a>
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://5010.demos.frankensystem.net/admin">Admin</a>
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://github.com/colbyj/bride-of-frankensystem-examples/tree/master/ab_experiment">Source</a>
+                    </span>
+                </li>
+                <li class="demo-row">
+                    <span class="demo-name">Longitudinal Study</span>
+                    <span class="demo-desc">A two-session menu-learning study; participants return for Day 2 and resume their condition via an external ID.</span>
+                    <span class="demo-actions">
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://5003.demos.frankensystem.net">Day 1</a>
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://5004.demos.frankensystem.net">Day 2</a>
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://github.com/colbyj/bride-of-frankensystem-examples/tree/master/longitudinal_example">Source</a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="demo-group">
+            <h2 class="demo-group-heading">Embedding external tasks</h2>
+            <ul class="demo-list">
+                <li class="demo-row">
+                    <span class="demo-name">Unity WebGL Task</span>
+                    <span class="demo-desc">Unity 2023.2 game embedded with pre/post questionnaires and trial-by-trial data capture.</span>
+                    <span class="demo-actions">
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://5006.demos.frankensystem.net">Demo</a>
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://5006.demos.frankensystem.net/admin">Admin</a>
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://github.com/colbyj/bride-of-frankensystem-examples/tree/master/unity_example_2023.2">Source</a>
+                    </span>
+                </li>
+                <li class="demo-row">
+                    <span class="demo-name">lab.js Stroop Task</span>
+                    <span class="demo-desc">A Stroop task built in lab.js, running inside a custom page with trial data sent back to BOFS.</span>
+                    <span class="demo-actions">
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://5008.demos.frankensystem.net">Demo</a>
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://5008.demos.frankensystem.net/admin">Admin</a>
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://github.com/colbyj/bride-of-frankensystem-examples/tree/master/labjs_example">Source</a>
+                    </span>
+                </li>
+                <li class="demo-row">
+                    <span class="demo-name">jsPsych Stroop Task</span>
+                    <span class="demo-desc">A Stroop task built in jsPsych, running inside a custom page with trial data sent back to BOFS.</span>
+                    <span class="demo-actions">
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://5009.demos.frankensystem.net">Demo</a>
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://5009.demos.frankensystem.net/admin">Admin</a>
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://github.com/colbyj/bride-of-frankensystem-examples/tree/master/jspsych_example">Source</a>
+                    </span>
+                </li>
+                <li class="demo-row">
+                    <span class="demo-name">PsychoJS Stroop Task</span>
+                    <span class="demo-desc">A Stroop task built in PsychoPy Builder and exported as PsychoJS, with the generated quitPsychoJS adapted to send trial data to BOFS.</span>
+                    <span class="demo-actions">
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://5011.demos.frankensystem.net">Demo</a>
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://5011.demos.frankensystem.net/admin">Admin</a>
+                        <a class="demo-link" rel="noopener" target="_blank" href="https://github.com/colbyj/bride-of-frankensystem-examples/tree/master/psychojs_example">Source</a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Mailing list signup modal (rendered on every page; opened via the envelope icon) -->
+<div class="modal" id="subscribeModal" role="dialog" aria-modal="true" aria-labelledby="subscribeModalTitle" aria-hidden="true">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="subscribeModalTitle">Subscribe to Mailing List</h3>
+            <button type="button" class="btn-close" onclick="closeModal()" aria-label="Close mailing list dialog">×</button>
+        </div>
+        <div class="modal-body">
+            <form action="https://frankensystem.us3.list-manage.com/subscribe/post?u=bf604c84efd16a39e9da4a43a&amp;id=547b6c51e8&amp;f_id=00e598e2f0" method="post" target="_blank">
+                <div class="form-group">
+                    <label for="mce-EMAIL" class="form-label">Email Address</label>
+                    <input type="email" name="EMAIL" class="form-control" id="mce-EMAIL" required>
+                </div>
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="b_bf604c84efd16a39e9da4a43a_547b6c51e8" tabindex="-1" value="">
+                </div>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <p>
+            &copy; 2015-2026 Colby Johanson |
+            LGPL-3.0 Licensed |
+            <a href="https://github.com/colbyj/bride-of-frankensystem" title="GitHub" aria-label="GitHub repository"><i class="bi bi-github" aria-hidden="true"></i></a>
+            <a href="https://docs.frankensystem.net/en/latest/" title="Documentation" aria-label="Documentation"><i class="bi bi-question-circle-fill" aria-hidden="true"></i></a>
+            <a href="https://discord.gg/XzXtUKFCJA" rel="noopener" target="_blank" title="Discord" aria-label="Join Discord"><i class="bi bi-discord" aria-hidden="true"></i></a>
+            <a href="#" onclick="openModal(); return false;" title="Mailing List" aria-label="Mailing list signup"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+        </p>
+    </div>
+</footer>
+<script>
+function openModal() {
+    const modal = document.getElementById('subscribeModal');
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden', 'false');
+}
+
+function closeModal() {
+    const modal = document.getElementById('subscribeModal');
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+}
+
+document.getElementById('subscribeModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeModal();
+        closeNav();
+    }
+});
+
+// Mobile nav: toggle the hamburger dropdown.
+function closeNav() {
+    const nav = document.querySelector('.top-nav');
+    if (!nav) return;
+    nav.classList.remove('open');
+    const btn = nav.querySelector('.top-nav-toggle');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+}
+
+(function () {
+    const nav = document.querySelector('.top-nav');
+    if (!nav) return;
+    const toggle = nav.querySelector('.top-nav-toggle');
+    if (toggle) {
+        toggle.addEventListener('click', function () {
+            const isOpen = nav.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', isOpen);
+        });
+    }
+    // Tapping any nav link closes the dropdown so same-page anchors don't leave it open.
+    nav.querySelectorAll('.top-nav-anchors a').forEach(function (a) {
+        a.addEventListener('click', closeNav);
+    });
+    // Tap outside the nav closes it.
+    document.addEventListener('click', function (e) {
+        if (nav.classList.contains('open') && !nav.contains(e.target)) {
+            closeNav();
+        }
+    });
+})();
+</script>
+
+
+</body>
+</html>

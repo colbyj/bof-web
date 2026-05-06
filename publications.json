@@ -1,0 +1,355 @@
+[
+  {
+    "doi": "https://doi.org/10.1145/2858036.2858062",
+    "year": 2016,
+    "authors": [
+      "Max V. Birk",
+      "Cheralyn Atkins",
+      "Jason T. Bowey",
+      "Regan L. Mandryk"
+    ],
+    "title": "Fostering Intrinsic Motivation through Avatar Identification in Digital Games",
+    "published_in": "Proceedings of the 2016 CHI Conference on Human Factors in Computing Systems"
+  },
+  {
+    "doi": "https://doi.org/10.1145/2858036.2858172",
+    "year": 2016,
+    "authors": [
+      "Colby Johanson",
+      "Regan L. Mandryk"
+    ],
+    "title": "Scaffolding Player Location Awareness through Audio Cues in First-Person Shooters",
+    "published_in": "Proceedings of the 2016 CHI Conference on Human Factors in Computing Systems"
+  },
+  {
+    "doi": "https://doi.org/10.1145/2967934.2968097",
+    "year": 2016,
+    "authors": [
+      "Ansgar E. Depping",
+      "Regan L. Mandryk",
+      "Colby Johanson",
+      "Jason T. Bowey",
+      "Shelby C. Thomson"
+    ],
+    "title": "Trust Me: Social Games are Better than Social Icebreakers at Building Trust",
+    "published_in": "Proceedings of the 2016 Annual Symposium on Computer-Human Interaction in Play"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3025453.3025548",
+    "year": 2017,
+    "authors": [
+      "Matthew K. Miller",
+      "Regan L. Mandryk",
+      "Max V. Birk",
+      "Ansgar E. Depping",
+      "Tushita Patel"
+    ],
+    "title": "Through the Looking Glass: The Effects of Feedback on Self-Awareness and Conversational Behaviour during Video Chat",
+    "published_in": "Proceedings of the 2017 CHI Conference on Human Factors in Computing Systems"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3025453.3025648",
+    "year": 2017,
+    "authors": [
+      "Ansgar E. Depping",
+      "Regan L. Mandryk"
+    ],
+    "title": "Why is This Happening to Me?: How Player Attribution can Broaden our Understanding of Player Experience",
+    "published_in": "Proceedings of the 2017 CHI Conference on Human Factors in Computing Systems"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3025453.3025563",
+    "year": 2017,
+    "authors": [
+      "Jason T. Bowey",
+      "Ansgar E. Depping",
+      "Regan L. Mandryk"
+    ],
+    "title": "Don't Talk Dirty to Me: How Sexist Beliefs Affect Experience in Sexist Games",
+    "published_in": "Proceedings of the 2017 CHI Conference on Human Factors in Computing Systems"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3116595.3116636",
+    "year": 2017,
+    "authors": [
+      "Jason T. Bowey",
+      "Regan L. Mandryk"
+    ],
+    "title": "Those are not the Stories you are Looking For: Using Text Prototypes to Evaluate Game Narratives Early",
+    "published_in": "Proceedings of the Annual Symposium on Computer-Human Interaction in Play"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3116595.3116602",
+    "year": 2017,
+    "authors": [
+      "Colby Johanson",
+      "Carl Gutwin",
+      "Regan L. Mandryk"
+    ],
+    "title": "The Effects of Navigation Assistance on Spatial Learning and Performance in a 3D Game",
+    "published_in": "Proceedings of the Annual Symposium on Computer-Human Interaction in Play"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3116595.3116639",
+    "year": 2017,
+    "authors": [
+      "Ansgar E. Depping",
+      "Regan L. Mandryk"
+    ],
+    "title": "Cooperation and Interdependence: How Multiplayer Games Increase Social Closeness",
+    "published_in": "Proceedings of the Annual Symposium on Computer-Human Interaction in Play"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3173574.3174234",
+    "year": 2018,
+    "authors": [
+      "Max V. Birk",
+      "Regan L. Mandryk"
+    ],
+    "title": "Combating Attrition in Digital Self-Improvement Programs using Avatar Customization",
+    "published_in": "Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3242671.3242702",
+    "year": 2018,
+    "authors": [
+      "Ansgar E. Depping",
+      "Colby Johanson",
+      "Regan L. Mandryk"
+    ],
+    "title": "Designing for Friendship: Modeling Properties of Play, In-Game Social Capital, and Psychological Well-being",
+    "published_in": "Proceedings of the 2018 Annual Symposium on Computer-Human Interaction in Play"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3290607.3313268",
+    "year": 2019,
+    "authors": [
+      "Raquel Breejon Robinson",
+      "Elizabeth Reid",
+      "Ansgar E. Depping",
+      "Regan Mandryk",
+      "James Collin Fey",
+      "Katherine Isbister"
+    ],
+    "title": "'In the Same Boat',: A Game of Mirroring Emotions for Enhancing Social Play",
+    "published_in": "Extended Abstracts of the 2019 CHI Conference on Human Factors in Computing Systems"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3337722.3337734",
+    "year": 2019,
+    "authors": [
+      "Jason T Bowey",
+      "Maximilian A Friehs",
+      "Regan L Mandryk"
+    ],
+    "title": "Red or blue pill: fostering identification and transportation through dialogue choices in RPGs",
+    "published_in": "Proceedings of the 14th International Conference on the Foundations of Digital Games"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3311350.3347195",
+    "year": 2019,
+    "authors": [
+      "Colby Johanson",
+      "Carl Gutwin",
+      "Jason T. Bowey",
+      "Regan L. Mandryk"
+    ],
+    "title": "Press Pause when you Play: Comparing Spaced Practice Intervals for Skill Development in Games",
+    "published_in": "Proceedings of the Annual Symposium on Computer-Human Interaction in Play"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3311350.3347151",
+    "year": 2019,
+    "authors": [
+      "Dmitry Alexandrovsky",
+      "Maximilian Achim Friehs",
+      "Max V. Birk",
+      "Rowan K. Yates",
+      "Regan L. Mandryk"
+    ],
+    "title": "Game Dynamics that Support Snacking, not Feasting",
+    "published_in": "Proceedings of the Annual Symposium on Computer-Human Interaction in Play"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3313831.3376697",
+    "year": 2020,
+    "authors": [
+      "Katelyn Wiley",
+      "Sarah Vedress",
+      "Regan L. Mandryk"
+    ],
+    "title": "How Points and Theme Affect Performance and Experience in a Gamified Cognitive Task",
+    "published_in": "Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems"
+  },
+  {
+    "doi": "https://doi.org/10.2196/17810",
+    "year": 2020,
+    "authors": [
+      "Maximilian Achim Friehs",
+      "Martin Dechant",
+      "Sarah Vedress",
+      "Christian Frings",
+      "Regan Lee Mandryk"
+    ],
+    "title": "Effective Gamification of the Stop-Signal Task: Two Controlled Laboratory Experiments",
+    "published_in": "JMIR Serious Games"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3410404.3414225",
+    "year": 2020,
+    "authors": [
+      "Brandon Piller",
+      "Colby Johanson",
+      "Cody Phillips",
+      "Carl Gutwin",
+      "Regan L. Mandryk"
+    ],
+    "title": "Is a Change as Good as a Rest? Comparing BreakTypes for Spaced Practice in a Platformer Game",
+    "published_in": "Proceedings of the Annual Symposium on Computer-Human Interaction in Play"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3472538.3472565",
+    "year": 2021,
+    "authors": [
+      "Julian Frommel",
+      "Madison Klarkowski",
+      "Regan L. Mandryk"
+    ],
+    "title": "The Struggle is Spiel: On Failure and Success in Games",
+    "published_in": "The 16th International Conference on the Foundations of Digital Games (FDG) 2021"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3474675",
+    "year": 2021,
+    "authors": [
+      "Martin Johannes Dechant",
+      "Max V. Birk",
+      "Youssef Shiban",
+      "Knut Schnell",
+      "Regan L. Mandryk"
+    ],
+    "title": "How Avatar Customization Affects Fear in a Game-based Digital Exposure Task for Social Anxiety",
+    "published_in": "Proceedings of the ACM on Human-Computer Interaction"
+  },
+  {
+    "doi": "https://doi.org/10.3389/fcomp.2021.531713",
+    "year": 2021,
+    "authors": [
+      "Reyhan Pradantyo",
+      "Max V. Birk",
+      "Scott Bateman"
+    ],
+    "title": "How the Visual Design of Video Game Antagonists Affects Perception of Morality",
+    "published_in": "Frontiers in Computer Science"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3491102.3501934",
+    "year": 2022,
+    "authors": [
+      "Raquel Breejon Robinson",
+      "Ricardo Rheeder",
+      "Madison Klarkowski",
+      "Regan L Mandryk"
+    ],
+    "title": "”Chat Has No Chill”: A Novel Physiological Interaction For Engaging Live Streaming Audiences",
+    "published_in": "CHI Conference on Human Factors in Computing Systems"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3491101.3519895",
+    "year": 2022,
+    "authors": [
+      "Raquel Breejon Robinson",
+      "Ricardo Rheeder",
+      "Madison Klarkowski",
+      "Regan L Mandryk"
+    ],
+    "title": "Demonstrating Commons Sense: A Novel Physiological Interaction For Engaging Live Streaming Audiences",
+    "published_in": "CHI Conference on Human Factors in Computing Systems Extended Abstracts"
+  },
+  {
+    "doi": "https://doi.org/10.1016/j.ijhcs.2023.103097",
+    "year": 2023,
+    "authors": [
+      "Colby Johanson",
+      "Carl Gutwin",
+      "Regan Mandryk"
+    ],
+    "title": "Trails, rails, and over-reliance: How navigation assistance affects route-finding and spatial learning in virtual environments",
+    "published_in": "International Journal of Human-Computer Studies"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3611033",
+    "year": 2023,
+    "authors": [
+      "Colby Johanson",
+      "Brandon Piller",
+      "Carl Gutwin",
+      "Regan L. Mandryk"
+    ],
+    "title": "If at First You Don’t Succeed: Helping Players Make Progress in Games with Breaks and Checkpoints",
+    "published_in": "Proceedings of the ACM on Human-Computer Interaction"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3677070",
+    "year": 2024,
+    "authors": [
+      "Rafael Alves Heinze",
+      "Regan L. Mandryk",
+      "Madison Klarkowski"
+    ],
+    "title": "Exploring the Role of Action Mechanics in Game-Based Stress Recovery",
+    "published_in": "Proceedings of the ACM on Human-Computer Interaction"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3677077",
+    "year": 2024,
+    "authors": [
+      "Colby Johanson",
+      "Susanne Poeller",
+      "Madison Klarkowski",
+      "Regan L. Mandryk"
+    ],
+    "title": "Hexed by Pressure: How Action-State Orientation Explains Propensity to Choke in Super Hexagon",
+    "published_in": "Proceedings of the ACM on Human-Computer Interaction"
+  },
+  {
+    "doi": "https://doi.org/10.1145/3670653.3670675",
+    "year": 2024,
+    "authors": [
+      "Jonas Carl Christian Kamps",
+      "Max V. Birk",
+      "Chantal Vriens",
+      "Günter Wallner",
+      "Regina Bernhaupt"
+    ],
+    "title": "Do You Dare to Ask? Influence of Question Recipient and Information Medium on Prompting Preparatory Questions for MR Imaging",
+    "published_in": "Proceedings of Mensch und Computer 2024"
+  },
+  {
+    "doi": "https://doi.org/10.3389/fpsyg.2021.767507",
+    "year": 2021,
+    "authors": [
+      "Regan L. Mandryk",
+      "Max V. Birk",
+      "Sarah Vedress",
+      "Katelyn Wiley",
+      "Elizabeth Reid",
+      "Phaedra Berger",
+      "Julian Frommel"
+    ],
+    "title": "Remote Assessment of Depression Using Digital Biomarkers From Cognitive Tasks",
+    "published_in": "Frontiers in Psychology"
+  },
+  {
+    "doi": "https://doi.org/10.2196/50315",
+    "year": 2024,
+    "authors": [
+      "Katelyn Wiley",
+      "Phaedra Berger",
+      "Maximilian Achim Friehs",
+      "Regan Lee Mandryk"
+    ],
+    "title": "Measuring the Reliability of a Gamified Stroop Task: Quantitative Experiment",
+    "published_in": "JMIR Serious Games"
+  }
+]
