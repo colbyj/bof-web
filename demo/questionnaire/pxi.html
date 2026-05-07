@@ -1,0 +1,2524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PXI (Player Experience Inventory) — Questionnaire Demo | Bride of Frankensystem</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="../../style.css" rel="stylesheet">
+<meta name="description" content="Abeele, V. V., Spiel, K., Nacke, L., Johnson, D., &amp; Gerling, K. (2020). Development and validation of the player experience inventory: A scale to measure player">
+<link rel="canonical" href="https://frankensystem.net/demo/questionnaire/pxi.html">
+<meta property="og:title" content="PXI (Player Experience Inventory) — BOFS questionnaire demo">
+<meta property="og:description" content="Abeele, V. V., Spiel, K., Nacke, L., Johnson, D., &amp; Gerling, K. (2020). Development and validation of the player experience inventory: A scale to measure player">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://frankensystem.net/demo/questionnaire/pxi.html">
+<meta name="robots" content="index,follow">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "PXI (Player Experience Inventory)",
+  "url": "https://frankensystem.net/demo/questionnaire/pxi.html",
+  "citation": "Abeele, V. V., Spiel, K., Nacke, L., Johnson, D., \u0026 Gerling, K. (2020). Development and validation of the player experience inventory: A scale to measure player experiences at the level of functional and psychosocial consequences. International Journal of Human-Computer Studies, 135, 102370. https://doi.org/10.1016/j.ijhcs.2019.102370",
+  "identifier": "10.1016/j.ijhcs.2019.102370",
+  "dateModified": "2026-05-07T06:09:13.6845237"
+}
+</script>
+<style>
+:root {
+    --contents-width: 967px;
+    --top-bar-color: #8CB737;
+    --font-size-main: 12pt;
+    --font-size-h1: 18pt;
+    --font-size-h2: 16pt;
+    --font-size-h3: 13pt;
+    --font-size-h4: 11pt;
+    --question-title-font-size: 13pt;
+    --question-instructions-font-size: 11pt;
+    --bs-border-color: black;
+}
+
+@media only screen and (max-width: 768px) {
+    :root {
+        --contents-width: 100vw;
+        --font-size-main: 11pt;
+        --font-size-h1: 16pt;
+        --font-size-h2: 14pt;
+        --font-size-h3: 12pt;
+        --font-size-h4: 10pt;
+        --question-title-font-size: 12pt;
+        --question-instructions-font-size: 10pt;
+        --bs-border-color: black;
+    }
+
+    .content {
+        padding: 0 5px;
+    }
+
+    input[type=range] {
+        width: 90vw !important;
+    }
+
+    input, select, textarea, .slider-labels {
+        max-width: 90vw !important;
+    }
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'segoe ui', arial, sans-serif;
+    font-size: var(--font-size-main);
+}
+
+.bofs-main-content {
+    padding-top: 12px;
+}
+
+/* Reserved by JS at load time so content isn't hidden under the fixed toolbar.
+   Fallback ensures content still clears the toolbar before JS runs. */
+.bofs-body {
+    padding-bottom: 110px;
+}
+
+.questions {
+    /*border: 1px solid #4e4e4e;*/
+}
+
+.question {
+    margin-top: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #EEEEEE;
+    background-color: #F7F7F7;
+    border-radius: 8px;
+    /*box-shadow: 0 0 3px 0 rgba(0,0,0,0.33);*/
+}
+
+.bofs-hidden {
+    display: none;
+}
+
+.question-title {
+    font-weight: bold;
+    font-size: var(--question-title-font-size);
+    margin-top: 0;
+}
+
+.question-instructions {
+    font-weight: bold;
+    font-size: var(--question-instructions-font-size);
+}
+
+.question-inputs {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.navigation {
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    background-color: #ccc;
+    border-radius: 8px;
+    /*box-shadow: 0 0 3px 0 rgba(0,0,0,0.33);*/
+    margin-bottom: 30px;
+}
+
+.padding {
+    padding: 12px 16px;
+}
+
+#map img {
+    position: relative;
+}
+
+h1 {
+    font-size: var(--font-size-h1);
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+}
+
+h3 {
+    font-size: var(--font-size-h3);
+}
+
+h4 {
+    font-size: var(--font-size-h4);
+}
+
+.title-bar {
+    background-color: var(--top-bar-color);
+    box-shadow: 0 5px 10px rgb(238, 238, 238);
+    color: white;
+    margin: 0;
+    padding: 5px;
+    text-shadow: 1px 1px #333333;
+}
+
+.title-text {
+    width: var(--contents-width);
+    margin-left: auto;
+    margin-right: auto;
+    font-size: var(--font-size-h1);
+    height: 42px;
+}
+
+.content {
+    width: var(--contents-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.slider-labels {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.error-box {
+    padding: 1em;
+    margin: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.33);
+    border-left-width: 3px;
+    background-color: rgba(255, 0, 0, 0.05);
+}
+
+
+.debug-session pre {
+    display: block; margin: 0;
+}
+
+.debug-session ul {
+    padding: 0 0 0 12px; margin: 0; list-style-type: none;
+}
+
+.debug-session li {
+    padding-bottom: 2px;
+}
+
+.admin-toolbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    width: 100%;
+    padding: 6px 12px 8px 12px;
+    color: #fff;
+}
+
+.admin-toolbar .btn,
+.admin-toolbar .dropdown-item {
+    font-size: 10pt;
+}
+
+.admin-toolbar-status {
+    font-size: 10pt;
+    color: #cfd2d6;
+    padding: 2px 4px 6px 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.admin-toolbar-status .admin-status-key {
+    color: #8a8f96;
+    font-weight: 600;
+}
+
+.admin-toolbar-status .admin-status-sep {
+    color: #5a6068;
+}
+
+.admin-toolbar-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.admin-toolbar-actions .toolbar-left,
+.admin-toolbar-actions .toolbar-right {
+    flex: 0 0 auto;
+}
+
+.admin-toolbar-actions .toolbar-center {
+    flex: 1 1 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.admin-toolbar-actions .dropup {
+    display: inline-block;
+}
+
+/* Skip-to-page dropdown can get long — let it scroll. */
+.admin-toolbar-actions .dropdown-menu {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+/*a, a:visited { text-decoration: none; color: #1144cc; }
+a:hover { text-decoration: underline; }*/
+
+table { border-spacing: 0; }
+th { padding: 6px; position: sticky; top: 0; background-color: #F7F7F7; border-bottom: 1px solid #EEEEEE; z-index: 1; }
+.evenRow { background-color: #EFEFEF; }
+.evenRow td { padding: 4px; }
+.oddRow td { padding: 4px; }
+.evenRow:hover { background-color: #F4F2DC; }
+.oddRow:hover { background-color: #FEFFE8; }
+
+.form-check { padding: 6px 22px; }
+.form-check input {  }
+
+ul li { padding-bottom: 4px;  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav" aria-label="Primary">
+    <div class="container">
+        <div class="top-nav-inner">
+            <a href="../../index.html" class="top-nav-brand">Bride of Frankensystem</a>
+            <div class="top-nav-anchors" id="top-nav-anchors">
+                <a href="../../index.html#where-bofs-fits">Where BOFS Fits</a>
+                <a href="../../index.html#how-it-works">How It Works</a>
+                <a href="../../demos.html">Demos</a>
+                <a href="../../questionnaires.html">Questionnaires</a>
+                <a href="../../news.html">News</a>
+                <a href="../../publications.html">Publications</a>
+            </div>
+            <div class="top-nav-actions">
+                <a href="https://github.com/colbyj/bride-of-frankensystem" target="_blank" rel="noopener" aria-label="GitHub repository" title="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+                <a href="https://docs.frankensystem.net/en/latest/" target="_blank" rel="noopener" aria-label="Documentation" title="Documentation"><i class="bi bi-question-circle-fill" aria-hidden="true"></i></a>
+                <a href="https://discord.gg/XzXtUKFCJA" target="_blank" rel="noopener" aria-label="Join Discord" title="Discord"><i class="bi bi-discord" aria-hidden="true"></i></a>
+                <a href="#" onclick="openModal(); return false;" aria-label="Mailing list signup" title="Mailing list"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+            </div>
+            <button type="button" class="top-nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="top-nav-anchors">
+                <i class="bi bi-list" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<section class="section section-tinted page-header">
+    <div class="container">
+        <p class="text-muted"><a href="../../questionnaires.html">← All questionnaire demos</a></p>
+        <div class="demo-header">
+            <div class="demo-title-row">
+                <span class="demo-badge" aria-label="Demo">Demo</span>
+                <h1 class="heading-primary">PXI (Player Experience Inventory)</h1>
+            </div>
+            <div class="demo-meta-row">
+                <div class="demo-meta-text">
+                    <p class="lead">Abeele, V. V., Spiel, K., Nacke, L., Johnson, D., &amp; Gerling, K. (2020). Development and validation of the player experience inventory: A scale to measure player experiences at the level of functional and psychosocial consequences. International Journal of Human-Computer Studies, 135, 102370. https://doi.org/10.1016/j.ijhcs.2019.102370</p>
+                    <p><a href="https://doi.org/10.1016/j.ijhcs.2019.102370" target="_blank" rel="noopener">DOI: 10.1016/j.ijhcs.2019.102370</a></p>
+                </div>
+                <div class="demo-meta-action">
+                    <button type="button" class="btn btn-outline" onclick="openJsonModal()">
+                        <i class="bi bi-braces" aria-hidden="true"></i> View source JSON
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="callout callout-row demo-disclaimer">
+            <div class="callout-row-text">
+                <h3>This is a preview only</h3>
+                <p>
+                    Your responses aren't saved or sent anywhere. The page below renders the questionnaire
+                    with the same templates a participant would see inside a BOFS experiment. Click
+                    <strong>Compute results</strong> at the bottom to see the raw values BOFS would store
+                    plus any participant calculations the questionnaire defines.
+                </p>
+            </div>
+        </div>
+
+        <form id="demo-form" data-slug="pxi" class="bofs-preview-scope" onsubmit="return false;">
+            <div class="bofs-preview-scope"><div class="question-instructions">Reflect on the task and rate your agreement with the following statements.</div>
+
+
+<div class="question padding">
+    
+    <div class="question-inputs">
+        
+    
+
+<table width="100%">
+    <thead>
+        <tr>
+            <th></th>
+            
+            <th scope="col" style="text-align:center;">Strongly disagree</th>
+            
+            <th scope="col" style="text-align:center;">Disagree</th>
+            
+            <th scope="col" style="text-align:center;">Somewhat disagree</th>
+            
+            <th scope="col" style="text-align:center;">Neutral</th>
+            
+            <th scope="col" style="text-align:center;">Somewhat agree</th>
+            
+            <th scope="col" style="text-align:center;">Agree</th>
+            
+            <th scope="col" style="text-align:center;">Strongly agree</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        
+            
+        
+        
+        <tr class="evenRow">
+            <td style="width: 30%">I was no longer aware of my surroundings while I was completing the task.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="immersion_01" id="immersion_011" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="immersion_01" id="immersion_012" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="immersion_01" id="immersion_013" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="immersion_01" id="immersion_014" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="immersion_01" id="immersion_015" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="immersion_01" id="immersion_016" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="immersion_01" id="immersion_017" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">I felt capable while completing the task.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="mastery_01" id="mastery_011" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="mastery_01" id="mastery_012" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="mastery_01" id="mastery_013" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="mastery_01" id="mastery_014" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="mastery_01" id="mastery_015" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="mastery_01" id="mastery_016" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="mastery_01" id="mastery_017" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">The task informed me of my progress in the task.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="progressFeedback_03" id="progressFeedback_031" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="progressFeedback_03" id="progressFeedback_032" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="progressFeedback_03" id="progressFeedback_033" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="progressFeedback_03" id="progressFeedback_034" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="progressFeedback_03" id="progressFeedback_035" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="progressFeedback_03" id="progressFeedback_036" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="progressFeedback_03" id="progressFeedback_037" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">I felt like I had choices regarding how I wanted to complete this task.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="autonomy_03" id="autonomy_031" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="autonomy_03" id="autonomy_032" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="autonomy_03" id="autonomy_033" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="autonomy_03" id="autonomy_034" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="autonomy_03" id="autonomy_035" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="autonomy_03" id="autonomy_036" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="autonomy_03" id="autonomy_037" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">I was immersed in the task.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="immersion_02" id="immersion_021" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="immersion_02" id="immersion_022" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="immersion_02" id="immersion_023" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="immersion_02" id="immersion_024" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="immersion_02" id="immersion_025" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="immersion_02" id="immersion_026" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="immersion_02" id="immersion_027" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">The actions to control the task were clear to me.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="easeOfControl_02" id="easeOfControl_021" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="easeOfControl_02" id="easeOfControl_022" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="easeOfControl_02" id="easeOfControl_023" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="easeOfControl_02" id="easeOfControl_024" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="easeOfControl_02" id="easeOfControl_025" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="easeOfControl_02" id="easeOfControl_026" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="easeOfControl_02" id="easeOfControl_027" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">The challenges in the task were at the right level of difficulty for me.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="challenge_03" id="challenge_031" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="challenge_03" id="challenge_032" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="challenge_03" id="challenge_033" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="challenge_03" id="challenge_034" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="challenge_03" id="challenge_035" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="challenge_03" id="challenge_036" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="challenge_03" id="challenge_037" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">I thought the task was easy to control.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="easeOfControl_01" id="easeOfControl_011" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="easeOfControl_01" id="easeOfControl_012" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="easeOfControl_01" id="easeOfControl_013" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="easeOfControl_01" id="easeOfControl_014" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="easeOfControl_01" id="easeOfControl_015" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="easeOfControl_01" id="easeOfControl_016" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="easeOfControl_01" id="easeOfControl_017" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">The task was not too easy and not too hard to complete.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="challenge_02" id="challenge_021" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="challenge_02" id="challenge_022" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="challenge_02" id="challenge_023" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="challenge_02" id="challenge_024" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="challenge_02" id="challenge_025" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="challenge_02" id="challenge_026" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="challenge_02" id="challenge_027" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">I liked the look and feel of the task.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="audiovisualAppeal_02" id="audiovisualAppeal_021" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="audiovisualAppeal_02" id="audiovisualAppeal_022" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="audiovisualAppeal_02" id="audiovisualAppeal_023" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="audiovisualAppeal_02" id="audiovisualAppeal_024" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="audiovisualAppeal_02" id="audiovisualAppeal_025" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="audiovisualAppeal_02" id="audiovisualAppeal_026" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="audiovisualAppeal_02" id="audiovisualAppeal_027" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">I wanted to find out how the task progressed.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="curiosity_03" id="curiosity_031" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="curiosity_03" id="curiosity_032" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="curiosity_03" id="curiosity_033" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="curiosity_03" id="curiosity_034" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="curiosity_03" id="curiosity_035" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="curiosity_03" id="curiosity_036" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="curiosity_03" id="curiosity_037" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">I felt I was good at completing this task.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="mastery_02" id="mastery_021" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="mastery_02" id="mastery_022" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="mastery_02" id="mastery_023" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="mastery_02" id="mastery_024" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="mastery_02" id="mastery_025" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="mastery_02" id="mastery_026" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="mastery_02" id="mastery_027" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">The task felt relevant to me.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="meaning_02" id="meaning_021" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="meaning_02" id="meaning_022" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="meaning_02" id="meaning_023" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="meaning_02" id="meaning_024" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="meaning_02" id="meaning_025" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="meaning_02" id="meaning_026" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="meaning_02" id="meaning_027" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">The task was challenging but not too challenging.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="challenge_01" id="challenge_011" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="challenge_01" id="challenge_012" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="challenge_01" id="challenge_013" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="challenge_01" id="challenge_014" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="challenge_01" id="challenge_015" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="challenge_01" id="challenge_016" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="challenge_01" id="challenge_017" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">The goals of the task were clear to me.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="goalsRules_01" id="goalsRules_011" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="goalsRules_01" id="goalsRules_012" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="goalsRules_01" id="goalsRules_013" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="goalsRules_01" id="goalsRules_014" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="goalsRules_01" id="goalsRules_015" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="goalsRules_01" id="goalsRules_016" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="goalsRules_01" id="goalsRules_017" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">I felt a sense of mastery completing this task.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="mastery_03" id="mastery_031" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="mastery_03" id="mastery_032" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="mastery_03" id="mastery_033" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="mastery_03" id="mastery_034" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="mastery_03" id="mastery_035" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="mastery_03" id="mastery_036" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="mastery_03" id="mastery_037" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">The task gave clear feedback on my progress towards the goals.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="progressFeedback_01" id="progressFeedback_011" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="progressFeedback_01" id="progressFeedback_012" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="progressFeedback_01" id="progressFeedback_013" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="progressFeedback_01" id="progressFeedback_014" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="progressFeedback_01" id="progressFeedback_015" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="progressFeedback_01" id="progressFeedback_016" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="progressFeedback_01" id="progressFeedback_017" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">I appreciated the aesthetics of the task.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="audiovisualAppeal_03" id="audiovisualAppeal_031" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="audiovisualAppeal_03" id="audiovisualAppeal_032" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="audiovisualAppeal_03" id="audiovisualAppeal_033" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="audiovisualAppeal_03" id="audiovisualAppeal_034" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="audiovisualAppeal_03" id="audiovisualAppeal_035" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="audiovisualAppeal_03" id="audiovisualAppeal_036" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="audiovisualAppeal_03" id="audiovisualAppeal_037" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">I could easily assess how I was performing in the task.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="progressFeedback_02" id="progressFeedback_021" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="progressFeedback_02" id="progressFeedback_022" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="progressFeedback_02" id="progressFeedback_023" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="progressFeedback_02" id="progressFeedback_024" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="progressFeedback_02" id="progressFeedback_025" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="progressFeedback_02" id="progressFeedback_026" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="progressFeedback_02" id="progressFeedback_027" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Completing this task was valuable to me.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="meaning_03" id="meaning_031" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="meaning_03" id="meaning_032" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="meaning_03" id="meaning_033" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="meaning_03" id="meaning_034" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="meaning_03" id="meaning_035" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="meaning_03" id="meaning_036" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="meaning_03" id="meaning_037" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Completing the task was meaningful to me.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="meaning_01" id="meaning_011" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="meaning_01" id="meaning_012" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="meaning_01" id="meaning_013" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="meaning_01" id="meaning_014" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="meaning_01" id="meaning_015" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="meaning_01" id="meaning_016" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="meaning_01" id="meaning_017" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">I understood the objectives of the task.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="goalsRules_03" id="goalsRules_031" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="goalsRules_03" id="goalsRules_032" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="goalsRules_03" id="goalsRules_033" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="goalsRules_03" id="goalsRules_034" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="goalsRules_03" id="goalsRules_035" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="goalsRules_03" id="goalsRules_036" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="goalsRules_03" id="goalsRules_037" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">I wanted to explore how the task evolved.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="curiosity_02" id="curiosity_021" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="curiosity_02" id="curiosity_022" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="curiosity_02" id="curiosity_023" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="curiosity_02" id="curiosity_024" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="curiosity_02" id="curiosity_025" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="curiosity_02" id="curiosity_026" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="curiosity_02" id="curiosity_027" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">I grasped the overall goal of the task.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="goalsRules_02" id="goalsRules_021" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="goalsRules_02" id="goalsRules_022" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="goalsRules_02" id="goalsRules_023" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="goalsRules_02" id="goalsRules_024" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="goalsRules_02" id="goalsRules_025" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="goalsRules_02" id="goalsRules_026" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="goalsRules_02" id="goalsRules_027" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">It was easy to know how to perform actions in the task.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="easeOfControl_03" id="easeOfControl_031" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="easeOfControl_03" id="easeOfControl_032" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="easeOfControl_03" id="easeOfControl_033" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="easeOfControl_03" id="easeOfControl_034" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="easeOfControl_03" id="easeOfControl_035" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="easeOfControl_03" id="easeOfControl_036" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="easeOfControl_03" id="easeOfControl_037" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">I felt a sense of freedom about how I wanted to complete this task.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="autonomy_01" id="autonomy_011" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="autonomy_01" id="autonomy_012" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="autonomy_01" id="autonomy_013" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="autonomy_01" id="autonomy_014" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="autonomy_01" id="autonomy_015" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="autonomy_01" id="autonomy_016" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="autonomy_01" id="autonomy_017" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">I felt free to complete the task in my own way.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="autonomy_02" id="autonomy_021" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="autonomy_02" id="autonomy_022" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="autonomy_02" id="autonomy_023" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="autonomy_02" id="autonomy_024" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="autonomy_02" id="autonomy_025" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="autonomy_02" id="autonomy_026" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="autonomy_02" id="autonomy_027" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">I enjoyed the way the task was styled.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="audiovisualAppeal_01" id="audiovisualAppeal_011" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="audiovisualAppeal_01" id="audiovisualAppeal_012" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="audiovisualAppeal_01" id="audiovisualAppeal_013" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="audiovisualAppeal_01" id="audiovisualAppeal_014" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="audiovisualAppeal_01" id="audiovisualAppeal_015" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="audiovisualAppeal_01" id="audiovisualAppeal_016" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="audiovisualAppeal_01" id="audiovisualAppeal_017" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">I was fully focused on the task.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="immersion_03" id="immersion_031" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="immersion_03" id="immersion_032" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="immersion_03" id="immersion_033" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="immersion_03" id="immersion_034" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="immersion_03" id="immersion_035" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="immersion_03" id="immersion_036" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="immersion_03" id="immersion_037" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">I felt eager to discover how the task continued.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly disagree" type="radio" name="curiosity_01" id="curiosity_011" value="1"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree" type="radio" name="curiosity_01" id="curiosity_012" value="2"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat disagree" type="radio" name="curiosity_01" id="curiosity_013" value="3"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neutral" type="radio" name="curiosity_01" id="curiosity_014" value="4"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Somewhat agree" type="radio" name="curiosity_01" id="curiosity_015" value="5"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree" type="radio" name="curiosity_01" id="curiosity_016" value="6"  >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Strongly agree" type="radio" name="curiosity_01" id="curiosity_017" value="7"  >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+    </tbody>
+</table>
+    </div>
+</div></div>
+            <div class="demo-actions">
+                <button type="button" id="demo-submit" class="btn btn-primary">
+                    Compute results
+                </button>
+                <button type="reset" class="btn btn-outline">Reset</button>
+            </div>
+        </form>
+
+        <div id="demo-results" aria-live="polite"></div>
+    </div>
+</section>
+
+<!-- JSON viewer modal -->
+<div class="modal" id="jsonModal" role="dialog" aria-modal="true" aria-labelledby="jsonModalTitle" aria-hidden="true">
+    <div class="modal-content demo-modal-content">
+        <div class="modal-header">
+            <h3 id="jsonModalTitle">Source JSON: PXI (Player Experience Inventory)</h3>
+            <button type="button" class="btn-close" onclick="closeJsonModal()" aria-label="Close source JSON dialog">×</button>
+        </div>
+        <div class="modal-body">
+            <p class="text-muted">
+                The questionnaire's underlying JSON, exactly as BOFS would consume it.
+                <a href="https://manage.frankensystem.net/api/questionnaire-demos/pxi.json?download=1">Download .json</a>.
+            </p>
+            <pre><code class="language-json">{
+  &#34;title&#34;: &#34;PXI (Player Experience Inventory)&#34;,
+  &#34;instructions&#34;: &#34;Reflect on the task and rate your agreement with the following statements.&#34;,
+  &#34;code&#34;: &#34;&#34;,
+  &#34;questions&#34;: [
+    {
+      &#34;questiontype&#34;: &#34;radiogrid&#34;,
+      &#34;id&#34;: &#34;PXI&#34;,
+      &#34;shuffle&#34;: true,
+      &#34;labels&#34;: [
+        &#34;Strongly disagree&#34;,
+        &#34;Disagree&#34;,
+        &#34;Somewhat disagree&#34;,
+        &#34;Neutral&#34;,
+        &#34;Somewhat agree&#34;,
+        &#34;Agree&#34;,
+        &#34;Strongly agree&#34;
+      ],
+      &#34;q_text&#34;: [
+        {
+          &#34;id&#34;: &#34;meaning_01&#34;,
+          &#34;text&#34;: &#34;Completing the task was meaningful to me.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;meaning_02&#34;,
+          &#34;text&#34;: &#34;The task felt relevant to me.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;meaning_03&#34;,
+          &#34;text&#34;: &#34;Completing this task was valuable to me.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;mastery_01&#34;,
+          &#34;text&#34;: &#34;I felt capable while completing the task.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;mastery_02&#34;,
+          &#34;text&#34;: &#34;I felt I was good at completing this task.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;mastery_03&#34;,
+          &#34;text&#34;: &#34;I felt a sense of mastery completing this task.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;immersion_01&#34;,
+          &#34;text&#34;: &#34;I was no longer aware of my surroundings while I was completing the task.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;immersion_02&#34;,
+          &#34;text&#34;: &#34;I was immersed in the task.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;immersion_03&#34;,
+          &#34;text&#34;: &#34;I was fully focused on the task.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;autonomy_01&#34;,
+          &#34;text&#34;: &#34;I felt a sense of freedom about how I wanted to complete this task.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;autonomy_02&#34;,
+          &#34;text&#34;: &#34;I felt free to complete the task in my own way.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;autonomy_03&#34;,
+          &#34;text&#34;: &#34;I felt like I had choices regarding how I wanted to complete this task.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;curiosity_01&#34;,
+          &#34;text&#34;: &#34;I felt eager to discover how the task continued.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;curiosity_02&#34;,
+          &#34;text&#34;: &#34;I wanted to explore how the task evolved.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;curiosity_03&#34;,
+          &#34;text&#34;: &#34;I wanted to find out how the task progressed.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;easeOfControl_01&#34;,
+          &#34;text&#34;: &#34;I thought the task was easy to control.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;easeOfControl_02&#34;,
+          &#34;text&#34;: &#34;The actions to control the task were clear to me.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;easeOfControl_03&#34;,
+          &#34;text&#34;: &#34;It was easy to know how to perform actions in the task.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;challenge_01&#34;,
+          &#34;text&#34;: &#34;The task was challenging but not too challenging.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;challenge_02&#34;,
+          &#34;text&#34;: &#34;The task was not too easy and not too hard to complete.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;challenge_03&#34;,
+          &#34;text&#34;: &#34;The challenges in the task were at the right level of difficulty for me.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;progressFeedback_01&#34;,
+          &#34;text&#34;: &#34;The task gave clear feedback on my progress towards the goals.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;progressFeedback_02&#34;,
+          &#34;text&#34;: &#34;I could easily assess how I was performing in the task.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;progressFeedback_03&#34;,
+          &#34;text&#34;: &#34;The task informed me of my progress in the task.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;audiovisualAppeal_01&#34;,
+          &#34;text&#34;: &#34;I enjoyed the way the task was styled.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;audiovisualAppeal_02&#34;,
+          &#34;text&#34;: &#34;I liked the look and feel of the task.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;audiovisualAppeal_03&#34;,
+          &#34;text&#34;: &#34;I appreciated the aesthetics of the task.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;goalsRules_01&#34;,
+          &#34;text&#34;: &#34;The goals of the task were clear to me.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;goalsRules_02&#34;,
+          &#34;text&#34;: &#34;I grasped the overall goal of the task.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;goalsRules_03&#34;,
+          &#34;text&#34;: &#34;I understood the objectives of the task.&#34;
+        }
+      ]
+    }
+  ],
+  &#34;reference&#34;: &#34;Abeele, V. V., Spiel, K., Nacke, L., Johnson, D., &amp; Gerling, K. (2020). Development and validation of the player experience inventory: A scale to measure player experiences at the level of functional and psychosocial consequences. International Journal of Human-Computer Studies, 135, 102370. https://doi.org/10.1016/j.ijhcs.2019.102370&#34;,
+  &#34;doi&#34;: &#34;10.1016/j.ijhcs.2019.102370&#34;,
+  &#34;participant_calculations&#34;: {
+    &#34;meaning&#34;: &#34;mean([meaning_01, meaning_02, meaning_03])&#34;,
+    &#34;mastery&#34;: &#34;mean([mastery_01, mastery_02, mastery_03])&#34;,
+    &#34;immersion&#34;: &#34;mean([immersion_01, immersion_02, immersion_03])&#34;,
+    &#34;autonomy&#34;: &#34;mean([autonomy_01, autonomy_02, autonomy_03])&#34;,
+    &#34;curiosity&#34;: &#34;mean([curiosity_01, curiosity_02, curiosity_03])&#34;,
+    &#34;easeOfControl&#34;: &#34;mean([easeOfControl_01, easeOfControl_02, easeOfControl_03])&#34;,
+    &#34;challenge&#34;: &#34;mean([challenge_01, challenge_02, challenge_03])&#34;,
+    &#34;progressFeedback&#34;: &#34;mean([progressFeedback_01, progressFeedback_02, progressFeedback_03])&#34;,
+    &#34;audiovisualAppeal&#34;: &#34;mean([audiovisualAppeal_01, audiovisualAppeal_02, audiovisualAppeal_03])&#34;,
+    &#34;goalsRules&#34;: &#34;mean([goalsRules_01, goalsRules_02, goalsRules_03])&#34;
+  }
+}</code></pre>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeJsonModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Mailing list signup modal (rendered on every page; opened via the envelope icon) -->
+<div class="modal" id="subscribeModal" role="dialog" aria-modal="true" aria-labelledby="subscribeModalTitle" aria-hidden="true">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="subscribeModalTitle">Subscribe to Mailing List</h3>
+            <button type="button" class="btn-close" onclick="closeModal()" aria-label="Close mailing list dialog">×</button>
+        </div>
+        <div class="modal-body">
+            <form action="https://frankensystem.us3.list-manage.com/subscribe/post?u=bf604c84efd16a39e9da4a43a&amp;id=547b6c51e8&amp;f_id=00e598e2f0" method="post" target="_blank">
+                <div class="form-group">
+                    <label for="mce-EMAIL" class="form-label">Email Address</label>
+                    <input type="email" name="EMAIL" class="form-control" id="mce-EMAIL" required>
+                </div>
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="b_bf604c84efd16a39e9da4a43a_547b6c51e8" tabindex="-1" value="">
+                </div>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <p>
+            &copy; 2015-2026 Colby Johanson |
+            LGPL-3.0 Licensed |
+            <a href="https://github.com/colbyj/bride-of-frankensystem" title="GitHub" aria-label="GitHub repository"><i class="bi bi-github" aria-hidden="true"></i></a>
+            <a href="https://docs.frankensystem.net/en/latest/" title="Documentation" aria-label="Documentation"><i class="bi bi-question-circle-fill" aria-hidden="true"></i></a>
+            <a href="https://discord.gg/XzXtUKFCJA" rel="noopener" target="_blank" title="Discord" aria-label="Join Discord"><i class="bi bi-discord" aria-hidden="true"></i></a>
+            <a href="#" onclick="openModal(); return false;" title="Mailing List" aria-label="Mailing list signup"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+        </p>
+    </div>
+</footer>
+<script>
+function openModal() {
+    const modal = document.getElementById('subscribeModal');
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden', 'false');
+}
+
+function closeModal() {
+    const modal = document.getElementById('subscribeModal');
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+}
+
+document.getElementById('subscribeModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeModal();
+        closeNav();
+    }
+});
+
+// Mobile nav: toggle the hamburger dropdown.
+function closeNav() {
+    const nav = document.querySelector('.top-nav');
+    if (!nav) return;
+    nav.classList.remove('open');
+    const btn = nav.querySelector('.top-nav-toggle');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+}
+
+(function () {
+    const nav = document.querySelector('.top-nav');
+    if (!nav) return;
+    const toggle = nav.querySelector('.top-nav-toggle');
+    if (toggle) {
+        toggle.addEventListener('click', function () {
+            const isOpen = nav.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', isOpen);
+        });
+    }
+    // Tapping any nav link closes the dropdown so same-page anchors don't leave it open.
+    nav.querySelectorAll('.top-nav-anchors a').forEach(function (a) {
+        a.addEventListener('click', closeNav);
+    });
+    // Tap outside the nav closes it.
+    document.addEventListener('click', function (e) {
+        if (nav.classList.contains('open') && !nav.contains(e.target)) {
+            closeNav();
+        }
+    });
+})();
+</script>
+
+<script>
+function openJsonModal() {
+    const m = document.getElementById('jsonModal');
+    m.classList.add('show');
+    m.setAttribute('aria-hidden', 'false');
+}
+function closeJsonModal() {
+    const m = document.getElementById('jsonModal');
+    m.classList.remove('show');
+    m.setAttribute('aria-hidden', 'true');
+}
+document.getElementById('jsonModal').addEventListener('click', function (e) {
+    if (e.target === this) closeJsonModal();
+});
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeJsonModal();
+});
+</script>
+<script src="../../static/js/demo.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Questionnaire Demos | Bride of Frankensystem</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="top-nav" aria-label="Primary">
+    <div class="container">
+        <div class="top-nav-inner">
+            <a href="index.html" class="top-nav-brand">Bride of Frankensystem</a>
+            <div class="top-nav-anchors" id="top-nav-anchors">
+                <a href="index.html#where-bofs-fits">Where BOFS Fits</a>
+                <a href="index.html#how-it-works">How It Works</a>
+                <a href="demos.html">Demos</a>
+                <a href="questionnaires.html">Questionnaires</a>
+                <a href="news.html">News</a>
+                <a href="publications.html">Publications</a>
+            </div>
+            <div class="top-nav-actions">
+                <a href="https://github.com/colbyj/bride-of-frankensystem" target="_blank" rel="noopener" aria-label="GitHub repository" title="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+                <a href="https://docs.frankensystem.net/en/latest/" target="_blank" rel="noopener" aria-label="Documentation" title="Documentation"><i class="bi bi-question-circle-fill" aria-hidden="true"></i></a>
+                <a href="https://discord.gg/XzXtUKFCJA" target="_blank" rel="noopener" aria-label="Join Discord" title="Discord"><i class="bi bi-discord" aria-hidden="true"></i></a>
+                <a href="#" onclick="openModal(); return false;" aria-label="Mailing list signup" title="Mailing list"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+            </div>
+            <button type="button" class="top-nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="top-nav-anchors">
+                <i class="bi bi-list" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<section class="section section-tinted page-header">
+    <div class="container">
+        <h1 class="heading-primary">Questionnaire Demos</h1>
+        <p class="lead">Try real BOFS questionnaires in your browser. Each preview shows what participants would see, the raw values BOFS would store, and the calculated values from any participant calculations.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div id="demos-list" aria-live="polite">
+                <ul class="qd-list">
+                    <li class="qd-row">
+                        <div class="qd-meta">
+                            <h3 class="qd-name"><a href="demo/questionnaire/bfi-10.html">BFI-10 (Big Five Inventory)</a></h3>
+                            <p class="qd-citation">Rammstedt, B., &amp; John, O. P. (2007). Measuring personality in one minute or less: A 10-item short version of the Big Five Inventory in English and German. Journal of Research in Personality, 41(1), 203-212.</p>
+                        </div>
+                        <div class="qd-side">
+                            <p class="qd-stats">
+                                10 questions
+                            </p>
+                            <div class="qd-actions">
+                                <a class="btn btn-primary btn-small" href="demo/questionnaire/bfi-10.html">Preview</a>
+                                <a class="btn btn-outline btn-small" href="https://manage.frankensystem.net/api/questionnaire-demos/bfi-10.json?download=1">View JSON</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="qd-row">
+                        <div class="qd-meta">
+                            <h3 class="qd-name"><a href="demo/questionnaire/bfi-44.html">BFI-44 (Big Five Inventory)</a></h3>
+                            <p class="qd-citation">John, O. P., Donahue, E. M., &amp; Kentle, R. L. (1991). The Big Five Inventory - Versions 4a and 54. Berkeley, CA: University of California, Berkeley, Institute of Personality and Social Research.</p>
+                        </div>
+                        <div class="qd-side">
+                            <p class="qd-stats">
+                                44 questions
+                            </p>
+                            <div class="qd-actions">
+                                <a class="btn btn-primary btn-small" href="demo/questionnaire/bfi-44.html">Preview</a>
+                                <a class="btn btn-outline btn-small" href="https://manage.frankensystem.net/api/questionnaire-demos/bfi-44.json?download=1">View JSON</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="qd-row">
+                        <div class="qd-meta">
+                            <h3 class="qd-name"><a href="demo/questionnaire/example-questionnaire.html">Example Questionnaire</a></h3>
+                            <p class="qd-citation">Demonstrates many different question types.</p>
+                        </div>
+                        <div class="qd-side">
+                            <p class="qd-stats">
+                                12 questions
+                            </p>
+                            <div class="qd-actions">
+                                <a class="btn btn-primary btn-small" href="demo/questionnaire/example-questionnaire.html">Preview</a>
+                                <a class="btn btn-outline btn-small" href="https://manage.frankensystem.net/api/questionnaire-demos/example-questionnaire.json?download=1">View JSON</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="qd-row">
+                        <div class="qd-meta">
+                            <h3 class="qd-name"><a href="demo/questionnaire/gad-7.html">GAD-7 (Generalized Anxiety Disorder Scale)</a></h3>
+                            <p class="qd-citation">Spitzer, R. L., Kroenke, K., Williams, J. B. W., &amp; Löwe, B. (2006). A brief measure for assessing generalized anxiety disorder: The GAD-7. Archives of Internal Medicine, 166(10), 1092-1097.</p>
+                        </div>
+                        <div class="qd-side">
+                            <p class="qd-stats">
+                                8 questions
+                            </p>
+                            <div class="qd-actions">
+                                <a class="btn btn-primary btn-small" href="demo/questionnaire/gad-7.html">Preview</a>
+                                <a class="btn btn-outline btn-small" href="https://manage.frankensystem.net/api/questionnaire-demos/gad-7.json?download=1">View JSON</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="qd-row">
+                        <div class="qd-meta">
+                            <h3 class="qd-name"><a href="demo/questionnaire/phq-9.html">PHQ-9 (Patient Health Questionnaire)</a></h3>
+                            <p class="qd-citation">Kroenke, K., Spitzer, R. L., &amp; Williams, J. B. (2001). The PHQ-9: Validity of a brief depression severity measure. Journal of General Internal Medicine, 16(9), 606-613.</p>
+                        </div>
+                        <div class="qd-side">
+                            <p class="qd-stats">
+                                9 questions
+                            </p>
+                            <div class="qd-actions">
+                                <a class="btn btn-primary btn-small" href="demo/questionnaire/phq-9.html">Preview</a>
+                                <a class="btn btn-outline btn-small" href="https://manage.frankensystem.net/api/questionnaire-demos/phq-9.json?download=1">View JSON</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="qd-row">
+                        <div class="qd-meta">
+                            <h3 class="qd-name"><a href="demo/questionnaire/pxi.html">PXI (Player Experience Inventory)</a></h3>
+                            <p class="qd-citation">Abeele, V. V., Spiel, K., Nacke, L., Johnson, D., &amp; Gerling, K. (2020). Development and validation of the player experience inventory: A scale to measure player experiences at the level of functional and psychosocial consequences. International Journal of Human-Computer Studies, 135, 102370. https://doi.org/10.1016/j.ijhcs.2019.102370</p>
+                        </div>
+                        <div class="qd-side">
+                            <p class="qd-stats">
+                                30 questions
+                            </p>
+                            <div class="qd-actions">
+                                <a class="btn btn-primary btn-small" href="demo/questionnaire/pxi.html">Preview</a>
+                                <a class="btn btn-outline btn-small" href="https://manage.frankensystem.net/api/questionnaire-demos/pxi.json?download=1">View JSON</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+        </div>
+    </div>
+</section>
+
+
+<!-- Mailing list signup modal (rendered on every page; opened via the envelope icon) -->
+<div class="modal" id="subscribeModal" role="dialog" aria-modal="true" aria-labelledby="subscribeModalTitle" aria-hidden="true">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="subscribeModalTitle">Subscribe to Mailing List</h3>
+            <button type="button" class="btn-close" onclick="closeModal()" aria-label="Close mailing list dialog">×</button>
+        </div>
+        <div class="modal-body">
+            <form action="https://frankensystem.us3.list-manage.com/subscribe/post?u=bf604c84efd16a39e9da4a43a&amp;id=547b6c51e8&amp;f_id=00e598e2f0" method="post" target="_blank">
+                <div class="form-group">
+                    <label for="mce-EMAIL" class="form-label">Email Address</label>
+                    <input type="email" name="EMAIL" class="form-control" id="mce-EMAIL" required>
+                </div>
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="b_bf604c84efd16a39e9da4a43a_547b6c51e8" tabindex="-1" value="">
+                </div>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <p>
+            &copy; 2015-2026 Colby Johanson |
+            LGPL-3.0 Licensed |
+            <a href="https://github.com/colbyj/bride-of-frankensystem" title="GitHub" aria-label="GitHub repository"><i class="bi bi-github" aria-hidden="true"></i></a>
+            <a href="https://docs.frankensystem.net/en/latest/" title="Documentation" aria-label="Documentation"><i class="bi bi-question-circle-fill" aria-hidden="true"></i></a>
+            <a href="https://discord.gg/XzXtUKFCJA" rel="noopener" target="_blank" title="Discord" aria-label="Join Discord"><i class="bi bi-discord" aria-hidden="true"></i></a>
+            <a href="#" onclick="openModal(); return false;" title="Mailing List" aria-label="Mailing list signup"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+        </p>
+    </div>
+</footer>
+<script>
+function openModal() {
+    const modal = document.getElementById('subscribeModal');
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden', 'false');
+}
+
+function closeModal() {
+    const modal = document.getElementById('subscribeModal');
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+}
+
+document.getElementById('subscribeModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeModal();
+        closeNav();
+    }
+});
+
+// Mobile nav: toggle the hamburger dropdown.
+function closeNav() {
+    const nav = document.querySelector('.top-nav');
+    if (!nav) return;
+    nav.classList.remove('open');
+    const btn = nav.querySelector('.top-nav-toggle');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+}
+
+(function () {
+    const nav = document.querySelector('.top-nav');
+    if (!nav) return;
+    const toggle = nav.querySelector('.top-nav-toggle');
+    if (toggle) {
+        toggle.addEventListener('click', function () {
+            const isOpen = nav.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', isOpen);
+        });
+    }
+    // Tapping any nav link closes the dropdown so same-page anchors don't leave it open.
+    nav.querySelectorAll('.top-nav-anchors a').forEach(function (a) {
+        a.addEventListener('click', closeNav);
+    });
+    // Tap outside the nav closes it.
+    document.addEventListener('click', function (e) {
+        if (nav.classList.contains('open') && !nav.contains(e.target)) {
+            closeNav();
+        }
+    });
+})();
+</script>
+
+
+</body>
+</html>

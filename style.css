@@ -41,17 +41,6 @@ body {
 .grid-2 { grid-template-columns: auto auto; }
 .grid-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
 
-/* Demo grid — 9 cards fit cleanly only at 3 or 1 columns, so we skip 2 to avoid an orphan. */
-.demo-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-@media (max-width: 768px) {
-  .demo-grid { grid-template-columns: 1fr; }
-}
-
 .flex {
   display: flex;
   gap: 1rem;
@@ -885,7 +874,100 @@ section[id] { scroll-margin-top: 64px; }
   }
 
   .demo-actions {
-    margin-top: 0.25rem;
+
+  }
+}
+
+/* Questionnaire-demo list — single-column rows on the questionnaires page.
+   Kept under its own .qd-* namespace so it doesn't collide with the .demo-*
+   rules above (used by demos.html for a different layout). */
+.qd-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.qd-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: white;
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--green);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.qd-row:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.qd-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.qd-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+}
+
+.qd-name a {
+  color: var(--green-dark);
+  text-decoration: none;
+}
+
+.qd-name a:hover {
+  text-decoration: underline;
+}
+
+.qd-citation {
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.qd-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.qd-stats {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  white-space: nowrap;
+}
+
+.qd-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .qd-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .qd-side {
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem;
   }
 }
 
@@ -1074,4 +1156,226 @@ section[id] { scroll-margin-top: 64px; }
 .news-list-callout .news-entry-body {
   max-height: 5em;
   overflow: hidden;
+}
+
+/* ============================================================================
+   Questionnaire demos (per-slug page)
+   ========================================================================= */
+
+/* Page header: two rows.
+   Row 1: DEMO badge + title.
+   Row 2: citation/DOI on the left, "View source JSON" right-aligned and
+          vertically centered against just the citation/DOI block. */
+.demo-header { display: block; }
+
+.demo-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.demo-title-row .heading-primary { margin-bottom: 0; }
+
+.demo-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.demo-meta-text { flex: 1 1 auto; min-width: 0; }
+.demo-meta-text p:last-child { margin-bottom: 0; }
+.demo-meta-action { flex: 0 0 auto; }
+
+.demo-badge {
+  display: inline-block;
+  background: var(--green);
+  color: white;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius);
+  text-transform: uppercase;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Disclaimer callout that sits between the page header and the form. Adds the
+   breathing room under the intro that the bare paragraph was missing. */
+.demo-disclaimer { margin-bottom: 2.5rem; }
+
+/* Demo form: a small amount of padding around the BOFS-rendered preview so it
+   doesn't crowd the callout above or the action buttons below. */
+#demo-form { margin-top: 1rem; }
+
+.demo-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: .25rem;
+  margin-bottom: .25rem;
+  flex-wrap: wrap;
+}
+
+#demo-results { margin-top: 2.5rem; }
+
+.demo-results-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+  background: white;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.demo-results-table th {
+  background: var(--bg-light);
+  text-align: left;
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--border-light);
+  font-weight: 600;
+}
+.demo-results-table td {
+  padding: 0.5rem 0.9rem;
+  border-bottom: 1px solid var(--border-light);
+}
+.demo-results-table tr:last-child td { border-bottom: none; }
+
+/* JSON viewer modal — wider than the default 500px so JSON wraps less, and
+   capped at 85vh so a long questionnaire doesn't push the modal off-screen. */
+.demo-modal-content {
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+.demo-modal-content .modal-body {
+  overflow-y: auto;
+  min-height: 0;
+  flex: 1;
+}
+.demo-modal-content .modal-body pre {
+  background: #1e1e2e;
+  color: #f5f5f5;
+  padding: 1rem;
+  border-radius: var(--radius);
+  overflow: auto;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+/* ----------------------------------------------------------------------------
+   .bofs-preview-scope — the embedded BOFS-rendered questionnaire.
+
+   We let BOFS' own stylesheet (inlined via /api/questionnaire-demos/style.css)
+   provide the look of `.question` / `.question-title` / `.evenRow` etc. — so
+   the preview reads as authentic BOFS, not a website card. Only fix things
+   the BOFS CSS can't address on its own outside of the BOFS app:
+   - Typography swap to system-ui to match the rest of frankensystem.net.
+   - Radiogrid centering: BOFS relies on Bootstrap classes for the button-like
+     radio labels, which the marketing site doesn't load.
+   - Brand-green accent on the radios themselves.
+   ------------------------------------------------------------------------- */
+.bofs-preview-scope {
+  font-family: system-ui, sans-serif;
+}
+
+/* Slightly softer typography on question titles + instructions. BOFS' default
+   is bold/large for the admin context; the marketing site reads more
+   naturally with the website's normal weight scale. */
+.bofs-preview-scope .question-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+.bofs-preview-scope .question-instructions {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-medium);
+  margin-bottom: 1rem;
+}
+
+/* Radiogrid table: question text left, radio cells centered. The BOFS
+   template sets text-align inline on each cell, but the centering is
+   reinforced here so any future template tweaks can rely on it. */
+.bofs-preview-scope table td {
+  text-align: center;
+  vertical-align: middle;
+}
+.bofs-preview-scope table td:first-child {
+  text-align: left;
+}
+
+/* BOFS' inline label has Bootstrap classes (.btn .btn-lg .btn-default).
+   Without Bootstrap those don't render. Strip the would-be button styling
+   and let the radio sit cleanly centered in its cell. */
+.bofs-preview-scope table td label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.bofs-preview-scope table td input[type="radio"],
+.bofs-preview-scope table td input[type="checkbox"] {
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--green);
+}
+
+/* Plain text/number inputs, textareas, and selects: pick up the website's
+   input styling with a green focus ring. Padding is necessary even though
+   it's "spacing" — without it, BOFS' inline `height: 36px` leaves no room
+   for the browser's native select chrome and the dropdown text appears
+   squashed. */
+.bofs-preview-scope input[type="text"],
+.bofs-preview-scope input[type="number"],
+.bofs-preview-scope input[type="email"],
+.bofs-preview-scope textarea,
+.bofs-preview-scope select {
+  font: inherit;
+  color: var(--text-dark);
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 0.4rem 0.65rem;
+  box-sizing: border-box;
+}
+.bofs-preview-scope input[type="text"]:focus,
+.bofs-preview-scope input[type="number"]:focus,
+.bofs-preview-scope input[type="email"]:focus,
+.bofs-preview-scope textarea:focus,
+.bofs-preview-scope select:focus {
+  outline: 2px solid var(--green-light);
+  outline-offset: 1px;
+  border-color: var(--green);
+}
+
+/* Checklist (questiontype: checklist) — BOFS' template wraps each row in a
+   `display:grid; grid-template-columns: 0 auto` layout that depends on
+   Bootstrap's `.form-check-input` float to pull the checkbox into the
+   0-width column. Without Bootstrap, the checkbox sits in a 0-width column
+   and visually overlaps the label. Override the inline grid so the checkbox
+   and label sit side-by-side. */
+.bofs-preview-scope .form-check > div[style*="grid"] {
+  display: flex !important;
+  align-items: center;
+  gap: 0.6rem;
+}
+.bofs-preview-scope .form-check input[type="checkbox"],
+.bofs-preview-scope .form-check input[type="radio"] {
+  margin: 0;
+  flex-shrink: 0;
+  accent-color: var(--green);
+  cursor: pointer;
+}
+.bofs-preview-scope .form-check label {
+  cursor: pointer;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .demo-meta-row { flex-direction: column; align-items: flex-start; }
+  .demo-modal-content { max-width: 95%; }
 }

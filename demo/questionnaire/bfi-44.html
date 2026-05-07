@@ -1,0 +1,3443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BFI-44 (Big Five Inventory) — Questionnaire Demo | Bride of Frankensystem</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="../../style.css" rel="stylesheet">
+<meta name="description" content="John, O. P., Donahue, E. M., &amp; Kentle, R. L. (1991). The Big Five Inventory - Versions 4a and 54. Berkeley, CA: University of California, Berkeley, Institute of">
+<link rel="canonical" href="https://frankensystem.net/demo/questionnaire/bfi-44.html">
+<meta property="og:title" content="BFI-44 (Big Five Inventory) — BOFS questionnaire demo">
+<meta property="og:description" content="John, O. P., Donahue, E. M., &amp; Kentle, R. L. (1991). The Big Five Inventory - Versions 4a and 54. Berkeley, CA: University of California, Berkeley, Institute of">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://frankensystem.net/demo/questionnaire/bfi-44.html">
+<meta name="robots" content="index,follow">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "BFI-44 (Big Five Inventory)",
+  "url": "https://frankensystem.net/demo/questionnaire/bfi-44.html",
+  "citation": "John, O. P., Donahue, E. M., \u0026 Kentle, R. L. (1991). The Big Five Inventory - Versions 4a and 54. Berkeley, CA: University of California, Berkeley, Institute of Personality and Social Research.",
+  "identifier": "10.1037/t07550-000",
+  "dateModified": "2026-05-07T06:06:02.4448006"
+}
+</script>
+<style>
+:root {
+    --contents-width: 967px;
+    --top-bar-color: #8CB737;
+    --font-size-main: 12pt;
+    --font-size-h1: 18pt;
+    --font-size-h2: 16pt;
+    --font-size-h3: 13pt;
+    --font-size-h4: 11pt;
+    --question-title-font-size: 13pt;
+    --question-instructions-font-size: 11pt;
+    --bs-border-color: black;
+}
+
+@media only screen and (max-width: 768px) {
+    :root {
+        --contents-width: 100vw;
+        --font-size-main: 11pt;
+        --font-size-h1: 16pt;
+        --font-size-h2: 14pt;
+        --font-size-h3: 12pt;
+        --font-size-h4: 10pt;
+        --question-title-font-size: 12pt;
+        --question-instructions-font-size: 10pt;
+        --bs-border-color: black;
+    }
+
+    .content {
+        padding: 0 5px;
+    }
+
+    input[type=range] {
+        width: 90vw !important;
+    }
+
+    input, select, textarea, .slider-labels {
+        max-width: 90vw !important;
+    }
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'segoe ui', arial, sans-serif;
+    font-size: var(--font-size-main);
+}
+
+.bofs-main-content {
+    padding-top: 12px;
+}
+
+/* Reserved by JS at load time so content isn't hidden under the fixed toolbar.
+   Fallback ensures content still clears the toolbar before JS runs. */
+.bofs-body {
+    padding-bottom: 110px;
+}
+
+.questions {
+    /*border: 1px solid #4e4e4e;*/
+}
+
+.question {
+    margin-top: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #EEEEEE;
+    background-color: #F7F7F7;
+    border-radius: 8px;
+    /*box-shadow: 0 0 3px 0 rgba(0,0,0,0.33);*/
+}
+
+.bofs-hidden {
+    display: none;
+}
+
+.question-title {
+    font-weight: bold;
+    font-size: var(--question-title-font-size);
+    margin-top: 0;
+}
+
+.question-instructions {
+    font-weight: bold;
+    font-size: var(--question-instructions-font-size);
+}
+
+.question-inputs {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.navigation {
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    background-color: #ccc;
+    border-radius: 8px;
+    /*box-shadow: 0 0 3px 0 rgba(0,0,0,0.33);*/
+    margin-bottom: 30px;
+}
+
+.padding {
+    padding: 12px 16px;
+}
+
+#map img {
+    position: relative;
+}
+
+h1 {
+    font-size: var(--font-size-h1);
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+}
+
+h3 {
+    font-size: var(--font-size-h3);
+}
+
+h4 {
+    font-size: var(--font-size-h4);
+}
+
+.title-bar {
+    background-color: var(--top-bar-color);
+    box-shadow: 0 5px 10px rgb(238, 238, 238);
+    color: white;
+    margin: 0;
+    padding: 5px;
+    text-shadow: 1px 1px #333333;
+}
+
+.title-text {
+    width: var(--contents-width);
+    margin-left: auto;
+    margin-right: auto;
+    font-size: var(--font-size-h1);
+    height: 42px;
+}
+
+.content {
+    width: var(--contents-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.slider-labels {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.error-box {
+    padding: 1em;
+    margin: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.33);
+    border-left-width: 3px;
+    background-color: rgba(255, 0, 0, 0.05);
+}
+
+
+.debug-session pre {
+    display: block; margin: 0;
+}
+
+.debug-session ul {
+    padding: 0 0 0 12px; margin: 0; list-style-type: none;
+}
+
+.debug-session li {
+    padding-bottom: 2px;
+}
+
+.admin-toolbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    width: 100%;
+    padding: 6px 12px 8px 12px;
+    color: #fff;
+}
+
+.admin-toolbar .btn,
+.admin-toolbar .dropdown-item {
+    font-size: 10pt;
+}
+
+.admin-toolbar-status {
+    font-size: 10pt;
+    color: #cfd2d6;
+    padding: 2px 4px 6px 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.admin-toolbar-status .admin-status-key {
+    color: #8a8f96;
+    font-weight: 600;
+}
+
+.admin-toolbar-status .admin-status-sep {
+    color: #5a6068;
+}
+
+.admin-toolbar-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.admin-toolbar-actions .toolbar-left,
+.admin-toolbar-actions .toolbar-right {
+    flex: 0 0 auto;
+}
+
+.admin-toolbar-actions .toolbar-center {
+    flex: 1 1 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.admin-toolbar-actions .dropup {
+    display: inline-block;
+}
+
+/* Skip-to-page dropdown can get long — let it scroll. */
+.admin-toolbar-actions .dropdown-menu {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+/*a, a:visited { text-decoration: none; color: #1144cc; }
+a:hover { text-decoration: underline; }*/
+
+table { border-spacing: 0; }
+th { padding: 6px; position: sticky; top: 0; background-color: #F7F7F7; border-bottom: 1px solid #EEEEEE; z-index: 1; }
+.evenRow { background-color: #EFEFEF; }
+.evenRow td { padding: 4px; }
+.oddRow td { padding: 4px; }
+.evenRow:hover { background-color: #F4F2DC; }
+.oddRow:hover { background-color: #FEFFE8; }
+
+.form-check { padding: 6px 22px; }
+.form-check input {  }
+
+ul li { padding-bottom: 4px;  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav" aria-label="Primary">
+    <div class="container">
+        <div class="top-nav-inner">
+            <a href="../../index.html" class="top-nav-brand">Bride of Frankensystem</a>
+            <div class="top-nav-anchors" id="top-nav-anchors">
+                <a href="../../index.html#where-bofs-fits">Where BOFS Fits</a>
+                <a href="../../index.html#how-it-works">How It Works</a>
+                <a href="../../demos.html">Demos</a>
+                <a href="../../questionnaires.html">Questionnaires</a>
+                <a href="../../news.html">News</a>
+                <a href="../../publications.html">Publications</a>
+            </div>
+            <div class="top-nav-actions">
+                <a href="https://github.com/colbyj/bride-of-frankensystem" target="_blank" rel="noopener" aria-label="GitHub repository" title="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+                <a href="https://docs.frankensystem.net/en/latest/" target="_blank" rel="noopener" aria-label="Documentation" title="Documentation"><i class="bi bi-question-circle-fill" aria-hidden="true"></i></a>
+                <a href="https://discord.gg/XzXtUKFCJA" target="_blank" rel="noopener" aria-label="Join Discord" title="Discord"><i class="bi bi-discord" aria-hidden="true"></i></a>
+                <a href="#" onclick="openModal(); return false;" aria-label="Mailing list signup" title="Mailing list"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+            </div>
+            <button type="button" class="top-nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="top-nav-anchors">
+                <i class="bi bi-list" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<section class="section section-tinted page-header">
+    <div class="container">
+        <p class="text-muted"><a href="../../questionnaires.html">← All questionnaire demos</a></p>
+        <div class="demo-header">
+            <div class="demo-title-row">
+                <span class="demo-badge" aria-label="Demo">Demo</span>
+                <h1 class="heading-primary">BFI-44 (Big Five Inventory)</h1>
+            </div>
+            <div class="demo-meta-row">
+                <div class="demo-meta-text">
+                    <p class="lead">John, O. P., Donahue, E. M., &amp; Kentle, R. L. (1991). The Big Five Inventory - Versions 4a and 54. Berkeley, CA: University of California, Berkeley, Institute of Personality and Social Research.</p>
+                    <p><a href="https://doi.org/10.1037/t07550-000" target="_blank" rel="noopener">DOI: 10.1037/t07550-000</a></p>
+                </div>
+                <div class="demo-meta-action">
+                    <button type="button" class="btn btn-outline" onclick="openJsonModal()">
+                        <i class="bi bi-braces" aria-hidden="true"></i> View source JSON
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="callout callout-row demo-disclaimer">
+            <div class="callout-row-text">
+                <h3>This is a preview only</h3>
+                <p>
+                    Your responses aren't saved or sent anywhere. The page below renders the questionnaire
+                    with the same templates a participant would see inside a BOFS experiment. Click
+                    <strong>Compute results</strong> at the bottom to see the raw values BOFS would store
+                    plus any participant calculations the questionnaire defines.
+                </p>
+            </div>
+        </div>
+
+        <form id="demo-form" data-slug="bfi-44" class="bofs-preview-scope" onsubmit="return false;">
+            <div class="bofs-preview-scope"><div class="question-instructions">I see myself as someone who...</div>
+
+
+<div class="question padding">
+    
+    <div class="question-inputs">
+        
+<table width="100%">
+    <thead>
+        <tr>
+            <th></th>
+            
+            <th scope="col" style="text-align:center;">Disagree strongly</th>
+            
+            <th scope="col" style="text-align:center;">Disagree moderately</th>
+            
+            <th scope="col" style="text-align:center;">Disagree a little</th>
+            
+            <th scope="col" style="text-align:center;">Neither agree nor disagree</th>
+            
+            <th scope="col" style="text-align:center;">Agree a little</th>
+            
+            <th scope="col" style="text-align:center;">Agree moderately</th>
+            
+            <th scope="col" style="text-align:center;">Agree strongly</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        
+            
+        
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Is talkative.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_1" id="bfi_11" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_1" id="bfi_12" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_1" id="bfi_13" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_1" id="bfi_14" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_1" id="bfi_15" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_1" id="bfi_16" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_1" id="bfi_17" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Tends to find fault with others.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_2" id="bfi_21" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_2" id="bfi_22" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_2" id="bfi_23" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_2" id="bfi_24" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_2" id="bfi_25" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_2" id="bfi_26" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_2" id="bfi_27" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Does a thorough job.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_3" id="bfi_31" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_3" id="bfi_32" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_3" id="bfi_33" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_3" id="bfi_34" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_3" id="bfi_35" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_3" id="bfi_36" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_3" id="bfi_37" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Is depressed, blue.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_4" id="bfi_41" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_4" id="bfi_42" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_4" id="bfi_43" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_4" id="bfi_44" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_4" id="bfi_45" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_4" id="bfi_46" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_4" id="bfi_47" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Is original, comes up with new ideas.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_5" id="bfi_51" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_5" id="bfi_52" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_5" id="bfi_53" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_5" id="bfi_54" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_5" id="bfi_55" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_5" id="bfi_56" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_5" id="bfi_57" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Is reserved.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_6" id="bfi_61" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_6" id="bfi_62" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_6" id="bfi_63" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_6" id="bfi_64" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_6" id="bfi_65" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_6" id="bfi_66" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_6" id="bfi_67" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Is helpful and unselfish with others.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_7" id="bfi_71" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_7" id="bfi_72" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_7" id="bfi_73" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_7" id="bfi_74" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_7" id="bfi_75" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_7" id="bfi_76" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_7" id="bfi_77" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Can be somewhat careless.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_8" id="bfi_81" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_8" id="bfi_82" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_8" id="bfi_83" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_8" id="bfi_84" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_8" id="bfi_85" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_8" id="bfi_86" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_8" id="bfi_87" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Is relaxed, handles stress well.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_9" id="bfi_91" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_9" id="bfi_92" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_9" id="bfi_93" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_9" id="bfi_94" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_9" id="bfi_95" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_9" id="bfi_96" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_9" id="bfi_97" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Is curious about many different things.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_10" id="bfi_101" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_10" id="bfi_102" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_10" id="bfi_103" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_10" id="bfi_104" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_10" id="bfi_105" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_10" id="bfi_106" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_10" id="bfi_107" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Is full of energy.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_11" id="bfi_111" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_11" id="bfi_112" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_11" id="bfi_113" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_11" id="bfi_114" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_11" id="bfi_115" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_11" id="bfi_116" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_11" id="bfi_117" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Starts quarrels with others.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_12" id="bfi_121" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_12" id="bfi_122" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_12" id="bfi_123" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_12" id="bfi_124" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_12" id="bfi_125" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_12" id="bfi_126" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_12" id="bfi_127" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Is a reliable worker.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_13" id="bfi_131" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_13" id="bfi_132" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_13" id="bfi_133" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_13" id="bfi_134" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_13" id="bfi_135" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_13" id="bfi_136" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_13" id="bfi_137" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Can be tense.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_14" id="bfi_141" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_14" id="bfi_142" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_14" id="bfi_143" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_14" id="bfi_144" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_14" id="bfi_145" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_14" id="bfi_146" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_14" id="bfi_147" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Is ingenious, a deep thinker.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_15" id="bfi_151" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_15" id="bfi_152" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_15" id="bfi_153" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_15" id="bfi_154" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_15" id="bfi_155" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_15" id="bfi_156" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_15" id="bfi_157" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Generates a lot of enthusiasm.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_16" id="bfi_161" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_16" id="bfi_162" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_16" id="bfi_163" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_16" id="bfi_164" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_16" id="bfi_165" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_16" id="bfi_166" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_16" id="bfi_167" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Has a forgiving nature.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_17" id="bfi_171" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_17" id="bfi_172" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_17" id="bfi_173" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_17" id="bfi_174" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_17" id="bfi_175" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_17" id="bfi_176" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_17" id="bfi_177" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Tends to be disorganized.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_18" id="bfi_181" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_18" id="bfi_182" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_18" id="bfi_183" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_18" id="bfi_184" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_18" id="bfi_185" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_18" id="bfi_186" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_18" id="bfi_187" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Worries a lot.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_19" id="bfi_191" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_19" id="bfi_192" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_19" id="bfi_193" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_19" id="bfi_194" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_19" id="bfi_195" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_19" id="bfi_196" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_19" id="bfi_197" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Has an active imagination.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_20" id="bfi_201" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_20" id="bfi_202" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_20" id="bfi_203" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_20" id="bfi_204" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_20" id="bfi_205" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_20" id="bfi_206" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_20" id="bfi_207" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Tends to be quiet.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_21" id="bfi_211" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_21" id="bfi_212" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_21" id="bfi_213" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_21" id="bfi_214" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_21" id="bfi_215" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_21" id="bfi_216" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_21" id="bfi_217" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Is generally trusting.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_22" id="bfi_221" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_22" id="bfi_222" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_22" id="bfi_223" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_22" id="bfi_224" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_22" id="bfi_225" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_22" id="bfi_226" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_22" id="bfi_227" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Tends to be lazy.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_23" id="bfi_231" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_23" id="bfi_232" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_23" id="bfi_233" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_23" id="bfi_234" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_23" id="bfi_235" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_23" id="bfi_236" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_23" id="bfi_237" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Is emotionally stable, not easily upset.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_24" id="bfi_241" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_24" id="bfi_242" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_24" id="bfi_243" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_24" id="bfi_244" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_24" id="bfi_245" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_24" id="bfi_246" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_24" id="bfi_247" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Is inventive.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_25" id="bfi_251" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_25" id="bfi_252" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_25" id="bfi_253" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_25" id="bfi_254" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_25" id="bfi_255" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_25" id="bfi_256" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_25" id="bfi_257" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Has an assertive personality.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_26" id="bfi_261" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_26" id="bfi_262" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_26" id="bfi_263" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_26" id="bfi_264" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_26" id="bfi_265" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_26" id="bfi_266" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_26" id="bfi_267" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Can be cold and aloof.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_27" id="bfi_271" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_27" id="bfi_272" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_27" id="bfi_273" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_27" id="bfi_274" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_27" id="bfi_275" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_27" id="bfi_276" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_27" id="bfi_277" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Perseveres until the task is finished.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_28" id="bfi_281" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_28" id="bfi_282" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_28" id="bfi_283" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_28" id="bfi_284" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_28" id="bfi_285" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_28" id="bfi_286" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_28" id="bfi_287" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Can be moody.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_29" id="bfi_291" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_29" id="bfi_292" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_29" id="bfi_293" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_29" id="bfi_294" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_29" id="bfi_295" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_29" id="bfi_296" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_29" id="bfi_297" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Values artistic, aesthetic experiences.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_30" id="bfi_301" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_30" id="bfi_302" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_30" id="bfi_303" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_30" id="bfi_304" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_30" id="bfi_305" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_30" id="bfi_306" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_30" id="bfi_307" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Is sometimes shy, inhibited.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_31" id="bfi_311" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_31" id="bfi_312" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_31" id="bfi_313" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_31" id="bfi_314" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_31" id="bfi_315" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_31" id="bfi_316" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_31" id="bfi_317" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Is considerate and kind to almost everyone.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_32" id="bfi_321" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_32" id="bfi_322" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_32" id="bfi_323" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_32" id="bfi_324" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_32" id="bfi_325" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_32" id="bfi_326" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_32" id="bfi_327" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Does things efficiently.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_33" id="bfi_331" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_33" id="bfi_332" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_33" id="bfi_333" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_33" id="bfi_334" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_33" id="bfi_335" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_33" id="bfi_336" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_33" id="bfi_337" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Remains calm in tense situations.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_34" id="bfi_341" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_34" id="bfi_342" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_34" id="bfi_343" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_34" id="bfi_344" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_34" id="bfi_345" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_34" id="bfi_346" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_34" id="bfi_347" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Prefers work that is routine.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_35" id="bfi_351" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_35" id="bfi_352" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_35" id="bfi_353" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_35" id="bfi_354" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_35" id="bfi_355" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_35" id="bfi_356" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_35" id="bfi_357" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Is outgoing, sociable.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_36" id="bfi_361" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_36" id="bfi_362" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_36" id="bfi_363" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_36" id="bfi_364" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_36" id="bfi_365" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_36" id="bfi_366" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_36" id="bfi_367" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Is sometimes rude to others.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_37" id="bfi_371" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_37" id="bfi_372" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_37" id="bfi_373" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_37" id="bfi_374" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_37" id="bfi_375" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_37" id="bfi_376" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_37" id="bfi_377" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Makes plans and follows through with them.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_38" id="bfi_381" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_38" id="bfi_382" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_38" id="bfi_383" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_38" id="bfi_384" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_38" id="bfi_385" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_38" id="bfi_386" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_38" id="bfi_387" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Gets nervous easily.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_39" id="bfi_391" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_39" id="bfi_392" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_39" id="bfi_393" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_39" id="bfi_394" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_39" id="bfi_395" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_39" id="bfi_396" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_39" id="bfi_397" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Likes to reflect, play with ideas.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_40" id="bfi_401" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_40" id="bfi_402" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_40" id="bfi_403" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_40" id="bfi_404" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_40" id="bfi_405" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_40" id="bfi_406" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_40" id="bfi_407" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Has few artistic interests.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_41" id="bfi_411" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_41" id="bfi_412" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_41" id="bfi_413" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_41" id="bfi_414" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_41" id="bfi_415" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_41" id="bfi_416" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_41" id="bfi_417" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Likes to cooperate with others.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_42" id="bfi_421" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_42" id="bfi_422" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_42" id="bfi_423" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_42" id="bfi_424" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_42" id="bfi_425" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_42" id="bfi_426" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_42" id="bfi_427" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Is easily distracted.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_43" id="bfi_431" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_43" id="bfi_432" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_43" id="bfi_433" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_43" id="bfi_434" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_43" id="bfi_435" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_43" id="bfi_436" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_43" id="bfi_437" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Is sophisticated in art, music, or literature.</td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree strongly" type="radio" name="bfi_44" id="bfi_441" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree moderately" type="radio" name="bfi_44" id="bfi_442" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Disagree a little" type="radio" name="bfi_44" id="bfi_443" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Neither agree nor disagree" type="radio" name="bfi_44" id="bfi_444" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree a little" type="radio" name="bfi_44" id="bfi_445" value="5" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree moderately" type="radio" name="bfi_44" id="bfi_446" value="6" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 10.0%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Agree strongly" type="radio" name="bfi_44" id="bfi_447" value="7" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+    </tbody>
+</table>
+    </div>
+</div></div>
+            <div class="demo-actions">
+                <button type="button" id="demo-submit" class="btn btn-primary">
+                    Compute results
+                </button>
+                <button type="reset" class="btn btn-outline">Reset</button>
+            </div>
+        </form>
+
+        <div id="demo-results" aria-live="polite"></div>
+    </div>
+</section>
+
+<!-- JSON viewer modal -->
+<div class="modal" id="jsonModal" role="dialog" aria-modal="true" aria-labelledby="jsonModalTitle" aria-hidden="true">
+    <div class="modal-content demo-modal-content">
+        <div class="modal-header">
+            <h3 id="jsonModalTitle">Source JSON: BFI-44 (Big Five Inventory)</h3>
+            <button type="button" class="btn-close" onclick="closeJsonModal()" aria-label="Close source JSON dialog">×</button>
+        </div>
+        <div class="modal-body">
+            <p class="text-muted">
+                The questionnaire's underlying JSON, exactly as BOFS would consume it.
+                <a href="https://manage.frankensystem.net/api/questionnaire-demos/bfi-44.json?download=1">Download .json</a>.
+            </p>
+            <pre><code class="language-json">{
+  &#34;title&#34;: &#34;BFI-44 (Big Five Inventory)&#34;,
+  &#34;instructions&#34;: &#34;I see myself as someone who...&#34;,
+  &#34;code&#34;: &#34;&#34;,
+  &#34;questions&#34;: [
+    {
+      &#34;questiontype&#34;: &#34;radiogrid&#34;,
+      &#34;id&#34;: &#34;radio_1&#34;,
+      &#34;required&#34;: true,
+      &#34;labels&#34;: [
+        &#34;Disagree strongly&#34;,
+        &#34;Disagree moderately&#34;,
+        &#34;Disagree a little&#34;,
+        &#34;Neither agree nor disagree&#34;,
+        &#34;Agree a little&#34;,
+        &#34;Agree moderately&#34;,
+        &#34;Agree strongly&#34;
+      ],
+      &#34;q_text&#34;: [
+        {
+          &#34;id&#34;: &#34;bfi_1&#34;,
+          &#34;text&#34;: &#34;Is talkative.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_2&#34;,
+          &#34;text&#34;: &#34;Tends to find fault with others.&#34;,
+          &#34;reversed&#34;: &#34;true&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_3&#34;,
+          &#34;text&#34;: &#34;Does a thorough job.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_4&#34;,
+          &#34;text&#34;: &#34;Is depressed, blue.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_5&#34;,
+          &#34;text&#34;: &#34;Is original, comes up with new ideas.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_6&#34;,
+          &#34;text&#34;: &#34;Is reserved.&#34;,
+          &#34;reversed&#34;: &#34;true&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_7&#34;,
+          &#34;text&#34;: &#34;Is helpful and unselfish with others.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_8&#34;,
+          &#34;text&#34;: &#34;Can be somewhat careless.&#34;,
+          &#34;reversed&#34;: &#34;true&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_9&#34;,
+          &#34;text&#34;: &#34;Is relaxed, handles stress well.&#34;,
+          &#34;reversed&#34;: &#34;true&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_10&#34;,
+          &#34;text&#34;: &#34;Is curious about many different things.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_11&#34;,
+          &#34;text&#34;: &#34;Is full of energy.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_12&#34;,
+          &#34;text&#34;: &#34;Starts quarrels with others.&#34;,
+          &#34;reversed&#34;: &#34;true&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_13&#34;,
+          &#34;text&#34;: &#34;Is a reliable worker.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_14&#34;,
+          &#34;text&#34;: &#34;Can be tense.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_15&#34;,
+          &#34;text&#34;: &#34;Is ingenious, a deep thinker.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_16&#34;,
+          &#34;text&#34;: &#34;Generates a lot of enthusiasm.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_17&#34;,
+          &#34;text&#34;: &#34;Has a forgiving nature.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_18&#34;,
+          &#34;text&#34;: &#34;Tends to be disorganized.&#34;,
+          &#34;reversed&#34;: &#34;true&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_19&#34;,
+          &#34;text&#34;: &#34;Worries a lot.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_20&#34;,
+          &#34;text&#34;: &#34;Has an active imagination.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_21&#34;,
+          &#34;text&#34;: &#34;Tends to be quiet.&#34;,
+          &#34;reversed&#34;: &#34;true&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_22&#34;,
+          &#34;text&#34;: &#34;Is generally trusting.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_23&#34;,
+          &#34;text&#34;: &#34;Tends to be lazy.&#34;,
+          &#34;reversed&#34;: &#34;true&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_24&#34;,
+          &#34;text&#34;: &#34;Is emotionally stable, not easily upset.&#34;,
+          &#34;reversed&#34;: &#34;true&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_25&#34;,
+          &#34;text&#34;: &#34;Is inventive.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_26&#34;,
+          &#34;text&#34;: &#34;Has an assertive personality.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_27&#34;,
+          &#34;text&#34;: &#34;Can be cold and aloof.&#34;,
+          &#34;reversed&#34;: &#34;true&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_28&#34;,
+          &#34;text&#34;: &#34;Perseveres until the task is finished.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_29&#34;,
+          &#34;text&#34;: &#34;Can be moody.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_30&#34;,
+          &#34;text&#34;: &#34;Values artistic, aesthetic experiences.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_31&#34;,
+          &#34;text&#34;: &#34;Is sometimes shy, inhibited.&#34;,
+          &#34;reversed&#34;: &#34;true&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_32&#34;,
+          &#34;text&#34;: &#34;Is considerate and kind to almost everyone.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_33&#34;,
+          &#34;text&#34;: &#34;Does things efficiently.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_34&#34;,
+          &#34;text&#34;: &#34;Remains calm in tense situations.&#34;,
+          &#34;reversed&#34;: &#34;true&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_35&#34;,
+          &#34;text&#34;: &#34;Prefers work that is routine.&#34;,
+          &#34;reversed&#34;: &#34;true&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_36&#34;,
+          &#34;text&#34;: &#34;Is outgoing, sociable.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_37&#34;,
+          &#34;text&#34;: &#34;Is sometimes rude to others.&#34;,
+          &#34;reversed&#34;: &#34;true&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_38&#34;,
+          &#34;text&#34;: &#34;Makes plans and follows through with them.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_39&#34;,
+          &#34;text&#34;: &#34;Gets nervous easily.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_40&#34;,
+          &#34;text&#34;: &#34;Likes to reflect, play with ideas.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_41&#34;,
+          &#34;text&#34;: &#34;Has few artistic interests.&#34;,
+          &#34;reversed&#34;: &#34;true&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_42&#34;,
+          &#34;text&#34;: &#34;Likes to cooperate with others.&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_43&#34;,
+          &#34;text&#34;: &#34;Is easily distracted.&#34;,
+          &#34;reversed&#34;: &#34;true&#34;
+        },
+        {
+          &#34;id&#34;: &#34;bfi_44&#34;,
+          &#34;text&#34;: &#34;Is sophisticated in art, music, or literature.&#34;
+        }
+      ]
+    }
+  ],
+  &#34;reference&#34;: &#34;John, O. P., Donahue, E. M., &amp; Kentle, R. L. (1991). The Big Five Inventory - Versions 4a and 54. Berkeley, CA: University of California, Berkeley, Institute of Personality and Social Research.&#34;,
+  &#34;doi&#34;: &#34;10.1037/t07550-000&#34;,
+  &#34;participant_calculations&#34;: {
+    &#34;bfi_extraversion&#34;: &#34;mean([bfi_1, 8-bfi_6, bfi_11, bfi_16, 8-bfi_21, bfi_26, 8-bfi_31, bfi_36])&#34;,
+    &#34;bfi_agreeableness&#34;: &#34;mean([8-bfi_2, bfi_7, 8-bfi_12, bfi_17, bfi_22, 8-bfi_27, bfi_32, 8-bfi_37, bfi_42])&#34;,
+    &#34;bfi_conscientiousness&#34;: &#34;mean([bfi_3, 8-bfi_8, bfi_13, 8-bfi_18, 8-bfi_23, bfi_28, bfi_33, bfi_38, 8-bfi_43])&#34;,
+    &#34;bfi_neuroticism&#34;: &#34;mean([bfi_4, 8-bfi_9, bfi_14, bfi_19, 8-bfi_24, bfi_29, 8-bfi_34, bfi_39])&#34;,
+    &#34;bfi_openness&#34;: &#34;mean([bfi_5, bfi_10, bfi_15, bfi_20, bfi_25, bfi_30, 8-bfi_35, bfi_40, 8-bfi_41, bfi_44])&#34;
+  }
+}</code></pre>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeJsonModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Mailing list signup modal (rendered on every page; opened via the envelope icon) -->
+<div class="modal" id="subscribeModal" role="dialog" aria-modal="true" aria-labelledby="subscribeModalTitle" aria-hidden="true">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="subscribeModalTitle">Subscribe to Mailing List</h3>
+            <button type="button" class="btn-close" onclick="closeModal()" aria-label="Close mailing list dialog">×</button>
+        </div>
+        <div class="modal-body">
+            <form action="https://frankensystem.us3.list-manage.com/subscribe/post?u=bf604c84efd16a39e9da4a43a&amp;id=547b6c51e8&amp;f_id=00e598e2f0" method="post" target="_blank">
+                <div class="form-group">
+                    <label for="mce-EMAIL" class="form-label">Email Address</label>
+                    <input type="email" name="EMAIL" class="form-control" id="mce-EMAIL" required>
+                </div>
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="b_bf604c84efd16a39e9da4a43a_547b6c51e8" tabindex="-1" value="">
+                </div>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <p>
+            &copy; 2015-2026 Colby Johanson |
+            LGPL-3.0 Licensed |
+            <a href="https://github.com/colbyj/bride-of-frankensystem" title="GitHub" aria-label="GitHub repository"><i class="bi bi-github" aria-hidden="true"></i></a>
+            <a href="https://docs.frankensystem.net/en/latest/" title="Documentation" aria-label="Documentation"><i class="bi bi-question-circle-fill" aria-hidden="true"></i></a>
+            <a href="https://discord.gg/XzXtUKFCJA" rel="noopener" target="_blank" title="Discord" aria-label="Join Discord"><i class="bi bi-discord" aria-hidden="true"></i></a>
+            <a href="#" onclick="openModal(); return false;" title="Mailing List" aria-label="Mailing list signup"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+        </p>
+    </div>
+</footer>
+<script>
+function openModal() {
+    const modal = document.getElementById('subscribeModal');
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden', 'false');
+}
+
+function closeModal() {
+    const modal = document.getElementById('subscribeModal');
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+}
+
+document.getElementById('subscribeModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeModal();
+        closeNav();
+    }
+});
+
+// Mobile nav: toggle the hamburger dropdown.
+function closeNav() {
+    const nav = document.querySelector('.top-nav');
+    if (!nav) return;
+    nav.classList.remove('open');
+    const btn = nav.querySelector('.top-nav-toggle');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+}
+
+(function () {
+    const nav = document.querySelector('.top-nav');
+    if (!nav) return;
+    const toggle = nav.querySelector('.top-nav-toggle');
+    if (toggle) {
+        toggle.addEventListener('click', function () {
+            const isOpen = nav.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', isOpen);
+        });
+    }
+    // Tapping any nav link closes the dropdown so same-page anchors don't leave it open.
+    nav.querySelectorAll('.top-nav-anchors a').forEach(function (a) {
+        a.addEventListener('click', closeNav);
+    });
+    // Tap outside the nav closes it.
+    document.addEventListener('click', function (e) {
+        if (nav.classList.contains('open') && !nav.contains(e.target)) {
+            closeNav();
+        }
+    });
+})();
+</script>
+
+<script>
+function openJsonModal() {
+    const m = document.getElementById('jsonModal');
+    m.classList.add('show');
+    m.setAttribute('aria-hidden', 'false');
+}
+function closeJsonModal() {
+    const m = document.getElementById('jsonModal');
+    m.classList.remove('show');
+    m.setAttribute('aria-hidden', 'true');
+}
+document.getElementById('jsonModal').addEventListener('click', function (e) {
+    if (e.target === this) closeJsonModal();
+});
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeJsonModal();
+});
+</script>
+<script src="../../static/js/demo.js"></script>
+
+</body>
+</html>

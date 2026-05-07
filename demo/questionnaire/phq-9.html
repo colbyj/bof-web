@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PHQ-9 (Patient Health Questionnaire) — Questionnaire Demo | Bride of Frankensystem</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="../../style.css" rel="stylesheet">
+<meta name="description" content="Kroenke, K., Spitzer, R. L., &amp; Williams, J. B. (2001). The PHQ-9: Validity of a brief depression severity measure. Journal of General Internal Medicine, 16(9), ">
+<link rel="canonical" href="https://frankensystem.net/demo/questionnaire/phq-9.html">
+<meta property="og:title" content="PHQ-9 (Patient Health Questionnaire) — BOFS questionnaire demo">
+<meta property="og:description" content="Kroenke, K., Spitzer, R. L., &amp; Williams, J. B. (2001). The PHQ-9: Validity of a brief depression severity measure. Journal of General Internal Medicine, 16(9), ">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://frankensystem.net/demo/questionnaire/phq-9.html">
+<meta name="robots" content="index,follow">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "PHQ-9 (Patient Health Questionnaire)",
+  "url": "https://frankensystem.net/demo/questionnaire/phq-9.html",
+  "citation": "Kroenke, K., Spitzer, R. L., \u0026 Williams, J. B. (2001). The PHQ-9: Validity of a brief depression severity measure. Journal of General Internal Medicine, 16(9), 606-613.",
+  "identifier": "10.1046/j.1525-1497.2001.016009606.x",
+  "dateModified": "2026-05-06T20:29:16.3509289"
+}
+</script>
+<style>
+:root {
+    --contents-width: 967px;
+    --top-bar-color: #8CB737;
+    --font-size-main: 12pt;
+    --font-size-h1: 18pt;
+    --font-size-h2: 16pt;
+    --font-size-h3: 13pt;
+    --font-size-h4: 11pt;
+    --question-title-font-size: 13pt;
+    --question-instructions-font-size: 11pt;
+    --bs-border-color: black;
+}
+
+@media only screen and (max-width: 768px) {
+    :root {
+        --contents-width: 100vw;
+        --font-size-main: 11pt;
+        --font-size-h1: 16pt;
+        --font-size-h2: 14pt;
+        --font-size-h3: 12pt;
+        --font-size-h4: 10pt;
+        --question-title-font-size: 12pt;
+        --question-instructions-font-size: 10pt;
+        --bs-border-color: black;
+    }
+
+    .content {
+        padding: 0 5px;
+    }
+
+    input[type=range] {
+        width: 90vw !important;
+    }
+
+    input, select, textarea, .slider-labels {
+        max-width: 90vw !important;
+    }
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'segoe ui', arial, sans-serif;
+    font-size: var(--font-size-main);
+}
+
+.bofs-main-content {
+    padding-top: 12px;
+}
+
+/* Reserved by JS at load time so content isn't hidden under the fixed toolbar.
+   Fallback ensures content still clears the toolbar before JS runs. */
+.bofs-body {
+    padding-bottom: 110px;
+}
+
+.questions {
+    /*border: 1px solid #4e4e4e;*/
+}
+
+.question {
+    margin-top: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #EEEEEE;
+    background-color: #F7F7F7;
+    border-radius: 8px;
+    /*box-shadow: 0 0 3px 0 rgba(0,0,0,0.33);*/
+}
+
+.bofs-hidden {
+    display: none;
+}
+
+.question-title {
+    font-weight: bold;
+    font-size: var(--question-title-font-size);
+    margin-top: 0;
+}
+
+.question-instructions {
+    font-weight: bold;
+    font-size: var(--question-instructions-font-size);
+}
+
+.question-inputs {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.navigation {
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    background-color: #ccc;
+    border-radius: 8px;
+    /*box-shadow: 0 0 3px 0 rgba(0,0,0,0.33);*/
+    margin-bottom: 30px;
+}
+
+.padding {
+    padding: 12px 16px;
+}
+
+#map img {
+    position: relative;
+}
+
+h1 {
+    font-size: var(--font-size-h1);
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+}
+
+h3 {
+    font-size: var(--font-size-h3);
+}
+
+h4 {
+    font-size: var(--font-size-h4);
+}
+
+.title-bar {
+    background-color: var(--top-bar-color);
+    box-shadow: 0 5px 10px rgb(238, 238, 238);
+    color: white;
+    margin: 0;
+    padding: 5px;
+    text-shadow: 1px 1px #333333;
+}
+
+.title-text {
+    width: var(--contents-width);
+    margin-left: auto;
+    margin-right: auto;
+    font-size: var(--font-size-h1);
+    height: 42px;
+}
+
+.content {
+    width: var(--contents-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.slider-labels {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.error-box {
+    padding: 1em;
+    margin: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.33);
+    border-left-width: 3px;
+    background-color: rgba(255, 0, 0, 0.05);
+}
+
+
+.debug-session pre {
+    display: block; margin: 0;
+}
+
+.debug-session ul {
+    padding: 0 0 0 12px; margin: 0; list-style-type: none;
+}
+
+.debug-session li {
+    padding-bottom: 2px;
+}
+
+.admin-toolbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    width: 100%;
+    padding: 6px 12px 8px 12px;
+    color: #fff;
+}
+
+.admin-toolbar .btn,
+.admin-toolbar .dropdown-item {
+    font-size: 10pt;
+}
+
+.admin-toolbar-status {
+    font-size: 10pt;
+    color: #cfd2d6;
+    padding: 2px 4px 6px 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.admin-toolbar-status .admin-status-key {
+    color: #8a8f96;
+    font-weight: 600;
+}
+
+.admin-toolbar-status .admin-status-sep {
+    color: #5a6068;
+}
+
+.admin-toolbar-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.admin-toolbar-actions .toolbar-left,
+.admin-toolbar-actions .toolbar-right {
+    flex: 0 0 auto;
+}
+
+.admin-toolbar-actions .toolbar-center {
+    flex: 1 1 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.admin-toolbar-actions .dropup {
+    display: inline-block;
+}
+
+/* Skip-to-page dropdown can get long — let it scroll. */
+.admin-toolbar-actions .dropdown-menu {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+/*a, a:visited { text-decoration: none; color: #1144cc; }
+a:hover { text-decoration: underline; }*/
+
+table { border-spacing: 0; }
+th { padding: 6px; position: sticky; top: 0; background-color: #F7F7F7; border-bottom: 1px solid #EEEEEE; z-index: 1; }
+.evenRow { background-color: #EFEFEF; }
+.evenRow td { padding: 4px; }
+.oddRow td { padding: 4px; }
+.evenRow:hover { background-color: #F4F2DC; }
+.oddRow:hover { background-color: #FEFFE8; }
+
+.form-check { padding: 6px 22px; }
+.form-check input {  }
+
+ul li { padding-bottom: 4px;  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav" aria-label="Primary">
+    <div class="container">
+        <div class="top-nav-inner">
+            <a href="../../index.html" class="top-nav-brand">Bride of Frankensystem</a>
+            <div class="top-nav-anchors" id="top-nav-anchors">
+                <a href="../../index.html#where-bofs-fits">Where BOFS Fits</a>
+                <a href="../../index.html#how-it-works">How It Works</a>
+                <a href="../../demos.html">Demos</a>
+                <a href="../../questionnaires.html">Questionnaires</a>
+                <a href="../../news.html">News</a>
+                <a href="../../publications.html">Publications</a>
+            </div>
+            <div class="top-nav-actions">
+                <a href="https://github.com/colbyj/bride-of-frankensystem" target="_blank" rel="noopener" aria-label="GitHub repository" title="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+                <a href="https://docs.frankensystem.net/en/latest/" target="_blank" rel="noopener" aria-label="Documentation" title="Documentation"><i class="bi bi-question-circle-fill" aria-hidden="true"></i></a>
+                <a href="https://discord.gg/XzXtUKFCJA" target="_blank" rel="noopener" aria-label="Join Discord" title="Discord"><i class="bi bi-discord" aria-hidden="true"></i></a>
+                <a href="#" onclick="openModal(); return false;" aria-label="Mailing list signup" title="Mailing list"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+            </div>
+            <button type="button" class="top-nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="top-nav-anchors">
+                <i class="bi bi-list" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<section class="section section-tinted page-header">
+    <div class="container">
+        <p class="text-muted"><a href="../../questionnaires.html">← All questionnaire demos</a></p>
+        <div class="demo-header">
+            <div class="demo-title-row">
+                <span class="demo-badge" aria-label="Demo">Demo</span>
+                <h1 class="heading-primary">PHQ-9 (Patient Health Questionnaire)</h1>
+            </div>
+            <div class="demo-meta-row">
+                <div class="demo-meta-text">
+                    <p class="lead">Kroenke, K., Spitzer, R. L., &amp; Williams, J. B. (2001). The PHQ-9: Validity of a brief depression severity measure. Journal of General Internal Medicine, 16(9), 606-613.</p>
+                    <p><a href="https://doi.org/10.1046/j.1525-1497.2001.016009606.x" target="_blank" rel="noopener">DOI: 10.1046/j.1525-1497.2001.016009606.x</a></p>
+                </div>
+                <div class="demo-meta-action">
+                    <button type="button" class="btn btn-outline" onclick="openJsonModal()">
+                        <i class="bi bi-braces" aria-hidden="true"></i> View source JSON
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="callout callout-row demo-disclaimer">
+            <div class="callout-row-text">
+                <h3>This is a preview only</h3>
+                <p>
+                    Your responses aren't saved or sent anywhere. The page below renders the questionnaire
+                    with the same templates a participant would see inside a BOFS experiment. Click
+                    <strong>Compute results</strong> at the bottom to see the raw values BOFS would store
+                    plus any participant calculations the questionnaire defines.
+                </p>
+            </div>
+        </div>
+
+        <form id="demo-form" data-slug="phq-9" class="bofs-preview-scope" onsubmit="return false;">
+            <div class="bofs-preview-scope"><div class="question-instructions">Over the last 2 weeks, how often have you been bothered by any of the following problems?</div>
+
+
+<div class="question padding">
+    
+    <div class="question-inputs">
+        
+<table width="100%">
+    <thead>
+        <tr>
+            <th></th>
+            
+            <th scope="col" style="text-align:center;">Not at all</th>
+            
+            <th scope="col" style="text-align:center;">Several days</th>
+            
+            <th scope="col" style="text-align:center;">More than half the days</th>
+            
+            <th scope="col" style="text-align:center;">Nearly every day</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        
+            
+        
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Little interest or pleasure in doing things</td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Not at all" type="radio" name="phqnine_01" id="phqnine_011" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Several days" type="radio" name="phqnine_01" id="phqnine_012" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="More than half the days" type="radio" name="phqnine_01" id="phqnine_013" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Nearly every day" type="radio" name="phqnine_01" id="phqnine_014" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Feeling down, depressed, or hopeless</td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Not at all" type="radio" name="phqnine_02" id="phqnine_021" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Several days" type="radio" name="phqnine_02" id="phqnine_022" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="More than half the days" type="radio" name="phqnine_02" id="phqnine_023" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Nearly every day" type="radio" name="phqnine_02" id="phqnine_024" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Trouble falling or staying asleep, or sleeping too much</td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Not at all" type="radio" name="phqnine_03" id="phqnine_031" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Several days" type="radio" name="phqnine_03" id="phqnine_032" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="More than half the days" type="radio" name="phqnine_03" id="phqnine_033" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Nearly every day" type="radio" name="phqnine_03" id="phqnine_034" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Feeling tired or having little energy</td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Not at all" type="radio" name="phqnine_04" id="phqnine_041" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Several days" type="radio" name="phqnine_04" id="phqnine_042" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="More than half the days" type="radio" name="phqnine_04" id="phqnine_043" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Nearly every day" type="radio" name="phqnine_04" id="phqnine_044" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Poor appetite or overeating</td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Not at all" type="radio" name="phqnine_05" id="phqnine_051" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Several days" type="radio" name="phqnine_05" id="phqnine_052" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="More than half the days" type="radio" name="phqnine_05" id="phqnine_053" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Nearly every day" type="radio" name="phqnine_05" id="phqnine_054" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Feeling bad about yourself - or that you are a failure or have let yourself or your family down</td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Not at all" type="radio" name="phqnine_06" id="phqnine_061" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Several days" type="radio" name="phqnine_06" id="phqnine_062" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="More than half the days" type="radio" name="phqnine_06" id="phqnine_063" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Nearly every day" type="radio" name="phqnine_06" id="phqnine_064" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Trouble concentrating on things, such as reading the newspaper or watching television</td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Not at all" type="radio" name="phqnine_07" id="phqnine_071" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Several days" type="radio" name="phqnine_07" id="phqnine_072" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="More than half the days" type="radio" name="phqnine_07" id="phqnine_073" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Nearly every day" type="radio" name="phqnine_07" id="phqnine_074" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="oddRow">
+            <td style="width: 30%">Moving or speaking so slowly that other people could have noticed? Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual</td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Not at all" type="radio" name="phqnine_08" id="phqnine_081" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Several days" type="radio" name="phqnine_08" id="phqnine_082" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="More than half the days" type="radio" name="phqnine_08" id="phqnine_083" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Nearly every day" type="radio" name="phqnine_08" id="phqnine_084" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+        <tr class="evenRow">
+            <td style="width: 30%">Thoughts that you would be better off dead or of hurting yourself in some way</td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Not at all" type="radio" name="phqnine_09" id="phqnine_091" value="1" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Several days" type="radio" name="phqnine_09" id="phqnine_092" value="2" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="More than half the days" type="radio" name="phqnine_09" id="phqnine_093" value="3" required >
+                    </div>
+                </label>
+            </td>
+            
+            <td style="text-align: center; width: 17.5%">
+                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
+                    <div class="" style="display:inline;">
+                        <input class="form-check-input" title="Nearly every day" type="radio" name="phqnine_09" id="phqnine_094" value="4" required >
+                    </div>
+                </label>
+            </td>
+            
+        </tr>
+        
+    </tbody>
+</table>
+    </div>
+</div></div>
+            <div class="demo-actions">
+                <button type="button" id="demo-submit" class="btn btn-primary">
+                    Compute results
+                </button>
+                <button type="reset" class="btn btn-outline">Reset</button>
+            </div>
+        </form>
+
+        <div id="demo-results" aria-live="polite"></div>
+    </div>
+</section>
+
+<!-- JSON viewer modal -->
+<div class="modal" id="jsonModal" role="dialog" aria-modal="true" aria-labelledby="jsonModalTitle" aria-hidden="true">
+    <div class="modal-content demo-modal-content">
+        <div class="modal-header">
+            <h3 id="jsonModalTitle">Source JSON: PHQ-9 (Patient Health Questionnaire)</h3>
+            <button type="button" class="btn-close" onclick="closeJsonModal()" aria-label="Close source JSON dialog">×</button>
+        </div>
+        <div class="modal-body">
+            <p class="text-muted">
+                The questionnaire's underlying JSON, exactly as BOFS would consume it.
+                <a href="https://manage.frankensystem.net/api/questionnaire-demos/phq-9.json?download=1">Download .json</a>.
+            </p>
+            <pre><code class="language-json">{
+  &#34;title&#34;: &#34;PHQ-9 (Patient Health Questionnaire)&#34;,
+  &#34;instructions&#34;: &#34;Over the last 2 weeks, how often have you been bothered by any of the following problems?&#34;,
+  &#34;code&#34;: &#34;&#34;,
+  &#34;questions&#34;: [
+    {
+      &#34;questiontype&#34;: &#34;radiogrid&#34;,
+      &#34;id&#34;: &#34;radio_1&#34;,
+      &#34;required&#34;: true,
+      &#34;labels&#34;: [
+        &#34;Not at all&#34;,
+        &#34;Several days&#34;,
+        &#34;More than half the days&#34;,
+        &#34;Nearly every day&#34;
+      ],
+      &#34;q_text&#34;: [
+        {
+          &#34;id&#34;: &#34;phqnine_01&#34;,
+          &#34;text&#34;: &#34;Little interest or pleasure in doing things&#34;
+        },
+        {
+          &#34;id&#34;: &#34;phqnine_02&#34;,
+          &#34;text&#34;: &#34;Feeling down, depressed, or hopeless&#34;
+        },
+        {
+          &#34;id&#34;: &#34;phqnine_03&#34;,
+          &#34;text&#34;: &#34;Trouble falling or staying asleep, or sleeping too much&#34;
+        },
+        {
+          &#34;id&#34;: &#34;phqnine_04&#34;,
+          &#34;text&#34;: &#34;Feeling tired or having little energy&#34;
+        },
+        {
+          &#34;id&#34;: &#34;phqnine_05&#34;,
+          &#34;text&#34;: &#34;Poor appetite or overeating&#34;
+        },
+        {
+          &#34;id&#34;: &#34;phqnine_06&#34;,
+          &#34;text&#34;: &#34;Feeling bad about yourself - or that you are a failure or have let yourself or your family down&#34;
+        },
+        {
+          &#34;id&#34;: &#34;phqnine_07&#34;,
+          &#34;text&#34;: &#34;Trouble concentrating on things, such as reading the newspaper or watching television&#34;
+        },
+        {
+          &#34;id&#34;: &#34;phqnine_08&#34;,
+          &#34;text&#34;: &#34;Moving or speaking so slowly that other people could have noticed? Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual&#34;
+        },
+        {
+          &#34;id&#34;: &#34;phqnine_09&#34;,
+          &#34;text&#34;: &#34;Thoughts that you would be better off dead or of hurting yourself in some way&#34;
+        }
+      ]
+    }
+  ],
+  &#34;reference&#34;: &#34;Kroenke, K., Spitzer, R. L., &amp; Williams, J. B. (2001). The PHQ-9: Validity of a brief depression severity measure. Journal of General Internal Medicine, 16(9), 606-613.&#34;,
+  &#34;doi&#34;: &#34;10.1046/j.1525-1497.2001.016009606.x&#34;,
+  &#34;participant_calculations&#34;: {
+    &#34;PHQ9_total&#34;: &#34;phqnine_01-1 + phqnine_02-1 + phqnine_03-1 + phqnine_04-1 + phqnine_05-1 + phqnine_06-1 + phqnine_07-1 + phqnine_08-1 + phqnine_09-1&#34;
+  }
+}</code></pre>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeJsonModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Mailing list signup modal (rendered on every page; opened via the envelope icon) -->
+<div class="modal" id="subscribeModal" role="dialog" aria-modal="true" aria-labelledby="subscribeModalTitle" aria-hidden="true">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="subscribeModalTitle">Subscribe to Mailing List</h3>
+            <button type="button" class="btn-close" onclick="closeModal()" aria-label="Close mailing list dialog">×</button>
+        </div>
+        <div class="modal-body">
+            <form action="https://frankensystem.us3.list-manage.com/subscribe/post?u=bf604c84efd16a39e9da4a43a&amp;id=547b6c51e8&amp;f_id=00e598e2f0" method="post" target="_blank">
+                <div class="form-group">
+                    <label for="mce-EMAIL" class="form-label">Email Address</label>
+                    <input type="email" name="EMAIL" class="form-control" id="mce-EMAIL" required>
+                </div>
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="b_bf604c84efd16a39e9da4a43a_547b6c51e8" tabindex="-1" value="">
+                </div>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <p>
+            &copy; 2015-2026 Colby Johanson |
+            LGPL-3.0 Licensed |
+            <a href="https://github.com/colbyj/bride-of-frankensystem" title="GitHub" aria-label="GitHub repository"><i class="bi bi-github" aria-hidden="true"></i></a>
+            <a href="https://docs.frankensystem.net/en/latest/" title="Documentation" aria-label="Documentation"><i class="bi bi-question-circle-fill" aria-hidden="true"></i></a>
+            <a href="https://discord.gg/XzXtUKFCJA" rel="noopener" target="_blank" title="Discord" aria-label="Join Discord"><i class="bi bi-discord" aria-hidden="true"></i></a>
+            <a href="#" onclick="openModal(); return false;" title="Mailing List" aria-label="Mailing list signup"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+        </p>
+    </div>
+</footer>
+<script>
+function openModal() {
+    const modal = document.getElementById('subscribeModal');
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden', 'false');
+}
+
+function closeModal() {
+    const modal = document.getElementById('subscribeModal');
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+}
+
+document.getElementById('subscribeModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeModal();
+        closeNav();
+    }
+});
+
+// Mobile nav: toggle the hamburger dropdown.
+function closeNav() {
+    const nav = document.querySelector('.top-nav');
+    if (!nav) return;
+    nav.classList.remove('open');
+    const btn = nav.querySelector('.top-nav-toggle');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+}
+
+(function () {
+    const nav = document.querySelector('.top-nav');
+    if (!nav) return;
+    const toggle = nav.querySelector('.top-nav-toggle');
+    if (toggle) {
+        toggle.addEventListener('click', function () {
+            const isOpen = nav.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', isOpen);
+        });
+    }
+    // Tapping any nav link closes the dropdown so same-page anchors don't leave it open.
+    nav.querySelectorAll('.top-nav-anchors a').forEach(function (a) {
+        a.addEventListener('click', closeNav);
+    });
+    // Tap outside the nav closes it.
+    document.addEventListener('click', function (e) {
+        if (nav.classList.contains('open') && !nav.contains(e.target)) {
+            closeNav();
+        }
+    });
+})();
+</script>
+
+<script>
+function openJsonModal() {
+    const m = document.getElementById('jsonModal');
+    m.classList.add('show');
+    m.setAttribute('aria-hidden', 'false');
+}
+function closeJsonModal() {
+    const m = document.getElementById('jsonModal');
+    m.classList.remove('show');
+    m.setAttribute('aria-hidden', 'true');
+}
+document.getElementById('jsonModal').addEventListener('click', function (e) {
+    if (e.target === this) closeJsonModal();
+});
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeJsonModal();
+});
+</script>
+<script src="../../static/js/demo.js"></script>
+
+</body>
+</html>
