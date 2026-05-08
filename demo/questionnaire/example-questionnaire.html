@@ -20,116 +20,109 @@
   "name": "Example Questionnaire",
   "url": "https://frankensystem.net/demo/questionnaire/example-questionnaire.html",
   "citation": "Demonstrates many different question types.",
-  "dateModified": "2026-05-07T06:16:23.6744527"
+  "dateModified": "2026-05-08T20:10:33.0444437"
 }
 </script>
 <style>
-:root {
-    --contents-width: 967px;
-
-    /* Theme accent — overridable via HEADER_COLOR config (template.html line 9). */
+/* The BOFW endpoint returns scope-ready CSS: BOFS's :root defaults are
+   hoisted onto .bofs-preview-scope and the rest is wrapped in
+   @scope (.bofs-preview-scope) {...}. Inline as-is. */
+/* :root hoisted onto .bofs-preview-scope (see PreviewClient.ScopeForPreviewContainer for why). */
+.bofs-preview-scope {
+    /* Theme accent (overridden by style.css with the BOFS green; admin keeps
+       this neutral default since HEADER_COLOR isn't set in admin previews). */
     --bofs-accent: #8CB737;
     --bofs-accent-strong: color-mix(in srgb, var(--bofs-accent) 80%, black);
-    --bofs-accent-soft: color-mix(in srgb, var(--bofs-accent) 12%, white);
-    --bofs-accent-ring: color-mix(in srgb, var(--bofs-accent) 35%, transparent);
-    --top-bar-color: var(--bofs-accent);
+    --bofs-accent-soft:   color-mix(in srgb, var(--bofs-accent) 12%, white);
+    --bofs-accent-ring:   color-mix(in srgb, var(--bofs-accent) 35%, transparent);
 
-    /* Card surfaces — neutral, no tint. Accent color stays on the title bar and button only. */
-    --bofs-card-bg: #ffffff;
+    /* Card surface — neutral white, tinted border that picks up the accent. */
+    --bofs-card-bg:     #ffffff;
     --bofs-card-border: color-mix(in srgb, var(--bofs-accent) 20%, #e2e5e7);
 
-    /* Type scale — rem-based, anchored to html { font-size: 16px }. */
-    --font-size-main: 1rem;            /* 16px */
-    --font-size-h1: 1.5rem;            /* 24px */
-    --font-size-h2: 1.3125rem;         /* 21px */
-    --font-size-h3: 1.0625rem;         /* 17px */
-    --font-size-h4: 0.9375rem;         /* 15px */
-    --question-title-font-size: 1.0625rem;
-    --question-instructions-font-size: 0.9375rem;
+    --bofs-radius:    8px;
+    --bofs-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
 
     /* Form-input border stays high-contrast for accessibility — do not soften. */
-    --bs-border-color: #000;
+    --bofs-input-border: #000;
 
-    --bofs-radius: 8px;
-    --bofs-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
-    --bofs-shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+    /* Type sizing — parent files override with their own scale. */
+    --font-size-main: 1rem;
+    --question-title-font-size: 1.0625rem;
+    --question-instructions-font-size: 0.9375rem;
 }
+@scope (.bofs-preview-scope) {
+/* ===========================================================================
+   style_questionnaire.css
+   ---------------------------------------------------------------------------
+   Shared questionnaire-rendering rules for both participant pages
+   (style.css) and admin previews (style_admin.css). Imported via @import
+   from each parent file.
 
-html {
-    font-size: 16px;
-}
+   Visual look is identical in both contexts. The only things expected to
+   differ are type sizing (admin uses pt-based, participant uses rem-based)
+   and the theme accent (HEADER_COLOR is only injected on participant pages).
+   Both are exposed as CSS variables — defaults are set here, parent files
+   override them as needed.
+   ========================================================================= */
 
-@media only screen and (max-width: 768px) {
-    :root {
-        --contents-width: 100vw;
-        --font-size-main: 0.9375rem;       /* 15px */
-        --font-size-h1: 1.375rem;          /* 22px */
-        --font-size-h2: 1.1875rem;         /* 19px */
-        --font-size-h3: 1rem;              /* 16px */
-        --font-size-h4: 0.875rem;          /* 14px */
-        --question-title-font-size: 1rem;
-        --question-instructions-font-size: 0.875rem;
-    }
 
-    .content {
-        padding: 0 12px;
-    }
 
-    /* Radiogrids, tables — let them scroll rather than collapsing text. */
-    .question table {
-        display: block;
-        max-width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    /* End-of-study completion code card — override inline 500px width. */
-    .question[style*="width: 500px"] {
-        width: 100% !important;
-        max-width: calc(100vw - 24px);
-        box-sizing: border-box;
-    }
-    .question[style*="width: 500px"] input[readonly][style*="width: 350px"] {
-        width: 100% !important;
-        max-width: 100%;
-        box-sizing: border-box;
-    }
-
-    input[type=range] {
-        width: 90vw;
-    }
-
-    input, select, textarea, .slider-labels {
-        max-width: 90vw;
-    }
-}
-
-body {
-    padding: 0;
-    margin: 0;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-size: var(--font-size-main);
-    color: #1f2937;
-    background-color: #fafafa;
-}
-
-.bofs-main-content {
-    padding-top: 16px;
-}
-
-/* Reserved by JS at load time so content isn't hidden under the fixed toolbar.
-   Fallback ensures content still clears the toolbar before JS runs. */
-.bofs-body {
-    padding-bottom: 110px;
-}
-
+/* ---------- Question card surface ---------- */
+.bofs-question,
 .question {
-    margin-top: 8px;
-    margin-bottom: 16px;
+    margin-top: .5rem;
+    margin-bottom: 1rem;
     border: 1px solid var(--bofs-card-border);
     background-color: var(--bofs-card-bg);
     border-radius: var(--bofs-radius);
     box-shadow: var(--bofs-shadow-sm);
+    line-height: 1.5;
+}
+
+.bofs-question-title {
+    font-weight: bold;
+    font-size: var(--question-title-font-size);
+    margin-top: 1.5rem;
+}
+
+.bofs-question-instructions {
+    font-weight: bold;
+    font-size: var(--question-instructions-font-size);
+    margin-bottom: .75rem;
+}
+
+.bofs-question-inputs {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    gap: .25rem;
+}
+
+.bofs-question-inputs-inline {
+    flex-direction: row !important;
+    gap: 1.5rem !important;
+}
+
+.bofs-group .bofs-question-inputs {
+    margin: 0 !important;
+}
+
+.bofs-padding,
+.padding {
+    padding: 12px 16px;
+}
+
+/* Strip the default top margin from a leading heading so user-supplied
+   content (e.g. the consent HTML, which starts with <h1>) aligns with the
+   top of the card. Limited to headings so other first children that carry
+   intentional top margin (.bofs-question-inputs, etc.) aren't affected. */
+.bofs-padding > :is(h1, h2, h3, h4, h5, h6):first-child,
+.padding      > :is(h1, h2, h3, h4, h5, h6):first-child {
+    margin-top: 0;
 }
 
 .bofs-hidden {
@@ -140,216 +133,293 @@ body {
     margin-bottom: 1rem;
 }
 
-.question-title {
-    font-weight: bold;
-    font-size: var(--question-title-font-size);
-    margin-top: 0;
-}
-
-.question-instructions {
-    font-weight: bold;
-    font-size: var(--question-instructions-font-size);
-}
-
-.question-inputs {
-    margin-top: 4px;
-    margin-bottom: 4px;
-}
-
+/* Navigation card (Continue button wrapper). */
+.bofs-navigation,
 .navigation {
     margin-top: 15px;
+    margin-bottom: 30px;
     border: 1px solid var(--bofs-card-border);
     background-color: var(--bofs-card-bg);
     border-radius: var(--bofs-radius);
     box-shadow: var(--bofs-shadow-sm);
-    margin-bottom: 30px;
 }
 
-.padding {
-    padding: 12px 16px;
+/* ---------- Buttons ----------
+   `bofs-*` is canonical; the bare Bootstrap names are kept as aliases so
+   user-written custom templates that follow Bootstrap conventions still get
+   styled in pure-BOFS context. When Bootstrap is also loaded on the page,
+   Bootstrap's rules win for the bare names and BOFS's win for `bofs-*`. */
+.bofs-btn,
+.btn {
+    display: inline-block;
+    font-family: inherit;
+    font-size: var(--font-size-main);
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background-color 120ms, border-color 120ms, transform 80ms, box-shadow 120ms;
+}
+.bofs-btn:disabled, .bofs-btn[disabled],
+.btn:disabled,      .btn[disabled] {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+.bofs-btn:focus-visible,
+.btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--bofs-accent-ring);
+}
+.bofs-btn-sm,
+.btn-sm {
+    padding: 3px 8px;
+    font-size: 0.8125rem;
+    border-radius: 4px;
 }
 
-#map img {
-    position: relative;
+.bofs-btn-light,
+.btn-light {
+    background-color: #f8f9fa;
+    border-color: #ced4da;
+    color: #212529;
+}
+.bofs-btn-light:hover:not(:disabled),
+.btn-light:hover:not(:disabled) {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
 }
 
-h1 { font-size: var(--font-size-h1); }
-h2 { font-size: var(--font-size-h2); }
-h3 { font-size: var(--font-size-h3); }
-h4 { font-size: var(--font-size-h4); }
-
-.title-bar {
-    background-color: var(--top-bar-color);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-    color: white;
-    margin: 0;
-    padding: 4px 5px;
+.bofs-btn-outline-success,
+.btn-outline-success {
+    border-color: #1f7a1f;
+    color: #1f7a1f;
+    background-color: transparent;
 }
-
-.title-text {
-    width: var(--contents-width);
-    margin-left: auto;
-    margin-right: auto;
-    font-size: var(--font-size-h1);
-    font-weight: 600;
-    height: 42px;
-    letter-spacing: 0.005em;
+.bofs-btn-outline-success:hover:not(:disabled),
+.btn-outline-success:hover:not(:disabled) {
+    background-color: #1f7a1f;
+    color: #fff;
 }
-
-.content {
-    width: var(--contents-width);
-    margin-left: auto;
-    margin-right: auto;
+.bofs-btn-outline-primary,
+.btn-outline-primary {
+    border-color: #2c5fb3;
+    color: #2c5fb3;
+    background-color: transparent;
 }
-
-.slider-labels {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    color: #4b5563;
+.bofs-btn-outline-primary:hover:not(:disabled),
+.btn-outline-primary:hover:not(:disabled) {
+    background-color: #2c5fb3;
+    color: #fff;
 }
-
-.error-box {
-    padding: 1em;
-    margin: 5px 0;
-    border: 1px solid color-mix(in srgb, #dc2626 20%, transparent);
-    border-left-width: 3px;
-    border-left-color: #dc2626;
-    background-color: color-mix(in srgb, #dc2626 5%, #fef2f2);
-    border-radius: var(--bofs-radius);
-    box-shadow: var(--bofs-shadow-sm);
+.bofs-btn-outline-secondary,
+.btn-outline-secondary {
+    border-color: #6c757d;
+    color: #6c757d;
+    background-color: transparent;
+}
+.bofs-btn-outline-secondary:hover:not(:disabled),
+.btn-outline-secondary:hover:not(:disabled) {
+    background-color: #6c757d;
+    color: #fff;
 }
 
 /* Themed primary button — uses the accent so HEADER_COLOR drives it. */
-.btn.btn-bofs-primary {
+.bofs-btn.bofs-btn-primary,
+.btn.btn-primary {
     background-color: var(--bofs-accent);
     border: 1px solid var(--bofs-accent);
     color: #fff;
     font-weight: 600;
     padding: 8px 18px;
     border-radius: 6px;
-    transition: background-color 120ms, border-color 120ms, transform 80ms, box-shadow 120ms;
 }
-
-.btn.btn-bofs-primary:hover,
-.btn.btn-bofs-primary:focus {
+.bofs-btn.bofs-btn-primary:hover, .bofs-btn.bofs-btn-primary:focus,
+.btn.btn-primary:hover,           .btn.btn-primary:focus {
     background-color: var(--bofs-accent-strong);
     border-color: var(--bofs-accent-strong);
     color: #fff;
 }
-
-.btn.btn-bofs-primary:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 3px var(--bofs-accent-ring);
-}
-
-.btn.btn-bofs-primary:active {
+.bofs-btn.bofs-btn-primary:active,
+.btn.btn-primary:active {
     transform: translateY(1px);
 }
 
-.debug-session pre {
-    display: block; margin: 0;
-}
-
-.debug-session ul {
-    padding: 0 0 0 12px; margin: 0; list-style-type: none;
-}
-
-.debug-session li {
-    padding-bottom: 2px;
-}
-
-.admin-toolbar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1030;
-    width: 100%;
-    padding: 6px 12px 8px 12px;
-    color: #fff;
-}
-
-.admin-toolbar .btn,
-.admin-toolbar .dropdown-item {
-    font-size: 0.8125rem;
-}
-
-.admin-toolbar-status {
-    font-size: 0.8125rem;
-    color: #cfd2d6;
-    padding: 2px 4px 6px 4px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    margin-bottom: 6px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-}
-
-.admin-toolbar-status .admin-status-key {
-    color: #8a8f96;
-    font-weight: 600;
-}
-
-.admin-toolbar-status .admin-status-sep {
-    color: #5a6068;
-}
-
-.admin-toolbar-actions {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 6px;
-}
-
-.admin-toolbar-actions .toolbar-left,
-.admin-toolbar-actions .toolbar-right {
-    flex: 0 0 auto;
-}
-
-.admin-toolbar-actions .toolbar-center {
-    flex: 1 1 auto;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-}
-
-.admin-toolbar-actions .dropup {
+/* ---------- Form inputs ---------- */
+.bofs-form-control {
     display: inline-block;
+    font-family: inherit;
+    font-size: var(--font-size-main);
+    line-height: 1.5;
+    color: #1f2937;
+    background-color: #fff;
+    border: 1px solid var(--bofs-input-border);
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+.bofs-form-control:focus-visible {
+    outline: none;
+    border-color: var(--bofs-accent);
+    box-shadow: 0 0 0 3px var(--bofs-accent-ring);
 }
 
-/* Skip-to-page dropdown can get long — let it scroll. */
-.admin-toolbar-actions .dropdown-menu {
-    max-height: 60vh;
-    overflow-y: auto;
+/* Radio/checkbox row layout. */
+.bofs-form-check {}
+
+.bofs-form-check label,
+.bofs-form-check-label {
+    cursor: pointer;
+    display: inline-flex;
+    gap: .4rem;
+    padding: .25rem 0;
 }
+
+.bofs-form-check-input {
+    cursor: pointer;
+    width: 1rem;
+    height: 1rem;
+    margin: 3px;
+}
+
+/* Group question — applied to a <fieldset>. Strip the default UA chrome
+   (border, padding, min-width: min-content) so it lays out like a plain block. */
+.bofs-group {
+    border: 0;
+    padding: 0;
+    min-width: 0;
+    margin: 0;
+}
+
+.bofs-group-header {
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+}
+
+/* Slider question labels (left/right ends). */
+.bofs-slider-labels {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    color: #4b5563;
+}
+
+/* Inline form-error text revealed by JS when validation fails. */
+.bofs-invalid-feedback {
+    display: none;
+    margin-top: 4px;
+    color: #dc2626;
+    font-size: 0.875rem;
+}
+
+.bofs-error-box {
+    padding: 1em;
+    margin: 5px 0;
+    border: 1px solid color-mix(in srgb, #dc2626 20%, transparent);
+    border-left: 3px solid #dc2626;
+    background-color: color-mix(in srgb, #dc2626 5%, #fef2f2);
+    border-radius: var(--bofs-radius);
+    box-shadow: var(--bofs-shadow-sm);
+}
+
+/* radiogrid table */
+
+.bofs-radiogrid-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.bofs-radiogrid-table th:first-child,
+.bofs-radiogrid-table td:first-child {
+  width: var(--bofs-radiogrid-first-col-width, 30%);  /* Set within radiogrid.html if there's an override in the json */
+}
+
+.bofs-radiogrid-table td:not(:first-child) {
+    /* Drop the row-padding on radio cells so the wrapping label can fill
+       the cell and act as the click target. */
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Wraps a single radio inside a radiogrid <td>. Fills the cell so clicking
+   anywhere in the cell (not just the 16px radio) selects the option. */
+.bofs-radiogrid-cell {
+    display: block;
+    cursor: pointer;
+    padding: 8px 0;
+}
+.bofs-radiogrid-cell .bofs-form-check-input {
+    vertical-align: middle;
+}
+
+/* ---------- Tables (radiogrid + admin previews) ---------- */
 
 table { border-spacing: 0; }
-th { padding: 6px; position: sticky; top: 0; background-color: var(--bofs-card-bg); border-bottom: 1px solid var(--bofs-card-border); z-index: 1; font-weight: 600; }
-.evenRow { background-color: color-mix(in srgb, var(--bofs-accent) 3%, #f9f9f9); }
-.evenRow td { padding: 4px; }
-.oddRow td { padding: 4px; }
-.evenRow:hover { background-color: var(--bofs-accent-soft); }
-.oddRow:hover { background-color: var(--bofs-accent-soft); }
-
-.form-check {
-    padding: 6px 22px;
-    display: grid;
-    grid-template-columns: auto 1fr;
+th {
+    padding: 6px;
+    position: sticky;
+    top: 0;
+    background-color: var(--bofs-card-bg);
+    border-bottom: 1px solid var(--bofs-card-border);
+    z-index: 1;
+    font-weight: 600;
 }
-
-.form-check-inline {
-    display: inline-grid;
-    vertical-align: top;
-}
+.bofs-row-even { background-color: color-mix(in srgb, var(--bofs-accent) 3%, #f9f9f9); }
+.bofs-row-even td, .bofs-row-odd td { padding: 4px; }
+.bofs-row-even:hover, .bofs-row-odd:hover { background-color: var(--bofs-accent-soft); }
 
 ul li { padding-bottom: 4px; }
 
+/* ---------- Mobile responsive: questionnaire content ---------- */
+@media only screen and (max-width: 768px) {
+    /* Radiogrids and other wide tables: scroll instead of crushing text. */
+    .bofs-question table,
+    .question table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* End-of-study completion-code card uses inline `width: 500px`; let it
+       shrink instead of overflowing the viewport. */
+    .bofs-question[style*="width: 500px"],
+    .question[style*="width: 500px"] {
+        width: 100% !important;
+        max-width: calc(100vw - 24px);
+        box-sizing: border-box;
+    }
+    .bofs-question[style*="width: 500px"] input[readonly][style*="width: 350px"],
+    .question[style*="width: 500px"]      input[readonly][style*="width: 350px"] {
+        width: 100% !important;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    input[type=range] { width: 90vw; }
+    input, select, textarea, .bofs-slider-labels { max-width: 90vw; }
+}
+
+}
+
+</style>
+<style>
+/* Brand-green and typography overrides for the embedded questionnaire.
+   Must come AFTER the BOFS sheet inlined above, since the hoisted BOFS
+   :root defaults also target .bofs-preview-scope and we want the site
+   palette to win the cascade. */
+.bofs-preview-scope {
+    font-family: system-ui, sans-serif;
+    --bofs-accent: var(--green);
+    --question-title-font-size: 1.1rem;
+    --question-instructions-font-size: 1rem;
+}
 </style>
 </head>
 <body>
@@ -361,8 +431,9 @@ ul li { padding-bottom: 4px; }
             <div class="top-nav-anchors" id="top-nav-anchors">
                 <a href="../../demos.html">Demos</a>
                 <a href="../../questionnaires.html">Questionnaires</a>
-                <a href="../../news.html">News</a>
                 <a href="../../publications.html">Publications</a>
+                <a href="../../news.html">News</a>
+                <a href="https://docs.frankensystem.net/en/latest/getting_started/installation.html" target="_blank" rel="noopener">Get Started</a>
             </div>
             <div class="top-nav-actions">
                 <a href="https://github.com/colbyj/bride-of-frankensystem" target="_blank" rel="noopener" aria-label="GitHub repository" title="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
@@ -414,26 +485,33 @@ ul li { padding-bottom: 4px; }
         </div>
 
         <form id="demo-form" data-slug="example-questionnaire" class="bofs-preview-scope" onsubmit="return false;">
-            <div class="bofs-preview-scope"><div class="question-instructions">Please answer each question.</div>
+            <div class="bofs-preview-scope"><div id="instructions" style="font-style: italic;">Please answer each question.</div>
 
-<div class="question-title">Section title</div>
-<div class="question padding">
+<div class="bofs-question-title">Section title</div>
+<div class="bofs-question bofs-padding">
     
-    <div class="question-inputs">
-        Use a textview to display descriptive or informative text between questions.
+    <div class="bofs-question-inputs">
+        
+Use a textview to display descriptive or informative text between questions.
     </div>
 </div>
 
 
-<div class="question padding">
+<div class="bofs-question bofs-padding">
     
-        <div class="question-instructions">Rate how much you agree with each statement.</div>
+        <div class="bofs-question-instructions">Rate how much you agree with each statement.</div>
     
-    <div class="question-inputs">
+    <div class="bofs-question-inputs">
         
+
     
 
-<table width="100%">
+
+
+    
+
+
+<table class="bofs-radiogrid-table" style="--bofs-radiogrid-first-col-width: 30%">
     <thead>
         <tr>
             <th></th>
@@ -454,137 +532,108 @@ ul li { padding-bottom: 4px; }
         
             
         
+
         
-        <tr class="evenRow">
-            <td style="width: 30%">I found this section easy to use.</td>
+        <tr class="bofs-row-even">
+            <td>I found this section easy to use.</td>
             
-            <td style="text-align: center; width: 14.0%">
-                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
-                    <div class="" style="display:inline;">
-                        <input class="form-check-input" title="I hate it!" type="radio" name="q_1" id="q_11" value="1"  >
-                    </div>
+            <td>
+                <label class="bofs-radiogrid-cell">
+                    <input class="bofs-form-check-input" title="I hate it!" type="radio" name="q_1" id="q_11" value="1"  >
                 </label>
             </td>
             
-            <td style="text-align: center; width: 14.0%">
-                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
-                    <div class="" style="display:inline;">
-                        <input class="form-check-input" title="" type="radio" name="q_1" id="q_12" value="2"  >
-                    </div>
+            <td>
+                <label class="bofs-radiogrid-cell">
+                    <input class="bofs-form-check-input" title="" type="radio" name="q_1" id="q_12" value="2"  >
                 </label>
             </td>
             
-            <td style="text-align: center; width: 14.0%">
-                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
-                    <div class="" style="display:inline;">
-                        <input class="form-check-input" title="Neutral" type="radio" name="q_1" id="q_13" value="3"  >
-                    </div>
+            <td>
+                <label class="bofs-radiogrid-cell">
+                    <input class="bofs-form-check-input" title="Neutral" type="radio" name="q_1" id="q_13" value="3"  >
                 </label>
             </td>
             
-            <td style="text-align: center; width: 14.0%">
-                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
-                    <div class="" style="display:inline;">
-                        <input class="form-check-input" title="" type="radio" name="q_1" id="q_14" value="4"  >
-                    </div>
+            <td>
+                <label class="bofs-radiogrid-cell">
+                    <input class="bofs-form-check-input" title="" type="radio" name="q_1" id="q_14" value="4"  >
                 </label>
             </td>
             
-            <td style="text-align: center; width: 14.0%">
-                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
-                    <div class="" style="display:inline;">
-                        <input class="form-check-input" title="I love it!" type="radio" name="q_1" id="q_15" value="5"  >
-                    </div>
+            <td>
+                <label class="bofs-radiogrid-cell">
+                    <input class="bofs-form-check-input" title="I love it!" type="radio" name="q_1" id="q_15" value="5"  >
                 </label>
             </td>
             
         </tr>
         
-        <tr class="oddRow">
-            <td style="width: 30%">I would be willing to take this kind of survey again.</td>
+        <tr class="bofs-row-odd">
+            <td>The questions were clearly worded.</td>
             
-            <td style="text-align: center; width: 14.0%">
-                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
-                    <div class="" style="display:inline;">
-                        <input class="form-check-input" title="I hate it!" type="radio" name="q_3" id="q_31" value="1"  >
-                    </div>
+            <td>
+                <label class="bofs-radiogrid-cell">
+                    <input class="bofs-form-check-input" title="I hate it!" type="radio" name="q_2" id="q_21" value="1"  >
                 </label>
             </td>
             
-            <td style="text-align: center; width: 14.0%">
-                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
-                    <div class="" style="display:inline;">
-                        <input class="form-check-input" title="" type="radio" name="q_3" id="q_32" value="2"  >
-                    </div>
+            <td>
+                <label class="bofs-radiogrid-cell">
+                    <input class="bofs-form-check-input" title="" type="radio" name="q_2" id="q_22" value="2"  >
                 </label>
             </td>
             
-            <td style="text-align: center; width: 14.0%">
-                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
-                    <div class="" style="display:inline;">
-                        <input class="form-check-input" title="Neutral" type="radio" name="q_3" id="q_33" value="3"  >
-                    </div>
+            <td>
+                <label class="bofs-radiogrid-cell">
+                    <input class="bofs-form-check-input" title="Neutral" type="radio" name="q_2" id="q_23" value="3"  >
                 </label>
             </td>
             
-            <td style="text-align: center; width: 14.0%">
-                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
-                    <div class="" style="display:inline;">
-                        <input class="form-check-input" title="" type="radio" name="q_3" id="q_34" value="4"  >
-                    </div>
+            <td>
+                <label class="bofs-radiogrid-cell">
+                    <input class="bofs-form-check-input" title="" type="radio" name="q_2" id="q_24" value="4"  >
                 </label>
             </td>
             
-            <td style="text-align: center; width: 14.0%">
-                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
-                    <div class="" style="display:inline;">
-                        <input class="form-check-input" title="I love it!" type="radio" name="q_3" id="q_35" value="5"  >
-                    </div>
+            <td>
+                <label class="bofs-radiogrid-cell">
+                    <input class="bofs-form-check-input" title="I love it!" type="radio" name="q_2" id="q_25" value="5"  >
                 </label>
             </td>
             
         </tr>
         
-        <tr class="evenRow">
-            <td style="width: 30%">The questions were clearly worded.</td>
+        <tr class="bofs-row-even">
+            <td>I would be willing to take this kind of survey again.</td>
             
-            <td style="text-align: center; width: 14.0%">
-                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
-                    <div class="" style="display:inline;">
-                        <input class="form-check-input" title="I hate it!" type="radio" name="q_2" id="q_21" value="1"  >
-                    </div>
+            <td>
+                <label class="bofs-radiogrid-cell">
+                    <input class="bofs-form-check-input" title="I hate it!" type="radio" name="q_3" id="q_31" value="1"  >
                 </label>
             </td>
             
-            <td style="text-align: center; width: 14.0%">
-                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
-                    <div class="" style="display:inline;">
-                        <input class="form-check-input" title="" type="radio" name="q_2" id="q_22" value="2"  >
-                    </div>
+            <td>
+                <label class="bofs-radiogrid-cell">
+                    <input class="bofs-form-check-input" title="" type="radio" name="q_3" id="q_32" value="2"  >
                 </label>
             </td>
             
-            <td style="text-align: center; width: 14.0%">
-                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
-                    <div class="" style="display:inline;">
-                        <input class="form-check-input" title="Neutral" type="radio" name="q_2" id="q_23" value="3"  >
-                    </div>
+            <td>
+                <label class="bofs-radiogrid-cell">
+                    <input class="bofs-form-check-input" title="Neutral" type="radio" name="q_3" id="q_33" value="3"  >
                 </label>
             </td>
             
-            <td style="text-align: center; width: 14.0%">
-                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
-                    <div class="" style="display:inline;">
-                        <input class="form-check-input" title="" type="radio" name="q_2" id="q_24" value="4"  >
-                    </div>
+            <td>
+                <label class="bofs-radiogrid-cell">
+                    <input class="bofs-form-check-input" title="" type="radio" name="q_3" id="q_34" value="4"  >
                 </label>
             </td>
             
-            <td style="text-align: center; width: 14.0%">
-                <label style="padding: 0; width: 100%; margin:auto; height: 28px; text-align:center;" class="btn btn-lg btn-default">
-                    <div class="" style="display:inline;">
-                        <input class="form-check-input" title="I love it!" type="radio" name="q_2" id="q_25" value="5"  >
-                    </div>
+            <td>
+                <label class="bofs-radiogrid-cell">
+                    <input class="bofs-form-check-input" title="I love it!" type="radio" name="q_3" id="q_35" value="5"  >
                 </label>
             </td>
             
@@ -596,56 +645,57 @@ ul li { padding-bottom: 4px; }
 </div>
 
 
-<div class="question padding">
+<div class="bofs-question bofs-padding">
     
-        <div class="question-instructions">Choose one option.</div>
+        <div class="bofs-question-instructions">Choose one option.</div>
     
-    <div class="question-inputs">
+    <div class="bofs-question-inputs">
         
 
 
 
-    <div class="form-check ">
-        <input class="form-check-input"
-               type="radio"
-               name="radiolist_1"
-               id="radiolist_11"
-               value="Yes"
-               
-               
-               >
-        <label class="form-check-label"
-               for="radiolist_11">
+
+    <div class="bofs-form-check">
+        <label class="bofs-form-check-label">
+            <input class="bofs-form-check-input"
+                   type="radio"
+                   name="radiolist_1"
+                   id="radiolist_11"
+                   value="Yes"
+                   
+                   
+                   >
+
            Yes
         </label>
     </div>
 
-    <div class="form-check ">
-        <input class="form-check-input"
-               type="radio"
-               name="radiolist_1"
-               id="radiolist_12"
-               value="Maybe"
-               
-               
-               >
-        <label class="form-check-label"
-               for="radiolist_12">
+    <div class="bofs-form-check">
+        <label class="bofs-form-check-label">
+            <input class="bofs-form-check-input"
+                   type="radio"
+                   name="radiolist_1"
+                   id="radiolist_12"
+                   value="Maybe"
+                   
+                   
+                   >
+
            Maybe
         </label>
     </div>
 
-    <div class="form-check ">
-        <input class="form-check-input"
-               type="radio"
-               name="radiolist_1"
-               id="radiolist_13"
-               value="No"
-               
-               
-               >
-        <label class="form-check-label"
-               for="radiolist_13">
+    <div class="bofs-form-check">
+        <label class="bofs-form-check-label">
+            <input class="bofs-form-check-input"
+                   type="radio"
+                   name="radiolist_1"
+                   id="radiolist_13"
+                   value="No"
+                   
+                   
+                   >
+
            No
         </label>
     </div>
@@ -656,37 +706,44 @@ ul li { padding-bottom: 4px; }
 </div>
 
 
-<div class="question padding">
+<div class="bofs-question bofs-padding">
     
-        <div class="question-instructions">Choose any options that apply.</div>
+        <div class="bofs-question-instructions">Choose any options that apply.</div>
     
-    <div class="question-inputs">
+    <div class="bofs-question-inputs">
         
+
     
 
 
 
 
-<div class="form-check ">
+<div class="bofs-form-check">
     
-        <input class="form-check-input" type="checkbox" name="cl_3" id="cl_3" value="1" >
-        <label class="form-check-label" for="cl_3">Option 3</label>
-    
-</div>
-
-
-<div class="form-check ">
-    
-        <input class="form-check-input" type="checkbox" name="cl_2" id="cl_2" value="1" >
-        <label class="form-check-label" for="cl_2">Option 2</label>
+        <label class="bofs-form-check-label">
+            <input class="bofs-form-check-input" type="checkbox" name="cl_2" id="cl_2" value="1" >
+            Option 2
+        </label>
     
 </div>
 
 
-<div class="form-check ">
+<div class="bofs-form-check">
     
-        <input class="form-check-input" type="checkbox" name="cl_1" id="cl_1" value="1" >
-        <label class="form-check-label" for="cl_1">Option 1</label>
+        <label class="bofs-form-check-label">
+            <input class="bofs-form-check-input" type="checkbox" name="cl_3" id="cl_3" value="1" >
+            Option 3
+        </label>
+    
+</div>
+
+
+<div class="bofs-form-check">
+    
+        <label class="bofs-form-check-label">
+            <input class="bofs-form-check-input" type="checkbox" name="cl_1" id="cl_1" value="1" >
+            Option 1
+        </label>
     
 </div>
 
@@ -694,12 +751,13 @@ ul li { padding-bottom: 4px; }
 </div>
 
 
-<div class="question padding">
+<div class="bofs-question bofs-padding">
     
-        <div class="question-instructions">Drag the slider to indicate your response.</div>
+        <div class="bofs-question-instructions">Drag the slider to indicate your response.</div>
     
-    <div class="question-inputs">
-        <div class="slider-labels" style="width: 400px;">
+    <div class="bofs-question-inputs">
+        
+<div class="bofs-slider-labels" style="width: 400px;">
     <label for="slider_1">left</label>
     <label for="slider_1">right</label>
 </div>
@@ -715,12 +773,13 @@ ul li { padding-bottom: 4px; }
 </div>
 
 
-<div class="question padding">
+<div class="bofs-question bofs-padding">
     
-        <div class="question-instructions">Enter some text.</div>
+        <div class="bofs-question-instructions">Enter some text.</div>
     
-    <div class="question-inputs">
-        <input class="form-control"
+    <div class="bofs-question-inputs">
+        
+<input class="bofs-form-control"
        type="text"
        name="input_1"
        id="input_1"
@@ -732,12 +791,13 @@ ul li { padding-bottom: 4px; }
 </div>
 
 
-<div class="question padding">
+<div class="bofs-question bofs-padding">
     
-        <div class="question-instructions">Enter a number.</div>
+        <div class="bofs-question-instructions">Enter a number.</div>
     
-    <div class="question-inputs">
-        <input class="form-control"
+    <div class="bofs-question-inputs">
+        
+<input class="bofs-form-control"
        type="number"
        name="number_field"
        id="number_field"
@@ -749,12 +809,13 @@ ul li { padding-bottom: 4px; }
 </div>
 
 
-<div class="question padding">
+<div class="bofs-question bofs-padding">
     
-        <div class="question-instructions">Choose one item from the list.</div>
+        <div class="bofs-question-instructions">Choose one item from the list.</div>
     
-    <div class="question-inputs">
-        <select class="form-control"
+    <div class="bofs-question-inputs">
+        
+<select class="bofs-form-control"
         name="dropdownexample"
         id="dropdownexample"
         style="width: 400px; height: 36px;"
@@ -772,12 +833,13 @@ ul li { padding-bottom: 4px; }
 </div>
 
 
-<div class="question padding">
+<div class="bofs-question bofs-padding">
     
-        <div class="question-instructions">Enter a longer response.</div>
+        <div class="bofs-question-instructions">Enter a longer response.</div>
     
-    <div class="question-inputs">
-        <textarea class="form-control"
+    <div class="bofs-question-inputs">
+        
+<textarea class="bofs-form-control"
           placeholder="Type your answer here"
           name="big"
           id="big"

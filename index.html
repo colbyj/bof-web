@@ -16,8 +16,9 @@
             <div class="top-nav-anchors" id="top-nav-anchors">
                 <a href="demos.html">Demos</a>
                 <a href="questionnaires.html">Questionnaires</a>
-                <a href="news.html">News</a>
                 <a href="publications.html">Publications</a>
+                <a href="news.html">News</a>
+                <a href="https://docs.frankensystem.net/en/latest/getting_started/installation.html" target="_blank" rel="noopener">Get Started</a>
             </div>
             <div class="top-nav-actions">
                 <a href="https://github.com/colbyj/bride-of-frankensystem" target="_blank" rel="noopener" aria-label="GitHub repository" title="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
@@ -38,38 +39,26 @@
             <div>
                 <h1 class="heading-primary">Bride of Frankensystem</h1>
                 <p class="lead">
-                    An open-source framework for building online behavioral experiments and surveys. You describe your
-                    study in plain-text files: a TOML config for settings and page flow, JSON files for
-                    questionnaires, and HTML files for custom pages. BOFS handles participant routing, condition
-                    assignment, consent, and data storage, and provides an admin panel for monitoring and export.
+                    An open-source framework for building online behavioral experiments and surveys.
+                    Studies are written as plain-text files that you can version-control, share, and reuse
+                    across projects. Embed jsPsych, lab.js, and Unity tasks alongside questionnaires.
+                    Let BOFS provide the supporting infrastructure&thinsp;&mdash;&thinsp;participant routing, condition assignment,
+                    and data storage&thinsp;&mdash;&thinsp;you focus on your research.
                 </p>
-                <div class="flex">
-                    <a href="https://docs.frankensystem.net/en/latest/getting_started/installation.html" class="btn btn-primary">
-                        <i class="bi bi-download" aria-hidden="true"></i> Get Started
-                    </a>
-                    <a href="demos.html" class="btn btn-outline">
-                        <i class="bi bi-play-circle-fill" aria-hidden="true"></i> View Demos
-                    </a>
-                </div>
             </div>
-            <div class="quick-start">
-                <h3>Quick Start</h3>
-                <div class="quick-steps">
-                    <div class="quick-step">
-                        <span class="step-number">1</span>
-                        <code>pip install bride-of-frankensystem</code>
-                    </div>
-                    <div class="quick-step">
-                        <span class="step-number">2</span>
-                        <code>BOFS init</code>
-                    </div>
-                    <div class="quick-step">
-                        <span class="step-number">3</span>
-                        <span>Follow the prompts</span>
-                    </div>
-                </div>
-                <a href="https://docs.frankensystem.net/en/latest/getting_started/installation.html" class="btn btn-outline">
-                    <i class="bi bi-book" aria-hidden="true"></i> Installation Instructions
+            <div class="hero-explore">
+                <h3>Explore</h3>
+                <a href="demos.html" class="hero-explore-item">
+                    <i class="bi bi-play-circle-fill" aria-hidden="true"></i>
+                    <strong>Live study demos</strong>
+                </a>
+                <a href="questionnaires.html" class="hero-explore-item">
+                    <i class="bi bi-list-check" aria-hidden="true"></i>
+                    <strong>Questionnaire library</strong>
+                </a>
+                <a href="publications.html" class="hero-explore-item">
+                    <i class="bi bi-journal-text" aria-hidden="true"></i>
+                    <strong>Publications</strong>
                 </a>
             </div>
         </div>
@@ -84,13 +73,16 @@
         <div class="comparison-grid">
             <div class="comparison-item">
                 <h4>vs. Survey platforms (Qualtrics, SurveyMonkey, Google Forms)</h4>
-                <p>Survey platforms handle questionnaires through a point-and-click editor on hosted infrastructure.
-                They can't embed arbitrary JavaScript tasks or open their data layer for custom logic.</p>
+                <p>
+                    Survey platforms handle questionnaires through a point-and-click editor on their hosted
+                    infrastructure. Your work lives in their UI and you can't embed arbitrary JavaScript tasks, capture
+                    detailed logs from those tasks, or take your questionnaires with you when the subscription ends.
+                </p>
             </div>
 
             <div class="comparison-item">
                 <h4>vs. JavaScript libraries (jsPsych, lab.js)</h4>
-                <p>jsPsych, and lab.js handle in-browser trial logic — precise timing, key capture,
+                <p>jsPsych, and lab.js handle in-browser trial logic&thinsp;&mdash;&thinsp;precise timing, key capture,
                 randomization. They don't host the surrounding study (consent, condition assignment, sessions,
                 admin panel). A jsPsych, or lab.js task can run inside a BOFS custom page; the two
                 are complementary.</p>
@@ -98,9 +90,10 @@
 
             <div class="comparison-item">
                 <h4>vs. Building from scratch (Flask, Express)</h4>
-                <p>A custom application means you design every detail of the study and everything around it. BOFS
-                supplies the surrounding scaffolding so the work that's specific to your research is what you actually
-                spend time on.</p>
+                <p>Building from scratch gives you full control, but you build every detail of the study
+                scaffolding yourself. BOFS supplies that scaffolding and stays out of your way when you need to go
+                beyond it. Custom Flask routes, blueprints, and templates drop into the same project, with full
+                access to the database, sessions, and configuration.</p>
             </div>
         </div>
     </div>
@@ -109,7 +102,11 @@
 <section class="section section-tinted" id="how-it-works">
     <div class="container">
         <h2 class="heading-section">How It Works</h2>
-        <p class="lead">Each step lives in a plain text file — TOML, JSON, HTML, or Python. Carry questionnaires, custom pages, and blueprints between studies, share them with colleagues, version-control everything.</p>
+        <p class="lead">
+            A BOFS project contains just the files that describe your study, not the framework that runs them.
+            Reuse questionnaires, custom pages, and task integrations across multiple studies, or share them with
+            colleagues. Studies and individual components built years ago will still run today with only minor adjustments.
+        </p>
         <div class="grid grid-2">
             <a href="https://docs.frankensystem.net/en/latest/building/page_flow.html" class="how-card">
                 <i class="bi bi-diagram-3 how-card-icon" aria-hidden="true"></i>
@@ -158,6 +155,25 @@
                     <p>When built-in patterns aren't enough, custom Flask routes drop into the same project — full access to the database, sessions, and templates.</p>
                 </div>
             </a>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="callout callout-row">
+            <div class="callout-row-text">
+                <h3>Ready to try BOFS?</h3>
+                <p>Install with pip and run your first study locally. The documentation walks through setup, configuration, and your first questionnaire.</p>
+            </div>
+            <div class="flex">
+                <a href="https://docs.frankensystem.net/en/latest/getting_started/installation.html" class="btn btn-primary">
+                    <i class="bi bi-download" aria-hidden="true"></i> Get Started
+                </a>
+                <a href="https://docs.frankensystem.net/en/latest/" class="btn btn-outline">
+                    <i class="bi bi-book" aria-hidden="true"></i> Documentation
+                </a>
+            </div>
         </div>
     </div>
 </section>
