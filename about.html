@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About BOFS | Bride of Frankensystem</title>
+    <meta name="description" content="The story behind Bride of Frankensystem: origins at the University of Saskatchewan's HCI lab in 2015, transition to open source in 2019, sustainability commitments, and acknowledgements.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="style.css?2" rel="stylesheet">
+</head>
+<body>
+
+<nav class="top-nav" aria-label="Primary">
+    <div class="container">
+        <div class="top-nav-inner">
+            <a href="index.html" class="top-nav-brand">Bride of Frankensystem</a>
+            <div class="top-nav-anchors" id="top-nav-anchors">
+                <a href="demos.html">Demos</a>
+                <a href="questionnaires.html">Questionnaires</a>
+                <a href="about.html">About</a>
+                <a href="publications.html">Publications</a>
+                <a href="news.html">News</a>
+            </div>
+            <div class="top-nav-actions">
+                <a href="https://github.com/colbyj/bride-of-frankensystem" target="_blank" rel="noopener" aria-label="GitHub repository" title="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+                <a href="https://docs.frankensystem.net/en/latest/" target="_blank" rel="noopener" aria-label="Documentation" title="Documentation"><i class="bi bi-question-circle-fill" aria-hidden="true"></i></a>
+                <a href="https://discord.gg/XzXtUKFCJA" target="_blank" rel="noopener" aria-label="Join Discord" title="Discord"><i class="bi bi-discord" aria-hidden="true"></i></a>
+                <a href="#" onclick="openModal(); return false;" aria-label="Mailing list signup" title="Mailing list"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+            </div>
+            <button type="button" class="top-nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="top-nav-anchors">
+                <i class="bi bi-list" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<section class="section section-tinted page-header">
+    <div class="container">
+        <h1 class="heading-primary">About BOFS</h1>
+        <p class="lead">How BOFS came to be, who built it, and how it's maintained.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container about-body">
+
+        <h2 class="heading-section">Lineage</h2>
+        <p>
+            BOFS development started in 2015 at the
+            <a href="https://hci.usask.ca/">University of Saskatchewan's HCI lab</a>. The lab was
+            beginning to conduct online studies, and each study was developed as a standalone web
+            application. Every new questionnaire had to be written by hand using typical web technology
+            at the time (laying out the inputs in HTML, defining a database table, etc.). To create a
+            new study, the source code from the old study was copied and used as a starting point; each
+            project required its own complete copy of the underlying source code. Any improvements to
+            the underlying study flow behavior, questionnaire logic, presentation, integrated tasks,
+            and so on, were tricky to share between projects and it was time consuming to keep old
+            projects up to date. We called any system built using this approach a "frankensystem".
+        </p>
+        <p>
+            To improve the situation, we developed a "sequel" to the frankensystem, the "bride of
+            frankensystem". We established a JSON schema that we could use to define questionnaires,
+            and a shared Python package that contained universal participant and survey-related logic
+            and page templates. We used the SQLAlchemy ORM library to dynamically create the database
+            schema based on loaded questionnaire JSON files. We switched to Flask, which has the
+            concept of "blueprints" to bundle related pages and behavior, and leveraged that to create
+            new task integrations.
+        </p>
+        <p>
+            Everyone in the lab therefore shared the same base implementation for their study, and
+            defined the unique aspects of their study using configuration files, plain-text
+            questionnaire files, and modular folders for any additional behavior or task integration
+            that the study required. This approach meant that every study could benefit from changes
+            to the shared foundation.
+        </p>
+
+        <h2 class="heading-section">Transition to Open Source</h2>
+        <p>
+            After a few years of internal use, we open-sourced the project in 2019, and I (Colby)
+            have maintained it individually ever since. I maintain it to this day because I want to
+            contribute in my own way to research and I have an interest in developing tools related
+            to automating tasks. It just so happens that BOFS provides interesting design and
+            development challenges for me.
+        </p>
+
+        <h2 class="heading-section">Sustainability</h2>
+        <p>
+            I do not seek to monetize BOFS directly. I pledge that the main project will always
+            remain open-source, and I will never charge licensing fees nor require payment to use the
+            open-source project. At the moment, I am investigating the feasibility of monetizing it
+            indirectly, by providing additional external tooling to help make BOFS easier to use or
+            deploy (which I'm implementing via the "Frankenmanager").
+        </p>
+        <p>
+            If you want to support the project financially, you can
+            <a href="https://github.com/sponsors/colbyj" target="_blank" rel="noopener">sponsor the project on GitHub</a>.
+            If you want to create an online study but need additional help, or want to implement
+            something beyond the current capabilities of BOFS, you can reach out to me about potential
+            consulting work. For minor improvements that would be of benefit to everyone using the
+            project (or to file bug reports), open an issue on
+            <a href="https://github.com/colbyj/bride-of-frankensystem/issues" target="_blank" rel="noopener">GitHub</a>
+            or ask about it on
+            <a href="https://discord.gg/XzXtUKFCJA" target="_blank" rel="noopener">Discord</a>.
+        </p>
+
+        <h2 class="heading-section">Acknowledgements</h2>
+        <p>
+            Credit to the original "frankensystem" approach that inspired BOFS goes to Dr. Max Birk,
+            who also was a great help in shaping what BOFS became. Additional credit goes to Dr.
+            Jason Bowey, who co-created the questionnaire schema with me, and created the original
+            rendering engine for the questionnaires. Finally, thanks to Dr. Regan Mandryk for her
+            supervision and for funding my graduate studies; without this I wouldn't have had the
+            opportunity to develop BOFS.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- Mailing list signup modal (rendered on every page; opened via the envelope icon) -->
+<div class="modal" id="subscribeModal" role="dialog" aria-modal="true" aria-labelledby="subscribeModalTitle" aria-hidden="true">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="subscribeModalTitle">Subscribe to Mailing List</h3>
+            <button type="button" class="btn-close" onclick="closeModal()" aria-label="Close mailing list dialog">×</button>
+        </div>
+        <div class="modal-body">
+            <form action="https://frankensystem.us3.list-manage.com/subscribe/post?u=bf604c84efd16a39e9da4a43a&amp;id=547b6c51e8&amp;f_id=00e598e2f0" method="post" target="_blank">
+                <div class="form-group">
+                    <label for="mce-EMAIL" class="form-label">Email Address</label>
+                    <input type="email" name="EMAIL" class="form-control" id="mce-EMAIL" required>
+                </div>
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="b_bf604c84efd16a39e9da4a43a_547b6c51e8" tabindex="-1" value="">
+                </div>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <p class="footer-meta">
+            BOFS is open-source and free to use.
+            <a href="about.html">About the project &rarr;</a>
+        </p>
+        <p>
+            &copy; 2015-2026 Colby Johanson |
+            LGPL-3.0 Licensed |
+            <a href="https://github.com/colbyj/bride-of-frankensystem" title="GitHub" aria-label="GitHub repository"><i class="bi bi-github" aria-hidden="true"></i></a>
+            <a href="https://docs.frankensystem.net/en/latest/" title="Documentation" aria-label="Documentation"><i class="bi bi-question-circle-fill" aria-hidden="true"></i></a>
+            <a href="https://discord.gg/XzXtUKFCJA" rel="noopener" target="_blank" title="Discord" aria-label="Join Discord"><i class="bi bi-discord" aria-hidden="true"></i></a>
+            <a href="#" onclick="openModal(); return false;" title="Mailing List" aria-label="Mailing list signup"><i class="bi bi-envelope-fill" aria-hidden="true"></i></a>
+        </p>
+    </div>
+</footer>
+<script>
+function openModal() {
+    const modal = document.getElementById('subscribeModal');
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden', 'false');
+}
+
+function closeModal() {
+    const modal = document.getElementById('subscribeModal');
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+}
+
+document.getElementById('subscribeModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeModal();
+        closeNav();
+    }
+});
+
+// Mobile nav: toggle the hamburger dropdown.
+function closeNav() {
+    const nav = document.querySelector('.top-nav');
+    if (!nav) return;
+    nav.classList.remove('open');
+    const btn = nav.querySelector('.top-nav-toggle');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+}
+
+(function () {
+    const nav = document.querySelector('.top-nav');
+    if (!nav) return;
+    const toggle = nav.querySelector('.top-nav-toggle');
+    if (toggle) {
+        toggle.addEventListener('click', function () {
+            const isOpen = nav.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', isOpen);
+        });
+    }
+    // Tapping any nav link closes the dropdown so same-page anchors don't leave it open.
+    nav.querySelectorAll('.top-nav-anchors a').forEach(function (a) {
+        a.addEventListener('click', closeNav);
+    });
+    // Tap outside the nav closes it.
+    document.addEventListener('click', function (e) {
+        if (nav.classList.contains('open') && !nav.contains(e.target)) {
+            closeNav();
+        }
+    });
+})();
+</script>
+
+
+</body>
+</html>

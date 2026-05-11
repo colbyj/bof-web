@@ -456,6 +456,113 @@ body {
   margin-bottom: 1rem;
 }
 
+/* Comparisons page — stacked tool sections */
+.comparison-section + .comparison-section {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.comparison-section h3 {
+  color: var(--text-dark);
+  font-size: 1.15rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Inline two-column rows for differences inside a comparison section: short
+   heading on the left, explanation on the right, light divider between rows.
+   Drops the card chrome (padding/border/background) the homepage grid uses.
+   The homepage "Where BOFS Fits" grid (also .comparison-grid) is untouched. */
+.comparison-section .comparison-grid {
+  display: block;
+  margin-top: 1rem;
+}
+
+.comparison-section .comparison-item {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 1.5rem;
+  align-items: baseline;
+  padding: 0.75rem 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.comparison-section .comparison-item:last-child {
+  border-bottom: none;
+}
+
+.comparison-section .comparison-item h4 {
+  margin: 0;
+  color: var(--green-dark);
+  font-size: 0.95rem;
+}
+
+.comparison-section .comparison-item p {
+  margin: 0;
+  color: var(--text-medium);
+}
+
+@media (max-width: 768px) {
+  .comparison-section .comparison-item {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}
+
+.comparison-list {
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+.comparison-list li {
+  margin-bottom: 0.5rem;
+  color: var(--text-medium);
+}
+
+/* Hero meta line — small free/open-source signal under the hero buttons */
+.hero-meta {
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.hero-meta a {
+  color: var(--green-dark);
+  text-decoration: none;
+}
+
+.hero-meta a:hover {
+  text-decoration: underline;
+}
+
+/* About page — long-form prose with spaced paragraphs and section headings */
+.about-body p {
+  color: var(--text-medium);
+  margin-bottom: 1.1rem;
+  line-height: 1.7;
+}
+
+.about-body p:last-child {
+  margin-bottom: 0;
+}
+
+.about-body a {
+  color: var(--green-dark);
+}
+
+.about-body .heading-section {
+  font-size: 1.75rem;
+  margin-top: 2.5rem;
+}
+
+.about-body .heading-section:first-child {
+  margin-top: 0;
+}
+
 /* Publication Cards */
 .publication {
   display: flex;
@@ -648,6 +755,15 @@ body {
   transition: color 0.2s ease;
 }
 
+.footer-meta {
+  margin-bottom: 0.5rem;
+  color: var(--text-light);
+}
+
+.footer-meta a {
+  margin: 0;
+}
+
 .footer a:hover { color: var(--green); }
 
 /* Responsive Design */
@@ -786,8 +902,10 @@ body {
 /* Anchor offset so sticky nav doesn't cover scrolled-to headings */
 section[id] { scroll-margin-top: 64px; }
 
-/* Mobile nav: anchors collapse into a dropdown opened by the hamburger */
-@media (max-width: 768px) {
+/* Mobile nav: anchors collapse into a dropdown opened by the hamburger.
+   Threshold is 960px (not the 768px used elsewhere) because at 769–960 the
+   anchor row gets cramped once the nav has the full set of labels. */
+@media (max-width: 960px) {
   .top-nav { position: relative; }
 
   .top-nav-inner {
